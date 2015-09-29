@@ -47,7 +47,7 @@ bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 
 void SpecificWorker::compute()
 {
-     const float threshold = 500; //Distancia previa a choque
+     const float threshold = 200; //Distancia previa a choque
     float rot = 1.5707;  //
 
 
@@ -55,28 +55,28 @@ void SpecificWorker::compute()
     try
     {
         RoboCompLaser::TLaserData ldata = laser_proxy->getLaserData();
-        std::sort( ldata.begin(), ldata.end(), [](RoboCompLaser::TData a, RoboCompLaser::TData b){ return     a.dist < b.dist; }) ;
+        std::sort( ldata.begin()+ 0 , ldata.end() - 0  , [](RoboCompLaser::TData a, RoboCompLaser::TData b ){ return     a.dist < b.dist; }) ;
 
 
-     if( ldata.front().dist < threshold + 50)
+     if( ldata.front().dist < threshold )
     {
-    differentialrobot_proxy->setSpeedBase(50, rot);
-    usleep(1250000);
-    std::cout << ldata.front().dist << std::endl;   
+      if(ldata.front().angle > 0)
+      {
+	differentialrobot_proxy->setSpeedBase(5, -rot);
+      }
+      else{
+	differentialrobot_proxy->setSpeedBase(5, rot);	
+      }
+	usleep(1250000);
+	std::cout << ldata.front().dist << std::endl;   
         std::cout << "Girando" << std::endl;   
-    differentialrobot_proxy->setSpeedBase(200, 0); // sprint
-    usleep(500000);
-    rot = rot + 0.12; // 0.12
-    if( rot > 3 * 1.5707 )
-    {
-     rot = 1.5707;//1.5707
-    }
+	
+       
     }
 
     else
     {
-    differentialrobot_proxy->setSpeedBase(500, 0); 
-    usleep(500000);
+    differentialrobot_proxy->setSpeedBase(200, 0); 
     std::cout << ldata.front().dist << std::endl;
     }
 
