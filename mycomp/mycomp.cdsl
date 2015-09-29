@@ -1,0 +1,13 @@
+import "/robocomp/interfaces/IDSLs/DifferentialRobot.idsl";
+import "/robocomp/interfaces/IDSLs/Laser.idsl";
+
+Component mycomp
+{
+	Communications
+	{
+		requires DifferentialRobot, Laser;	
+	};
+	language Cpp;
+	gui Qt(QWidget);
+};
+
