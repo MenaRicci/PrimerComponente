@@ -47,7 +47,7 @@ bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 
 void SpecificWorker::compute()
 {
-     const float threshold = 200; //Distancia previa a choque
+     const float threshold = 500; //Distancia previa a choque
     float rot = 1.5707;  //
 
 
@@ -55,19 +55,17 @@ void SpecificWorker::compute()
     try
     {
         RoboCompLaser::TLaserData ldata = laser_proxy->getLaserData();
-        std::sort( ldata.begin()+ 0 , ldata.end() - 0  , [](RoboCompLaser::TData a, RoboCompLaser::TData b ){ return     a.dist < b.dist; }) ;
+        std::sort( ldata.begin()+ 10 , ldata.end() - 10  , [](RoboCompLaser::TData a, RoboCompLaser::TData b ){ return     a.dist < b.dist; }) ;
 
 
-     if( ldata.front().dist < threshold )
+     if((ldata.data()+30)->dist < threshold )
     {
-      if(ldata.front().angle > 0)
-      {
+      if((ldata.data()+30)->angle >= 0)
 	differentialrobot_proxy->setSpeedBase(5, -rot);
-      }
-      else{
-	differentialrobot_proxy->setSpeedBase(5, rot);	
-      }
-	usleep(1250000);
+      else
+	differentialrobot_proxy->setSpeedBase(5, rot);
+	
+      usleep(1250000);
 	std::cout << ldata.front().dist << std::endl;   
         std::cout << "Girando" << std::endl;   
 	
