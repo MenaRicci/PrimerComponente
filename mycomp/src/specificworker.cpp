@@ -47,34 +47,52 @@ bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 
 void SpecificWorker::compute()
 {
-     const float threshold = 500; //Distancia previa a choque
-    float rot = 1.5707;  //
-
-
-
+      const float threshold = 550; //Distancia previa a choque
+      float rot = 0.7707;  //
+      const float acot = 20;
+      //static QTime reloj = QTime::currentTime();
+      //static QTime relojAux= QTime::currentTime();
+     static int num_giros=0;
+    
     try
     {
         RoboCompLaser::TLaserData ldata = laser_proxy->getLaserData();
-        std::sort( ldata.begin()+ 10 , ldata.end() - 10  , [](RoboCompLaser::TData a, RoboCompLaser::TData b ){ return     a.dist < b.dist; }) ;
+        std::sort( ldata.begin()+ acot , ldata.end() - acot  , [](RoboCompLaser::TData a, RoboCompLaser::TData b ){ return     a.dist < b.dist; }) ;
 
 
      if((ldata.data()+30)->dist < threshold )
     {
-      if((ldata.data()+30)->angle >= 0)
+     //  relojAux.addSecs(1);
+     //  if(reloj<relojAux){
+	// and (reloj<relojAux)
+	 
+      if((ldata.data()+30)->angle >= 0 )
+      {
+	num_giros++;
 	differentialrobot_proxy->setSpeedBase(5, -rot);
-      else
+      }
+    
+      else {
+	num_giros++;
 	differentialrobot_proxy->setSpeedBase(5, rot);
-	
-      usleep(1250000);
-	std::cout << ldata.front().dist << std::endl;   
-        std::cout << "Girando" << std::endl;   
-	
+      }
        
+      if (num_giros > 3 or (ldata.data()+30)->dist < threshold){
+    differentialrobot_proxy->setSpeedBase(5, -rot);
+       differentialrobot_proxy->setSpeedBase(5, -rot);
+      differentialrobot_proxy->setSpeedBase(5, -rot);
+       std::cout << num_giros << std::endl;
+      num_giros=0;
+               std::cout << "---------------" << std::endl;
+       } 
+       //usleep(1250000);
+	std::cout << ldata.front().dist << std::endl;   
+        std::cout << "Girando" << std::endl;  
     }
-
     else
     {
-    differentialrobot_proxy->setSpeedBase(200, 0); 
+    num_giros=0;
+      differentialrobot_proxy->setSpeedBase(500, 0); 
     std::cout << ldata.front().dist << std::endl;
     }
 
