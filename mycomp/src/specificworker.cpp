@@ -54,7 +54,8 @@ void SpecificWorker::compute()
     
     try
     {
-        RoboCompLaser::TLaserData ldata = laser_proxy->getLaserData();
+
+	RoboCompLaser::TLaserData ldata = laser_proxy->getLaserData();
         std::sort( ldata.begin()+ acot , ldata.end() - acot  , [](RoboCompLaser::TData a, RoboCompLaser::TData b ){ return     a.dist < b.dist; }) ;
 
 
@@ -98,6 +99,17 @@ void SpecificWorker::compute()
   
 }
 
+
+////////////////////////////////////////////////////////////77
+//////  EN EL HILO THE ICE
+////////////////////////////////////////////////////////////
+
+void SpecificWorker::newAprilTag(const tagsList &tags){
+  
+  
+  
+}
+  
 
 
 

@@ -16,50 +16,37 @@
  *    You should have received a copy of the GNU General Public License
  *    along with RoboComp.  If not, see <http://www.gnu.org/licenses/>.
  */
+#ifndef APRILTAGS_H
+#define APRILTAGS_H
 
-/**
-       \brief
-       @author authorname
-*/
+// QT includes
+#include <QtCore/QObject>
 
+// Ice includes
+#include <Ice/Ice.h>
+#include <AprilTags.h>
 
+#include <config.h>
+#include "genericworker.h"
 
+using namespace RoboCompAprilTags;
 
-
-
-
-#ifndef SPECIFICWORKER_H
-#define SPECIFICWORKER_H
-
-#include <genericworker.h>
-#include <innermodel/innermodel.h>
-
-class SpecificWorker : public GenericWorker
+class AprilTagsI : public QObject , public virtual RoboCompAprilTags::AprilTags
 {
 Q_OBJECT
 public:
-	SpecificWorker(MapPrx& mprx);	
-	~SpecificWorker();
-	bool setParams(RoboCompCommonBehavior::ParameterList params);
-	void newAprilTag(const tagsList &tags);
+	AprilTagsI( GenericWorker *_worker, QObject *parent = 0 );
+	~AprilTagsI();
+	
+	void newAprilTag(const tagsList  &tags, const Ice::Current&);
 
-public slots:
-	void compute(); 	
-
+	QMutex *mutex;
 private:
 
-  struct datosCamara{
-		int id;
-		float dist_x;
-		float dist_y;
-		float dist_z;
-		float rot_x;
-		float rot_y;
-		float rot_z;
-	};
- 	list <datosCamara> datosCamaraList;
-  
+	GenericWorker *worker;
+public slots:
+
+
 };
 
 #endif
-

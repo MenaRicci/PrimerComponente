@@ -41,24 +41,14 @@ public:
 	SpecificWorker(MapPrx& mprx);	
 	~SpecificWorker();
 	bool setParams(RoboCompCommonBehavior::ParameterList params);
+
 	void newAprilTag(const tagsList &tags);
 
 public slots:
 	void compute(); 	
 
 private:
-
-  struct datosCamara{
-		int id;
-		float dist_x;
-		float dist_y;
-		float dist_z;
-		float rot_x;
-		float rot_y;
-		float rot_z;
-	};
- 	list <datosCamara> datosCamaraList;
-  
+	
 };
 
 #endif

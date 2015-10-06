@@ -157,6 +157,30 @@ mycomp/fast:
 	cd /home/salabeta/salabeta/menaricci/mycomp && $(MAKE) -f src/CMakeFiles/mycomp.dir/build.make src/CMakeFiles/mycomp.dir/build
 .PHONY : mycomp/fast
 
+AprilTags.o: AprilTags.cpp.o
+.PHONY : AprilTags.o
+
+# target to build an object file
+AprilTags.cpp.o:
+	cd /home/salabeta/salabeta/menaricci/mycomp && $(MAKE) -f src/CMakeFiles/mycomp.dir/build.make src/CMakeFiles/mycomp.dir/AprilTags.cpp.o
+.PHONY : AprilTags.cpp.o
+
+AprilTags.i: AprilTags.cpp.i
+.PHONY : AprilTags.i
+
+# target to preprocess a source file
+AprilTags.cpp.i:
+	cd /home/salabeta/salabeta/menaricci/mycomp && $(MAKE) -f src/CMakeFiles/mycomp.dir/build.make src/CMakeFiles/mycomp.dir/AprilTags.cpp.i
+.PHONY : AprilTags.cpp.i
+
+AprilTags.s: AprilTags.cpp.s
+.PHONY : AprilTags.s
+
+# target to generate assembly for a file
+AprilTags.cpp.s:
+	cd /home/salabeta/salabeta/menaricci/mycomp && $(MAKE) -f src/CMakeFiles/mycomp.dir/build.make src/CMakeFiles/mycomp.dir/AprilTags.cpp.s
+.PHONY : AprilTags.cpp.s
+
 CommonBehavior.o: CommonBehavior.cpp.o
 .PHONY : CommonBehavior.o
 
@@ -228,6 +252,30 @@ Laser.s: Laser.cpp.s
 Laser.cpp.s:
 	cd /home/salabeta/salabeta/menaricci/mycomp && $(MAKE) -f src/CMakeFiles/mycomp.dir/build.make src/CMakeFiles/mycomp.dir/Laser.cpp.s
 .PHONY : Laser.cpp.s
+
+apriltagsI.o: apriltagsI.cpp.o
+.PHONY : apriltagsI.o
+
+# target to build an object file
+apriltagsI.cpp.o:
+	cd /home/salabeta/salabeta/menaricci/mycomp && $(MAKE) -f src/CMakeFiles/mycomp.dir/build.make src/CMakeFiles/mycomp.dir/apriltagsI.cpp.o
+.PHONY : apriltagsI.cpp.o
+
+apriltagsI.i: apriltagsI.cpp.i
+.PHONY : apriltagsI.i
+
+# target to preprocess a source file
+apriltagsI.cpp.i:
+	cd /home/salabeta/salabeta/menaricci/mycomp && $(MAKE) -f src/CMakeFiles/mycomp.dir/build.make src/CMakeFiles/mycomp.dir/apriltagsI.cpp.i
+.PHONY : apriltagsI.cpp.i
+
+apriltagsI.s: apriltagsI.cpp.s
+.PHONY : apriltagsI.s
+
+# target to generate assembly for a file
+apriltagsI.cpp.s:
+	cd /home/salabeta/salabeta/menaricci/mycomp && $(MAKE) -f src/CMakeFiles/mycomp.dir/build.make src/CMakeFiles/mycomp.dir/apriltagsI.cpp.s
+.PHONY : apriltagsI.cpp.s
 
 commonbehaviorI.o: commonbehaviorI.cpp.o
 .PHONY : commonbehaviorI.o
@@ -372,6 +420,30 @@ main.s: main.cpp.s
 main.cpp.s:
 	cd /home/salabeta/salabeta/menaricci/mycomp && $(MAKE) -f src/CMakeFiles/mycomp.dir/build.make src/CMakeFiles/mycomp.dir/main.cpp.s
 .PHONY : main.cpp.s
+
+moc_apriltagsI.o: moc_apriltagsI.cxx.o
+.PHONY : moc_apriltagsI.o
+
+# target to build an object file
+moc_apriltagsI.cxx.o:
+	cd /home/salabeta/salabeta/menaricci/mycomp && $(MAKE) -f src/CMakeFiles/mycomp.dir/build.make src/CMakeFiles/mycomp.dir/moc_apriltagsI.cxx.o
+.PHONY : moc_apriltagsI.cxx.o
+
+moc_apriltagsI.i: moc_apriltagsI.cxx.i
+.PHONY : moc_apriltagsI.i
+
+# target to preprocess a source file
+moc_apriltagsI.cxx.i:
+	cd /home/salabeta/salabeta/menaricci/mycomp && $(MAKE) -f src/CMakeFiles/mycomp.dir/build.make src/CMakeFiles/mycomp.dir/moc_apriltagsI.cxx.i
+.PHONY : moc_apriltagsI.cxx.i
+
+moc_apriltagsI.s: moc_apriltagsI.cxx.s
+.PHONY : moc_apriltagsI.s
+
+# target to generate assembly for a file
+moc_apriltagsI.cxx.s:
+	cd /home/salabeta/salabeta/menaricci/mycomp && $(MAKE) -f src/CMakeFiles/mycomp.dir/build.make src/CMakeFiles/mycomp.dir/moc_apriltagsI.cxx.s
+.PHONY : moc_apriltagsI.cxx.s
 
 moc_commonbehaviorI.o: moc_commonbehaviorI.cxx.o
 .PHONY : moc_commonbehaviorI.o
@@ -554,6 +626,9 @@ help:
 	@echo "... list_install_components"
 	@echo "... mycomp"
 	@echo "... rebuild_cache"
+	@echo "... AprilTags.o"
+	@echo "... AprilTags.i"
+	@echo "... AprilTags.s"
 	@echo "... CommonBehavior.o"
 	@echo "... CommonBehavior.i"
 	@echo "... CommonBehavior.s"
@@ -563,6 +638,9 @@ help:
 	@echo "... Laser.o"
 	@echo "... Laser.i"
 	@echo "... Laser.s"
+	@echo "... apriltagsI.o"
+	@echo "... apriltagsI.i"
+	@echo "... apriltagsI.s"
 	@echo "... commonbehaviorI.o"
 	@echo "... commonbehaviorI.i"
 	@echo "... commonbehaviorI.s"
@@ -581,6 +659,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... moc_apriltagsI.o"
+	@echo "... moc_apriltagsI.i"
+	@echo "... moc_apriltagsI.s"
 	@echo "... moc_commonbehaviorI.o"
 	@echo "... moc_commonbehaviorI.i"
 	@echo "... moc_commonbehaviorI.s"
