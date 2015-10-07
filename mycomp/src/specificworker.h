@@ -34,6 +34,8 @@
 #include <genericworker.h>
 #include <innermodel/innermodel.h>
 
+#define MAXIMO 5
+
 class SpecificWorker : public GenericWorker
 {
 Q_OBJECT
@@ -42,23 +44,37 @@ public:
 	~SpecificWorker();
 	bool setParams(RoboCompCommonBehavior::ParameterList params);
 	void newAprilTag(const tagsList &tags);
-
+	int obtener_dato();  
+  
 public slots:
 	void compute(); 	
 
 private:
-
-  struct datosCamara{
-		int id;
-		float dist_x;
-		float dist_y;
-		float dist_z;
-		float rot_x;
-		float rot_y;
-		float rot_z;
-	};
- 	list <datosCamara> datosCamaraList;
+  int posicion=0;
+  //int MAXIMO=5;
+  int recorrido[4]={0,0,0,0};
   
+  struct DatosCamara
+  {
+      typedef struct
+      {    
+	int id;
+	float dist_x;
+	float dist_y;
+	float dist_z;
+	float rot_x;
+	float rot_y;
+	float rot_z;
+      }MyTag;
+      
+      std::vector<tag> lista;
+      QMutex mutex;
+      
+      void add(tag T);
+      MyTag get();
+  };
+  
+  DatosCamara marcas;
 };
 
 #endif

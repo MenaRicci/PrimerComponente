@@ -100,14 +100,42 @@ void SpecificWorker::compute()
 }
 
 
+
+int SpecificWorker::obtener_dato()
+{
+
+  
+return 0;
+  
+}
+	
+
+SpecificWorker::DatosCamara::Tag SpecificWorker::DatosCamara::get(){
+
+  DatosCamara::Tag A;
+  return A;
+}
+
+void SpecificWorker::DatosCamara::add(tag T)
+{
+  lista.push_back(T);
+}
+
 ////////////////////////////////////////////////////////////77
 //////  EN EL HILO THE ICE
 ////////////////////////////////////////////////////////////
 
 void SpecificWorker::newAprilTag(const tagsList &tags){
   
-  
-  
+    for(auto t : tags)
+      qDebug() << t.id;	
+    
+    
+    //marcas.lista=tags;
+   marcas.lista.push_back(tags.front());
+   // DatosCamara::MyTag a;
+   //marcas.add(tags);
+    
 }
   
 
