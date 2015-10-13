@@ -45,16 +45,8 @@ public:
 	bool setParams(RoboCompCommonBehavior::ParameterList params);
 	void newAprilTag(const tagsList &tags);
 	int obtener_dato();  
-  
-public slots:
-	void compute(); 	
-
-private:
-  int posicion=0;
-  //int MAXIMO=5;
-  int recorrido[4]={0,0,0,0};
-  
-  struct DatosCamara
+	 
+   struct DatosCamara
   {
       typedef struct
       {    
@@ -75,6 +67,23 @@ private:
   };
   
   DatosCamara marcas;
+public slots:
+	void compute(); 	
+
+private:
+  int posicion=0;
+  //int MAXIMO=5;
+  int recorrido=0;
+ // int recorrido[4]={0,0,0,0};
+ void avanzar( RoboCompLaser::TLaserData copiaLaser);
+ void search();
+ DatosCamara::MyTag copia(tag T);
+ enum class State { INIT, ADVANCE, SEARCH, STOP};
+ State state = State::INIT;
+	int encontrado=0;
+	DatosCamara::MyTag DatoEncontrado;
+	
+ 
 };
 
 #endif
