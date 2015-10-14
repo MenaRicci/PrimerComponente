@@ -17,6 +17,7 @@
  *    along with RoboComp.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include "specificworker.h"
+#include <qt4/QtCore/qlist.h>
 
 /**
 * \brief Default constructor
@@ -46,32 +47,49 @@ void SpecificWorker::compute()
     {
 	RoboCompLaser::TLaserData ldata = laser_proxy->getLaserData();
     
-    
-    
+	DatosCamara::MyTag B;
+      float distancia_P;
     switch(state)
     {
       case State::INIT:
-	
+	    //usleep(10000);
 	state = State::SEARCH;
 	break;
       case State::SEARCH:
 	search();
-	if(encontrado!=0)
-	  state = State::ADVANCE;
+	std::cout << "<--Buscar-->"<< std::endl;
 	break;
       case State::ADVANCE:
-	avanzar(ldata);
-	if((ldata.data()+30)->dist < 400){
-	  recorrido++;
-	  if(recorrido==4)
-	    state = State::STOP;
-	  else{
-	   encontrado=0;
-	   state = State::SEARCH;
-	  }
+	std::cout << "<--Avance-->"<< std::endl;
+	if(contains(recorrido)){
+	   // avanzar(ldata);
+	    std::cout << "Valor recorrido: " <<recorrido<< std::endl;  
+	    B=get(recorrido); 
+	    std::cout << "ID Dato: " <<B.id<< std::endl;
+	    std::cout << "Rotacion X Dato: " <<B.rot_x<< std::endl;
+	    std::cout << "Distancia Y Dato: " <<B.dist_y<< std::endl;
+	    std::cout << "Distancia Z Dato: " <<B.dist_z<< std::endl;
+	    distancia_P=sqrt(pow(B.dist_x,2) + pow(B.dist_z,2));
+	    std::cout << "Distancia al objetivo: " <<distancia_P<< std::endl;
+	    if(distancia_P < 300){
+	      differentialrobot_proxy->setSpeedBase(0,0);
+	      recorrido++;
+		if(recorrido==4)
+		  state = State::STOP;
+		else{
+		  encontrado=0;
+		  state = State::SEARCH;
+	      }
+	    }else
+	      encontrado=0;
+	      state = State::SEARCH;
 	}
+	avanzar(ldata);
 	break;
       case State::STOP:
+	differentialrobot_proxy->setSpeedBase(0,0);
+	std::cout << "<--FIN-->"<< std::endl;   
+	
 	//FIN
 	break;
     }
@@ -85,20 +103,21 @@ catch(const Ice::Exception &ex)
 
 void SpecificWorker::search()
 {
-  if(!marcas.lista.empty()){
-    DatosCamara::MyTag A =copia(marcas.lista.front());
-    marcas.lista.pop_back();
-  if(A.id==recorrido)
-  {
-    DatoEncontrado=A;
-    encontrado++; 
-  }
+  static bool Primero=true;
+  if(contains(recorrido)){
+  
+    differentialrobot_proxy->setSpeedBase(0, 0);
+    state=State::ADVANCE;
+    Primero=true;
+    encontrado++;
     
-    
-  }else
+  }if(Primero){
     differentialrobot_proxy->setSpeedBase(0, 0.77);
     usleep(10000);
-
+    Primero=false;
+    encontrado=0;
+    
+  }
 }
   
 
@@ -118,6 +137,17 @@ SpecificWorker::DatosCamara::MyTag SpecificWorker::copia(tag T )
   
 }
 
+SpecificWorker::DatosCamara::MyTag SpecificWorker::get(int id)
+{
+  DatosCamara::MyTag A;
+  
+  for(auto t : marcas.lista){
+    if(t.id==id){
+      A=copia(t);
+      return A;
+    }
+  }return A;
+}
 
 void SpecificWorker::avanzar( RoboCompLaser::TLaserData copiaLaser)
 {
@@ -131,49 +161,54 @@ void SpecificWorker::avanzar( RoboCompLaser::TLaserData copiaLaser)
 
      if((copiaLaser.data()+30)->dist < threshold )
     {
-	 
+	state = State::SEARCH;	
+	encontrado=0;
       if((copiaLaser.data()+30)->angle >= 0 )
       {
+
 	sentido_giro=-rot;
-	differentialrobot_proxy->setSpeedBase(0, -rot);
+	differentialrobot_proxy->setSpeedBase(100, -rot);
       }
     
       else {
+	
 	sentido_giro=rot;
-	differentialrobot_proxy->setSpeedBase(0, rot);
+	differentialrobot_proxy->setSpeedBase(100, rot);
       }
       
       
-      int  numero = rand() % 15;
-      if(numero %3==0){
-	differentialrobot_proxy->setSpeedBase(0, sentido_giro*3);
-	usleep(250000);
+       int  numero = rand() % 15;
+       if(numero %3==0){
+	  differentialrobot_proxy->setSpeedBase(0, sentido_giro*3);
+	  usleep(250000);
       }
-    
+        
        usleep(125000);
-	std::cout << copiaLaser.front().dist << std::endl;   
-        std::cout << "Girando" << std::endl;  
+	//std::cout << copiaLaser.front().dist << std::endl;   
+       // std::cout << "Girando" << std::endl;  
     }
     else
     {
       differentialrobot_proxy->setSpeedBase(500, 0); 
-      std::cout << copiaLaser.front().dist << std::endl;
+     // std::cout << copiaLaser.front().dist << std::endl;
     }
 
 
     }
- 
-	
-
-SpecificWorker::DatosCamara::MyTag SpecificWorker::DatosCamara::get(){
-
-  DatosCamara::MyTag A;
-  
- // A=marcas.lista.front();
-  return A;
-  
+    
+    
+int SpecificWorker::contains(int id)
+{
+for(auto t : marcas.lista)
+{
+  if(t.id==id)
+    return 1;
+}
+  return 0;
 }
 
+ 
+ 
 ////////////////////////////////////////////////////////////77
 //////  EN EL HILO THE ICE
 ////////////////////////////////////////////////////////////
@@ -182,18 +217,12 @@ void SpecificWorker::newAprilTag(const tagsList &tags){
   
     for(auto t : tags)
     {
-      if(t.id == recorrido)
+     
+     // if(t.id == recorrido)
 	marcas.lista.push_back(t);
-     // qDebug() << t.id;	
       
     }
-    
-    
-    //marcas.lista=tags;
-   //(tags.front());
-   // DatosCamara::MyTag a;
-   //marcas.add(tags);
-    
+        
 }
   
 

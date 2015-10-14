@@ -59,11 +59,10 @@ public:
 	float rot_z;
       }MyTag;
       
-      std::vector<tag> lista;
+      QList<tag> lista;
       QMutex mutex;
       
       void add(tag T);
-      MyTag get();
   };
   
   DatosCamara marcas;
@@ -71,19 +70,21 @@ public slots:
 	void compute(); 	
 
 private:
-  int posicion=0;
-  //int MAXIMO=5;
+    void avanzar( RoboCompLaser::TLaserData copiaLaser);
+    void search();
+    int contains(int id);
+    DatosCamara::MyTag get(int id);
+ 
+
+ 
+ int posicion=0;
   int recorrido=0;
- // int recorrido[4]={0,0,0,0};
- void avanzar( RoboCompLaser::TLaserData copiaLaser);
- void search();
+    
  DatosCamara::MyTag copia(tag T);
  enum class State { INIT, ADVANCE, SEARCH, STOP};
  State state = State::INIT;
-	int encontrado=0;
-	DatosCamara::MyTag DatoEncontrado;
-	
- 
+int encontrado=0;
+DatosCamara::MyTag DatoEncontrado;
 };
 
 #endif
