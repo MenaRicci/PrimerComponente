@@ -48,44 +48,19 @@ void SpecificWorker::compute()
 	RoboCompLaser::TLaserData ldata = laser_proxy->getLaserData();
     
 	DatosCamara::MyTag B;
-      float distancia_P;
     switch(state)
     {
       case State::INIT:
 	    //usleep(10000);
-	state = State::SEARCH;
-	break;
-      case State::SEARCH:
-	search();
-	std::cout << "<--Buscar-->"<< std::endl;
-	break;
-      case State::ADVANCE:
-	std::cout << "<--Avance-->"<< std::endl;
-	if(contains(recorrido)){
-	   // avanzar(ldata);
-	    std::cout << "Valor recorrido: " <<recorrido<< std::endl;  
-	    B=get(recorrido); 
-	    std::cout << "ID Dato: " <<B.id<< std::endl;
-	    std::cout << "Rotacion X Dato: " <<B.rot_x<< std::endl;
-	    std::cout << "Distancia Y Dato: " <<B.dist_y<< std::endl;
-	    std::cout << "Distancia Z Dato: " <<B.dist_z<< std::endl;
-	    distancia_P=sqrt(pow(B.dist_x,2) + pow(B.dist_z,2));
-	    std::cout << "Distancia al objetivo: " <<distancia_P<< std::endl;
-	    if(distancia_P < 300){
-	      differentialrobot_proxy->setSpeedBase(0,0);
-	      recorrido++;
-		if(recorrido==4)
-		  state = State::STOP;
-		else{
-		  encontrado=0;
-		  state = State::SEARCH;
-	      }
-	    }else
-	      encontrado=0;
-	      state = State::SEARCH;
-	}
 	avanzar(ldata);
 	break;
+      case State::SEARCH:
+	search(ldata);
+	//std::cout << "<--Buscar-->"<< std::endl;
+	break;
+//       case State::ADVANCE:
+// 	avanzar2(ldata);
+//       break;
       case State::STOP:
 	differentialrobot_proxy->setSpeedBase(0,0);
 	std::cout << "<--FIN-->"<< std::endl;   
@@ -101,25 +76,114 @@ catch(const Ice::Exception &ex)
 }
 
 
-void SpecificWorker::search()
+
+void SpecificWorker::avanzar2(RoboCompLaser::TLaserData copiaLaser)
 {
-  static bool Primero=true;
-  if(contains(recorrido)){
+	float distancia_P;
+      float rot;
+      DatosCamara::MyTag B;
+	std::cout << "<--Avance-->"<< std::endl;
+	if(contains(recorrido)){
+// 	    avanzar(ldata);
+	    
+	   // std::cout << "Valor recorrido: " <<recorrido<< std::endl;  
+	    B=get(recorrido); 
+	    rot=atan2(B.dist_x,B.dist_z);
+	    differentialrobot_proxy->setSpeedBase(300,rot);
+	    
+	  //  std::cout << "ID Dato: " <<B.id<< std::endl;
+	   // std::cout << "Rotacion X Dato: " <<B.rot_x<< std::endl;
+	   // std::cout << "Distancia Y Dato: " <<B.dist_y<< std::endl;
+	   // std::cout << "Distancia Z Dato: " <<B.dist_z<< std::endl;
+	    
+	    distancia_P=sqrt(pow(B.dist_x,2) + pow(B.dist_z,2));
+	   // std::cout << "Distancia al objetivo: " <<distancia_P<< std::endl;
+	    if(distancia_P < 0.8){
+	      differentialrobot_proxy->setSpeedBase(0,0);
+	      recorrido++;
+	       std::cout << "------------------------------------------------------------------------------------------------ +  1 " <<B.dist_z<< std::endl;
+		if(recorrido==4)
+		  state = State::STOP;
+		sleep(2);
+	    }
+	}else{
+	      encontrado=0;
+// 	      state = State::SEARCH;
+ 	      marcas.lista.clear();
+	}
+	state = State::INIT;
+}
+
+void SpecificWorker::search(RoboCompLaser::TLaserData copiaLaser)
+{
   
+  differentialrobot_proxy->setSpeedBase(0, 0);
+  //static bool Primero=true;
+  if(contains(recorrido)){
+  std::cout << "<--Encontrado-->"<< std::endl;   
     differentialrobot_proxy->setSpeedBase(0, 0);
-    state=State::ADVANCE;
-    Primero=true;
+//     state=State::ADVANCE;
+    avanzar2(copiaLaser);
+  //  Primero=false;
     encontrado++;
     
-  }if(Primero){
-    differentialrobot_proxy->setSpeedBase(0, 0.77);
-    usleep(10000);
-    Primero=false;
+  }else{//if(Primero){
+    
+    //std::cout << "<--Buscando-->"<< std::endl;   
+
+    //NoEncontrado(copiaLaser);
+   // Primero=false;
     encontrado=0;
+	state = State::INIT;
+
     
   }
 }
   
+void SpecificWorker::NoEncontrado(RoboCompLaser::TLaserData copiaLaser)
+{
+ const float threshold = 550; //millimeters
+    float rotaux,rot = 0.7707;  //rads per second
+    int acot=20;
+     int  numero = rand() % 3;
+     
+     switch(numero){
+       case 1:
+	 rotaux=-1;
+	 break;
+	case 2:
+	 rotaux=0;
+	 break;
+       case 3:
+	 rotaux=1;
+	 break;
+	 
+     }
+    
+    try
+    {
+        //RoboCompLaser::TLaserData ldata = laser_proxy->getLaserData();  
+         std::sort( copiaLaser.begin()+ acot , copiaLaser.end() - acot  , [](RoboCompLaser::TData a, RoboCompLaser::TData b ){ return     a.dist < b.dist; }) ;
+  
+	 
+	 if( copiaLaser.data()->dist+30 < threshold)
+   {
+      //  std::cout << ldata.dat().dist << std::endl;
+        differentialrobot_proxy->setSpeedBase(0, rot);
+        usleep(250000);  //random wait between 1.5s and 0.1sec
+    }
+    else
+    {
+        differentialrobot_proxy->setSpeedBase(250,rotaux ); 
+	usleep(250000); 
+	
+    }
+    }
+    catch(const Ice::Exception &ex)
+    {
+        std::cout << ex << std::endl;
+    }
+}
 
 
 SpecificWorker::DatosCamara::MyTag SpecificWorker::copia(tag T )
@@ -142,8 +206,10 @@ SpecificWorker::DatosCamara::MyTag SpecificWorker::get(int id)
   DatosCamara::MyTag A;
   
   for(auto t : marcas.lista){
+    
     if(t.id==id){
       A=copia(t);
+      marcas.lista.clear();
       return A;
     }
   }return A;
@@ -151,34 +217,43 @@ SpecificWorker::DatosCamara::MyTag SpecificWorker::get(int id)
 
 void SpecificWorker::avanzar( RoboCompLaser::TLaserData copiaLaser)
 {
-    const float threshold = 550; //Distancia previa a choque
+  	RoboCompLaser::TLaserData ldata = laser_proxy->getLaserData();
+
+    const float threshold = 400; //Distancia previa a choque
       float rot = 0.7707;  //
-      const float acot = 20;
+      const int acot = 16;
+      float dist;
+      float angle;
      static float sentido_giro;
-    
-      std::sort( copiaLaser.begin()+ acot , copiaLaser.end() - acot  , [](RoboCompLaser::TData a, RoboCompLaser::TData b ){ return     a.dist < b.dist; }) ;
+    if(contains(recorrido)){
+      std::sort( ldata.begin() , ldata.end()  , [](RoboCompLaser::TData a, RoboCompLaser::TData b ){ return     a.dist < b.dist; }) ;
+      dist=ldata.data()->dist;
+      angle=ldata.data()->angle;
+    }else{
+      std::sort( ldata.begin()+ acot , ldata.end() - acot  , [](RoboCompLaser::TData a, RoboCompLaser::TData b ){ return     a.dist < b.dist; }) ;
+      dist=(ldata.data() + acot)->dist;
+      angle=(ldata.data() + acot)->angle;
+    }
 
 
-     if((copiaLaser.data()+30)->dist < threshold )
+     if(dist < threshold )
     {
-	state = State::SEARCH;	
+	//state = State::SEARCH;	
 	encontrado=0;
-      if((copiaLaser.data()+30)->angle >= 0 )
+      if(angle >= 0 )
       {
-
 	sentido_giro=-rot;
-	differentialrobot_proxy->setSpeedBase(100, -rot);
+	differentialrobot_proxy->setSpeedBase(0, -rot);
       }
     
       else {
-	
 	sentido_giro=rot;
-	differentialrobot_proxy->setSpeedBase(100, rot);
+	differentialrobot_proxy->setSpeedBase(0, rot);
       }
       
       
-       int  numero = rand() % 15;
-       if(numero %3==0){
+       int  numero = rand() % 42;
+       if(numero %5==0){
 	  differentialrobot_proxy->setSpeedBase(0, sentido_giro*3);
 	  usleep(250000);
       }
@@ -199,8 +274,10 @@ void SpecificWorker::avanzar( RoboCompLaser::TLaserData copiaLaser)
     
 int SpecificWorker::contains(int id)
 {
+  
 for(auto t : marcas.lista)
 {
+  
   if(t.id==id)
     return 1;
 }
@@ -217,12 +294,11 @@ void SpecificWorker::newAprilTag(const tagsList &tags){
   
     for(auto t : tags)
     {
-     
-     // if(t.id == recorrido)
 	marcas.lista.push_back(t);
-      
+
     }
-        
+ 	state = State::SEARCH;
+
 }
   
 

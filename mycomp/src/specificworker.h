@@ -44,7 +44,8 @@ public:
 	~SpecificWorker();
 	bool setParams(RoboCompCommonBehavior::ParameterList params);
 	void newAprilTag(const tagsList &tags);
-	int obtener_dato();  
+	int obtener_dato(); 
+	
 	 
    struct DatosCamara
   {
@@ -70,8 +71,10 @@ public slots:
 	void compute(); 	
 
 private:
+    void NoEncontrado(RoboCompLaser::TLaserData copiaLaser);
     void avanzar( RoboCompLaser::TLaserData copiaLaser);
-    void search();
+    void search(RoboCompLaser::TLaserData copiaLaser);
+    void avanzar2( RoboCompLaser::TLaserData copiaLaser);
     int contains(int id);
     DatosCamara::MyTag get(int id);
  
