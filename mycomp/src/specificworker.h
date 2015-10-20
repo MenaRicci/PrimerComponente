@@ -34,7 +34,6 @@
 #include <genericworker.h>
 #include <innermodel/innermodel.h>
 
-#define MAXIMO 5
 
 class SpecificWorker : public GenericWorker
 {
@@ -46,8 +45,16 @@ public:
 	void newAprilTag(const tagsList &tags);
 	int obtener_dato(); 
 	
-	 
+	   InnerModel *inner ;
+	   TBaseState tbase;
+	    QVec p;
+	
+	   
+
+	   
    struct DatosCamara
+
+   
   {
       typedef struct
       {    
@@ -61,11 +68,10 @@ public:
       }MyTag;
       
       QList<tag> lista;
-      QMutex mutex;
+     
       
       void add(tag T);
   };
-  
   DatosCamara marcas;
 public slots:
 	void compute(); 	
@@ -79,15 +85,15 @@ private:
     DatosCamara::MyTag get(int id);
  
 
- 
- int posicion=0;
-  int recorrido=0;
+    QMutex mutex;
+    int posicion=0;
+    int recorrido=0;
     
- DatosCamara::MyTag copia(tag T);
- enum class State { INIT, ADVANCE, SEARCH, STOP};
- State state = State::INIT;
-int encontrado=0;
-DatosCamara::MyTag DatoEncontrado;
+    DatosCamara::MyTag copia(tag T);
+    enum class State { INIT, ADVANCE, SEARCH, STOP};
+    State state = State::INIT;
+    int encontrado=0;
+    DatosCamara::MyTag DatoEncontrado;
 };
 
 #endif

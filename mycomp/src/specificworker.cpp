@@ -24,7 +24,7 @@
 */
 SpecificWorker::SpecificWorker(MapPrx& mprx) : GenericWorker(mprx)
 {
-
+   inner= new InnerModel("/home/salabeta/robocomp/files/innermodel/simpleworld.xml");
 }
 
 /**
@@ -32,7 +32,8 @@ SpecificWorker::SpecificWorker(MapPrx& mprx) : GenericWorker(mprx)
 */
 SpecificWorker::~SpecificWorker()
 {
-	
+
+	  
 }
 
 bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
@@ -47,20 +48,29 @@ void SpecificWorker::compute()
     {
 	RoboCompLaser::TLaserData ldata = laser_proxy->getLaserData();
     
-	DatosCamara::MyTag B;
+	//DatosCamara::MyTag B;
     switch(state)
     {
       case State::INIT:
 	    //usleep(10000);
+	
+	if(recorrido == 4 ){
+	  differentialrobot_proxy->setSpeedBase(0,0);  
+	  sleep(1000000);
+	}
 	avanzar(ldata);
 	break;
       case State::SEARCH:
 	search(ldata);
 	//std::cout << "<--Buscar-->"<< std::endl;
 	break;
-//       case State::ADVANCE:
-// 	avanzar2(ldata);
-//       break;
+      case State::ADVANCE:
+	
+	  differentialrobot_proxy->getBaseState(tbase);
+	  inner->updateTransformValues("base",tbase.x,0,tbase.z,0,tbase.alpha,0);
+	state=State::INIT;
+ 	//avanzar2(ldata);
+       break;
       case State::STOP:
 	differentialrobot_proxy->setSpeedBase(0,0);
 	std::cout << "<--FIN-->"<< std::endl;   
@@ -88,27 +98,24 @@ void SpecificWorker::avanzar2(RoboCompLaser::TLaserData copiaLaser)
 	    
 	   // std::cout << "Valor recorrido: " <<recorrido<< std::endl;  
 	    B=get(recorrido); 
+	    marcas.lista.clear();
+	    
+	    
 	    rot=atan2(B.dist_x,B.dist_z);
 	    differentialrobot_proxy->setSpeedBase(300,rot);
 	    
-	  //  std::cout << "ID Dato: " <<B.id<< std::endl;
-	   // std::cout << "Rotacion X Dato: " <<B.rot_x<< std::endl;
-	   // std::cout << "Distancia Y Dato: " <<B.dist_y<< std::endl;
-	   // std::cout << "Distancia Z Dato: " <<B.dist_z<< std::endl;
-	    
 	    distancia_P=sqrt(pow(B.dist_x,2) + pow(B.dist_z,2));
 	   // std::cout << "Distancia al objetivo: " <<distancia_P<< std::endl;
-	    if(distancia_P < 0.8){
+	    if(distancia_P < 800){
 	      differentialrobot_proxy->setSpeedBase(0,0);
 	      recorrido++;
-	       std::cout << "------------------------------------------------------------------------------------------------ +  1 " <<B.dist_z<< std::endl;
+	       std::cout << "------------------------------------------------------------------------------------------------ +  1 "<< std::endl;
 		if(recorrido==4)
 		  state = State::STOP;
 		sleep(2);
 	    }
 	}else{
 	      encontrado=0;
-// 	      state = State::SEARCH;
  	      marcas.lista.clear();
 	}
 	state = State::INIT;
@@ -118,23 +125,37 @@ void SpecificWorker::search(RoboCompLaser::TLaserData copiaLaser)
 {
   
   differentialrobot_proxy->setSpeedBase(0, 0);
-  //static bool Primero=true;
+  
   if(contains(recorrido)){
-  std::cout << "<--Encontrado-->"<< std::endl;   
+    
+      //Acutalizar Marca en memoria de inner
+     differentialrobot_proxy->getBaseState(tbase);
+    inner->updateTransformValues("base",tbase.x,0,tbase.z,0,tbase.alpha,0);
+ 
+    p = inner->transform("world",QVec::vec3(),"rgbd");
+    //::vec3(2,4,8);
+    
+    std::cout << "<--Encontrado-->"<< std::endl;   
     differentialrobot_proxy->setSpeedBase(0, 0);
-//     state=State::ADVANCE;
     avanzar2(copiaLaser);
-  //  Primero=false;
     encontrado++;
     
-  }else{//if(Primero){
+  }else{
     
-    //std::cout << "<--Buscando-->"<< std::endl;   
-
-    //NoEncontrado(copiaLaser);
-   // Primero=false;
+   //  if (Comprobar si esta en memoria en el inner== true)
+	  
+	  //Dirigirnos hacia marca
+   
+    
+    //else --> Buscar == Avanzar()
+    
+    
+    
+    
+    
+    
     encontrado=0;
-	state = State::INIT;
+    state = State::INIT;
 
     
   }
@@ -190,9 +211,9 @@ SpecificWorker::DatosCamara::MyTag SpecificWorker::copia(tag T )
 {
      DatosCamara::MyTag A;
      A.id=T.id;
-     A.dist_x=T.tx;
-     A.dist_y=T.ty;
-     A.dist_z=T.tz;
+     A.dist_x=1000 * T.tx;
+     A.dist_y=1000 * T.ty;
+     A.dist_z=1000 * T.tz;
      A.rot_x=T.rx;
      A.rot_y=T.ry;
      A.rot_z=T.rz;
@@ -203,15 +224,16 @@ SpecificWorker::DatosCamara::MyTag SpecificWorker::copia(tag T )
 
 SpecificWorker::DatosCamara::MyTag SpecificWorker::get(int id)
 {
+
   DatosCamara::MyTag A;
   
   for(auto t : marcas.lista){
     
     if(t.id==id){
-      A=copia(t);
-      marcas.lista.clear();
+      A=copia(t);      
       return A;
     }
+
   }return A;
 }
 
@@ -274,7 +296,9 @@ void SpecificWorker::avanzar( RoboCompLaser::TLaserData copiaLaser)
     
 int SpecificWorker::contains(int id)
 {
+  //QMutexLocker A ;
   
+ 
 for(auto t : marcas.lista)
 {
   
@@ -291,14 +315,11 @@ for(auto t : marcas.lista)
 ////////////////////////////////////////////////////////////
 
 void SpecificWorker::newAprilTag(const tagsList &tags){
-  
     for(auto t : tags)
     {
 	marcas.lista.push_back(t);
-
     }
- 	state = State::SEARCH;
-
+    state = State::SEARCH;
 }
   
 
