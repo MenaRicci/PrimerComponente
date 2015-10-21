@@ -46,15 +46,18 @@ public:
 	int obtener_dato(); 
 	
 	   InnerModel *inner ;
-	   TBaseState tbase;
-	    QVec p;
+	   
+	    QVec realidad;
 	
 	   
-
+  struct Smemoria{
+    QVec vec;
+    bool activo=false;
+  };
+  Smemoria Memoria;
+  
 	   
    struct DatosCamara
-
-   
   {
       typedef struct
       {    
@@ -69,7 +72,7 @@ public:
       
       QList<tag> lista;
      
-      
+      MyTag get(int id);
       void add(tag T);
   };
   DatosCamara marcas;
@@ -80,14 +83,14 @@ private:
     void NoEncontrado(RoboCompLaser::TLaserData copiaLaser);
     void avanzar( RoboCompLaser::TLaserData copiaLaser);
     void search(RoboCompLaser::TLaserData copiaLaser);
-    void avanzar2( RoboCompLaser::TLaserData copiaLaser);
+    void dirigir_hacia_marca( RoboCompLaser::TLaserData copiaLaser);
     int contains(int id);
-    DatosCamara::MyTag get(int id);
+    
  
 
     QMutex mutex;
     int posicion=0;
-    int recorrido=0;
+    int recorrido=3;
     
     DatosCamara::MyTag copia(tag T);
     enum class State { INIT, ADVANCE, SEARCH, STOP};
