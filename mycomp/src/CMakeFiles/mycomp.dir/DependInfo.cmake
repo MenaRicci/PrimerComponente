@@ -10,10 +10,9 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/salabeta/salabeta/menaricci/mycomp/src/Laser.cpp" "/home/salabeta/salabeta/menaricci/mycomp/src/CMakeFiles/mycomp.dir/Laser.cpp.o"
   "/home/salabeta/salabeta/menaricci/mycomp/src/apriltagsI.cpp" "/home/salabeta/salabeta/menaricci/mycomp/src/CMakeFiles/mycomp.dir/apriltagsI.cpp.o"
   "/home/salabeta/salabeta/menaricci/mycomp/src/commonbehaviorI.cpp" "/home/salabeta/salabeta/menaricci/mycomp/src/CMakeFiles/mycomp.dir/commonbehaviorI.cpp.o"
+  "/home/salabeta/salabeta/menaricci/mycomp/src/datoscamara.cpp" "/home/salabeta/salabeta/menaricci/mycomp/src/CMakeFiles/mycomp.dir/datoscamara.cpp.o"
   "/home/salabeta/salabeta/menaricci/mycomp/src/genericmonitor.cpp" "/home/salabeta/salabeta/menaricci/mycomp/src/CMakeFiles/mycomp.dir/genericmonitor.cpp.o"
   "/home/salabeta/salabeta/menaricci/mycomp/src/genericworker.cpp" "/home/salabeta/salabeta/menaricci/mycomp/src/CMakeFiles/mycomp.dir/genericworker.cpp.o"
-  "/home/salabeta/robocomp/classes/qlog/qlog.cpp" "/home/salabeta/salabeta/menaricci/mycomp/src/CMakeFiles/mycomp.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.o"
-  "/home/salabeta/robocomp/classes/rapplication/rapplication.cpp" "/home/salabeta/salabeta/menaricci/mycomp/src/CMakeFiles/mycomp.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o"
   "/home/salabeta/salabeta/menaricci/mycomp/src/main.cpp" "/home/salabeta/salabeta/menaricci/mycomp/src/CMakeFiles/mycomp.dir/main.cpp.o"
   "/home/salabeta/salabeta/menaricci/mycomp/src/moc_apriltagsI.cxx" "/home/salabeta/salabeta/menaricci/mycomp/src/CMakeFiles/mycomp.dir/moc_apriltagsI.cxx.o"
   "/home/salabeta/salabeta/menaricci/mycomp/src/moc_commonbehaviorI.cxx" "/home/salabeta/salabeta/menaricci/mycomp/src/CMakeFiles/mycomp.dir/moc_commonbehaviorI.cxx.o"
@@ -21,6 +20,8 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/salabeta/salabeta/menaricci/mycomp/src/moc_genericworker.cxx" "/home/salabeta/salabeta/menaricci/mycomp/src/CMakeFiles/mycomp.dir/moc_genericworker.cxx.o"
   "/home/salabeta/salabeta/menaricci/mycomp/src/moc_specificmonitor.cxx" "/home/salabeta/salabeta/menaricci/mycomp/src/CMakeFiles/mycomp.dir/moc_specificmonitor.cxx.o"
   "/home/salabeta/salabeta/menaricci/mycomp/src/moc_specificworker.cxx" "/home/salabeta/salabeta/menaricci/mycomp/src/CMakeFiles/mycomp.dir/moc_specificworker.cxx.o"
+  "/opt/robocomp/classes/qlog/qlog.cpp" "/home/salabeta/salabeta/menaricci/mycomp/src/CMakeFiles/mycomp.dir/opt/robocomp/classes/qlog/qlog.cpp.o"
+  "/opt/robocomp/classes/rapplication/rapplication.cpp" "/home/salabeta/salabeta/menaricci/mycomp/src/CMakeFiles/mycomp.dir/opt/robocomp/classes/rapplication/rapplication.cpp.o"
   "/home/salabeta/salabeta/menaricci/mycomp/src/specificmonitor.cpp" "/home/salabeta/salabeta/menaricci/mycomp/src/CMakeFiles/mycomp.dir/specificmonitor.cpp.o"
   "/home/salabeta/salabeta/menaricci/mycomp/src/specificworker.cpp" "/home/salabeta/salabeta/menaricci/mycomp/src/CMakeFiles/mycomp.dir/specificworker.cpp.o"
   )
@@ -61,9 +62,9 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
   "/opt/robocomp/include"
   "/classes"
   "."
-  "/home/salabeta/robocomp/classes"
-  "/home/salabeta/robocomp/libs"
-  "/home/salabeta/robocomp/interfaces"
+  "/opt/robocomp/classes"
+  "/opt/robocomp/libs"
+  "/opt/robocomp/interfaces"
   "/include"
   )
 set(CMAKE_CXX_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})

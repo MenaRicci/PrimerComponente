@@ -4,6 +4,7 @@ SET ( SOURCES
   specificworker.cpp
   specificmonitor.cpp
 #  $ENV{ROBOCOMP}/classes/agmInner/agmInner.cpp
+datoscamara.cpp
 )
 
 # Headers set

@@ -22,82 +22,41 @@
        @author authorname
 */
 
-
-
-
-
-
-
 #ifndef SPECIFICWORKER_H
 #define SPECIFICWORKER_H
-
 #include <genericworker.h>
 #include <innermodel/innermodel.h>
-
+#include <datoscamara.h>
 
 class SpecificWorker : public GenericWorker
 {
-Q_OBJECT
-public:
-	SpecificWorker(MapPrx& mprx);	
-	~SpecificWorker();
-	bool setParams(RoboCompCommonBehavior::ParameterList params);
-	void newAprilTag(const tagsList &tags);
-	int obtener_dato(); 
-	
-	   InnerModel *inner ;
+   Q_OBJECT
+   public:
+	   SpecificWorker(MapPrx& mprx);	
+	   ~SpecificWorker();
+	   bool setParams(RoboCompCommonBehavior::ParameterList params);
+	   void newAprilTag(const tagsList &tags);
+	   int obtener_dato(); 
+	   InnerModel *inner;   
+	   QVec realidad;
 	   
-	    QVec realidad;
-	
-	   
-  struct Smemoria{
-    QVec vec;
-    bool activo=false;
-  };
-  Smemoria Memoria;
-  
-	   
-   struct DatosCamara
-  {
-      typedef struct
-      {    
-	int id;
-	float dist_x;
-	float dist_y;
-	float dist_z;
-	float rot_x;
-	float rot_y;
-	float rot_z;
-      }MyTag;
-      
-      QList<tag> lista;
+     struct Smemoria{
+       QVec vec;
+       bool activo=false;
+      };
+     Smemoria Memoria;
      
-      MyTag get(int id);
-      void add(tag T);
-  };
-  DatosCamara marcas;
-public slots:
-	void compute(); 	
+    DatosCamara marcas;
 
-private:
-    void NoEncontrado(RoboCompLaser::TLaserData copiaLaser);
-    void avanzar( RoboCompLaser::TLaserData copiaLaser);
-    void search(RoboCompLaser::TLaserData copiaLaser);
-    void dirigir_hacia_marca( RoboCompLaser::TLaserData copiaLaser);
-    int contains(int id);
-    
- 
+   public slots:
+	   void compute(); 	
 
-    QMutex mutex;
-    int posicion=0;
-    int recorrido=3;
-    
-    DatosCamara::MyTag copia(tag T);
-    enum class State { INIT, ADVANCE, SEARCH, STOP};
-    State state = State::INIT;
-    int encontrado=0;
-    DatosCamara::MyTag DatoEncontrado;
+   private:
+     int recorrido=0;
+     enum class State { INIT, SEARCH, ADVANCE,STOP};
+       State state = State::INIT;
+     void avanzar_sin_rumbo();
+     void search();
+     void dirigir_hacia_marca();
 };
-
 #endif
-

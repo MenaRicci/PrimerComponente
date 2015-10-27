@@ -301,6 +301,30 @@ commonbehaviorI.cpp.s:
 	cd /home/salabeta/salabeta/menaricci/mycomp && $(MAKE) -f src/CMakeFiles/mycomp.dir/build.make src/CMakeFiles/mycomp.dir/commonbehaviorI.cpp.s
 .PHONY : commonbehaviorI.cpp.s
 
+datoscamara.o: datoscamara.cpp.o
+.PHONY : datoscamara.o
+
+# target to build an object file
+datoscamara.cpp.o:
+	cd /home/salabeta/salabeta/menaricci/mycomp && $(MAKE) -f src/CMakeFiles/mycomp.dir/build.make src/CMakeFiles/mycomp.dir/datoscamara.cpp.o
+.PHONY : datoscamara.cpp.o
+
+datoscamara.i: datoscamara.cpp.i
+.PHONY : datoscamara.i
+
+# target to preprocess a source file
+datoscamara.cpp.i:
+	cd /home/salabeta/salabeta/menaricci/mycomp && $(MAKE) -f src/CMakeFiles/mycomp.dir/build.make src/CMakeFiles/mycomp.dir/datoscamara.cpp.i
+.PHONY : datoscamara.cpp.i
+
+datoscamara.s: datoscamara.cpp.s
+.PHONY : datoscamara.s
+
+# target to generate assembly for a file
+datoscamara.cpp.s:
+	cd /home/salabeta/salabeta/menaricci/mycomp && $(MAKE) -f src/CMakeFiles/mycomp.dir/build.make src/CMakeFiles/mycomp.dir/datoscamara.cpp.s
+.PHONY : datoscamara.cpp.s
+
 genericmonitor.o: genericmonitor.cpp.o
 .PHONY : genericmonitor.o
 
@@ -348,54 +372,6 @@ genericworker.s: genericworker.cpp.s
 genericworker.cpp.s:
 	cd /home/salabeta/salabeta/menaricci/mycomp && $(MAKE) -f src/CMakeFiles/mycomp.dir/build.make src/CMakeFiles/mycomp.dir/genericworker.cpp.s
 .PHONY : genericworker.cpp.s
-
-home/salabeta/robocomp/classes/qlog/qlog.o: home/salabeta/robocomp/classes/qlog/qlog.cpp.o
-.PHONY : home/salabeta/robocomp/classes/qlog/qlog.o
-
-# target to build an object file
-home/salabeta/robocomp/classes/qlog/qlog.cpp.o:
-	cd /home/salabeta/salabeta/menaricci/mycomp && $(MAKE) -f src/CMakeFiles/mycomp.dir/build.make src/CMakeFiles/mycomp.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.o
-.PHONY : home/salabeta/robocomp/classes/qlog/qlog.cpp.o
-
-home/salabeta/robocomp/classes/qlog/qlog.i: home/salabeta/robocomp/classes/qlog/qlog.cpp.i
-.PHONY : home/salabeta/robocomp/classes/qlog/qlog.i
-
-# target to preprocess a source file
-home/salabeta/robocomp/classes/qlog/qlog.cpp.i:
-	cd /home/salabeta/salabeta/menaricci/mycomp && $(MAKE) -f src/CMakeFiles/mycomp.dir/build.make src/CMakeFiles/mycomp.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.i
-.PHONY : home/salabeta/robocomp/classes/qlog/qlog.cpp.i
-
-home/salabeta/robocomp/classes/qlog/qlog.s: home/salabeta/robocomp/classes/qlog/qlog.cpp.s
-.PHONY : home/salabeta/robocomp/classes/qlog/qlog.s
-
-# target to generate assembly for a file
-home/salabeta/robocomp/classes/qlog/qlog.cpp.s:
-	cd /home/salabeta/salabeta/menaricci/mycomp && $(MAKE) -f src/CMakeFiles/mycomp.dir/build.make src/CMakeFiles/mycomp.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.s
-.PHONY : home/salabeta/robocomp/classes/qlog/qlog.cpp.s
-
-home/salabeta/robocomp/classes/rapplication/rapplication.o: home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o
-.PHONY : home/salabeta/robocomp/classes/rapplication/rapplication.o
-
-# target to build an object file
-home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o:
-	cd /home/salabeta/salabeta/menaricci/mycomp && $(MAKE) -f src/CMakeFiles/mycomp.dir/build.make src/CMakeFiles/mycomp.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o
-.PHONY : home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o
-
-home/salabeta/robocomp/classes/rapplication/rapplication.i: home/salabeta/robocomp/classes/rapplication/rapplication.cpp.i
-.PHONY : home/salabeta/robocomp/classes/rapplication/rapplication.i
-
-# target to preprocess a source file
-home/salabeta/robocomp/classes/rapplication/rapplication.cpp.i:
-	cd /home/salabeta/salabeta/menaricci/mycomp && $(MAKE) -f src/CMakeFiles/mycomp.dir/build.make src/CMakeFiles/mycomp.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.i
-.PHONY : home/salabeta/robocomp/classes/rapplication/rapplication.cpp.i
-
-home/salabeta/robocomp/classes/rapplication/rapplication.s: home/salabeta/robocomp/classes/rapplication/rapplication.cpp.s
-.PHONY : home/salabeta/robocomp/classes/rapplication/rapplication.s
-
-# target to generate assembly for a file
-home/salabeta/robocomp/classes/rapplication/rapplication.cpp.s:
-	cd /home/salabeta/salabeta/menaricci/mycomp && $(MAKE) -f src/CMakeFiles/mycomp.dir/build.make src/CMakeFiles/mycomp.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.s
-.PHONY : home/salabeta/robocomp/classes/rapplication/rapplication.cpp.s
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -565,6 +541,54 @@ moc_specificworker.cxx.s:
 	cd /home/salabeta/salabeta/menaricci/mycomp && $(MAKE) -f src/CMakeFiles/mycomp.dir/build.make src/CMakeFiles/mycomp.dir/moc_specificworker.cxx.s
 .PHONY : moc_specificworker.cxx.s
 
+opt/robocomp/classes/qlog/qlog.o: opt/robocomp/classes/qlog/qlog.cpp.o
+.PHONY : opt/robocomp/classes/qlog/qlog.o
+
+# target to build an object file
+opt/robocomp/classes/qlog/qlog.cpp.o:
+	cd /home/salabeta/salabeta/menaricci/mycomp && $(MAKE) -f src/CMakeFiles/mycomp.dir/build.make src/CMakeFiles/mycomp.dir/opt/robocomp/classes/qlog/qlog.cpp.o
+.PHONY : opt/robocomp/classes/qlog/qlog.cpp.o
+
+opt/robocomp/classes/qlog/qlog.i: opt/robocomp/classes/qlog/qlog.cpp.i
+.PHONY : opt/robocomp/classes/qlog/qlog.i
+
+# target to preprocess a source file
+opt/robocomp/classes/qlog/qlog.cpp.i:
+	cd /home/salabeta/salabeta/menaricci/mycomp && $(MAKE) -f src/CMakeFiles/mycomp.dir/build.make src/CMakeFiles/mycomp.dir/opt/robocomp/classes/qlog/qlog.cpp.i
+.PHONY : opt/robocomp/classes/qlog/qlog.cpp.i
+
+opt/robocomp/classes/qlog/qlog.s: opt/robocomp/classes/qlog/qlog.cpp.s
+.PHONY : opt/robocomp/classes/qlog/qlog.s
+
+# target to generate assembly for a file
+opt/robocomp/classes/qlog/qlog.cpp.s:
+	cd /home/salabeta/salabeta/menaricci/mycomp && $(MAKE) -f src/CMakeFiles/mycomp.dir/build.make src/CMakeFiles/mycomp.dir/opt/robocomp/classes/qlog/qlog.cpp.s
+.PHONY : opt/robocomp/classes/qlog/qlog.cpp.s
+
+opt/robocomp/classes/rapplication/rapplication.o: opt/robocomp/classes/rapplication/rapplication.cpp.o
+.PHONY : opt/robocomp/classes/rapplication/rapplication.o
+
+# target to build an object file
+opt/robocomp/classes/rapplication/rapplication.cpp.o:
+	cd /home/salabeta/salabeta/menaricci/mycomp && $(MAKE) -f src/CMakeFiles/mycomp.dir/build.make src/CMakeFiles/mycomp.dir/opt/robocomp/classes/rapplication/rapplication.cpp.o
+.PHONY : opt/robocomp/classes/rapplication/rapplication.cpp.o
+
+opt/robocomp/classes/rapplication/rapplication.i: opt/robocomp/classes/rapplication/rapplication.cpp.i
+.PHONY : opt/robocomp/classes/rapplication/rapplication.i
+
+# target to preprocess a source file
+opt/robocomp/classes/rapplication/rapplication.cpp.i:
+	cd /home/salabeta/salabeta/menaricci/mycomp && $(MAKE) -f src/CMakeFiles/mycomp.dir/build.make src/CMakeFiles/mycomp.dir/opt/robocomp/classes/rapplication/rapplication.cpp.i
+.PHONY : opt/robocomp/classes/rapplication/rapplication.cpp.i
+
+opt/robocomp/classes/rapplication/rapplication.s: opt/robocomp/classes/rapplication/rapplication.cpp.s
+.PHONY : opt/robocomp/classes/rapplication/rapplication.s
+
+# target to generate assembly for a file
+opt/robocomp/classes/rapplication/rapplication.cpp.s:
+	cd /home/salabeta/salabeta/menaricci/mycomp && $(MAKE) -f src/CMakeFiles/mycomp.dir/build.make src/CMakeFiles/mycomp.dir/opt/robocomp/classes/rapplication/rapplication.cpp.s
+.PHONY : opt/robocomp/classes/rapplication/rapplication.cpp.s
+
 specificmonitor.o: specificmonitor.cpp.o
 .PHONY : specificmonitor.o
 
@@ -644,18 +668,15 @@ help:
 	@echo "... commonbehaviorI.o"
 	@echo "... commonbehaviorI.i"
 	@echo "... commonbehaviorI.s"
+	@echo "... datoscamara.o"
+	@echo "... datoscamara.i"
+	@echo "... datoscamara.s"
 	@echo "... genericmonitor.o"
 	@echo "... genericmonitor.i"
 	@echo "... genericmonitor.s"
 	@echo "... genericworker.o"
 	@echo "... genericworker.i"
 	@echo "... genericworker.s"
-	@echo "... home/salabeta/robocomp/classes/qlog/qlog.o"
-	@echo "... home/salabeta/robocomp/classes/qlog/qlog.i"
-	@echo "... home/salabeta/robocomp/classes/qlog/qlog.s"
-	@echo "... home/salabeta/robocomp/classes/rapplication/rapplication.o"
-	@echo "... home/salabeta/robocomp/classes/rapplication/rapplication.i"
-	@echo "... home/salabeta/robocomp/classes/rapplication/rapplication.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
@@ -677,6 +698,12 @@ help:
 	@echo "... moc_specificworker.o"
 	@echo "... moc_specificworker.i"
 	@echo "... moc_specificworker.s"
+	@echo "... opt/robocomp/classes/qlog/qlog.o"
+	@echo "... opt/robocomp/classes/qlog/qlog.i"
+	@echo "... opt/robocomp/classes/qlog/qlog.s"
+	@echo "... opt/robocomp/classes/rapplication/rapplication.o"
+	@echo "... opt/robocomp/classes/rapplication/rapplication.i"
+	@echo "... opt/robocomp/classes/rapplication/rapplication.s"
 	@echo "... specificmonitor.o"
 	@echo "... specificmonitor.i"
 	@echo "... specificmonitor.s"

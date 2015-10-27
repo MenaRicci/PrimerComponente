@@ -6,14 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/salabeta/robocomp/classes/qlog/qlog.h
-QtCore
--
-iostream
--
-Logger.h
--
-
 /home/salabeta/salabeta/menaricci/mycomp/src/specificworker.cpp
 specificworker.h
 /home/salabeta/salabeta/menaricci/mycomp/src/specificworker.h
@@ -24,6 +16,16 @@ qt4/QtCore/qlist.h
 genericworker.h
 -
 innermodel/innermodel.h
+-
+datoscamara.h
+-
+
+/opt/robocomp/classes/qlog/qlog.h
+QtCore
+-
+iostream
+-
+Logger.h
 -
 
 /opt/robocomp/include/innermodel/innermodel.h
@@ -4123,6 +4125,12 @@ Ice/UndefSysMacros.h
 -
 
 src/config.h
+
+src/datoscamara.h
+genericworker.h
+-
+innermodel/innermodel.h
+-
 
 src/genericworker.h
 config.h
