@@ -179,13 +179,13 @@ void SpecificWorker::avanzar_sin_rumbo()
            differentialrobot_proxy->setSpeedBase(0, sentido_giro*3);
            
         }
-         usleep(25000); 
+       //  usleep(25000); 
     }else{
        differentialrobot_proxy->setSpeedBase(500, 0); 
-       usleep(25000);
+       //usleep(25000);
     }
     
-    state = State::SEARCH;
+    state = State::INIT;
     
 }
 
