@@ -1,13 +1,15 @@
 import "/robocomp/interfaces/IDSLs/DifferentialRobot.idsl";
 import "/robocomp/interfaces/IDSLs/Laser.idsl";
-import "/robocomp/interfaces/IDSLs/RGBD.idsl";
+import "/robocomp/interfaces/IDSLs/AprilTags.idsl";
+
+import "/robocomp/interfaces/IDSLs/Controller.idsl";
 
 Component mycomp
 {
 	Communications
 	{
 		requires DifferentialRobot, Laser;	
-      		subscribesTo RGBD;
+      		subscribesTo AprilTags, Controller;
 	};
 	language Cpp;
 	gui Qt(QWidget);

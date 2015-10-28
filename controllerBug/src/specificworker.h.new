@@ -26,6 +26,8 @@
 
 
 
+
+
 #ifndef SPECIFICWORKER_H
 #define SPECIFICWORKER_H
 
@@ -39,29 +41,15 @@ public:
 	SpecificWorker(MapPrx& mprx);	
 	~SpecificWorker();
 	bool setParams(RoboCompCommonBehavior::ParameterList params);
-	InnerModel *inner;
+
 	float go(const TargetPose &target);
 	NavState getState();
 	void stop();
-	RoboCompLaser::TLaserData ldata;
 
 public slots:
 	void compute(); 	
 
 private:
-  
-  enum class State { INIT, VISTA, ADVANCE,SUBOBJETIVO,FIN};
-  State state = State::INIT;
-
-  struct CurrenTarget
-  {
-    float x,z;
-    bool isActive = false;
-  };
-  
-  
-  CurrenTarget tag;
-  CurrenTarget subtag;
 	
 };
 

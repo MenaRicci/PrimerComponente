@@ -61,7 +61,9 @@ void SpecificWorker::compute()
 	      break;
 
 	case State::ADVANCE:
-		dirigir_hacia_marca();
+		Controller();
+		
+		//controller_proxy->go();
 	      break;
 	      
         case State::STOP:
@@ -76,63 +78,31 @@ void SpecificWorker::compute()
 
 
 
-void SpecificWorker::dirigir_hacia_marca()
+void SpecificWorker::Controller()
 {
-//   /*
-//    float distancia_P;
-//    float rot;
-//    DatosCamara::MyTag B;
-// 
-// 	 if(marcas.contains(recorrido))
-// 	 { 
-//       //Obtenemos la marca
-// 	  std::cout << "<--Avance hacia marca-->"<< std::endl;
-// 	     B=marcas.get(recorrido); 
-// 	     
-// 	     
-// 	         
-// 	     
-// 	     marcas.clear();
-// 	    //Orienta el robot hacia la marca
-// 	     rot=atan2(B.dist_x,B.dist_z);
-// 	     differentialrobot_proxy->setSpeedBase(300,rot);
-// 	     //usleep(200000);
-// 	    //Calculamos la distancia 
-// 	     distancia_P=sqrt(pow(B.dist_x,2) + pow(B.dist_z,2));
-// 	    // std::cout << "Distancia al objetivo: " <<distancia_P<< std::endl;
-// 	     if(distancia_P < 800){
-// 	       differentialrobot_proxy->setSpeedBase(0,0);
-// 	       std::cout << "--------------------------------------------Encontrado------------------------------------>  "<<recorrido<< std::endl;
-// 	       recorrido++;
-// 	       Memoria.activo=false;
-// 	       marcas.clear();
-// 	      state = State::INIT;
-// 	       sleep(2);
-// 	      }
-// 	      /*
-// 	       *
-// 	       */
-// 	    } 
-//    if(recorrido==4){
-//        state = State::STOP; // ESTO CREO QUE NO FUNCIONARIA ME REFIERO A LO DE STATE PORQUE ESTA EL METODO DEL APRIL ENTONCES SERIA QUITAR EL ESTADO STOP
-//        differentialrobot_proxy->setSpeedBase(0,0);
-//        std::cout << "<--FIN-->"<< std::endl; 
-//        sleep(20);
-//     }/*else{
-//        marcas.clear();
-//        state = State::INIT;
-//     }*/
+
+  NavState st;
+  st=controller_proxy->getState();
+
+ if(!enviado){
+  enviado=true;
+  std::cout << "Enviando" << std::endl;
+  DatosCamara::MyTag B= marcas.get(recorrido);
+ TargetPose TP;
+ TP.x=B.dist_x;
+ TP.z=B.dist_z;
+ controller_proxy->go(TP);
+}
   
-  //--------------------------------------------------------
-  //Preparar Target
+  if(st.state == "FIN"){
+   state=State::SEARCH;
+   enviado=false;
+   recorrido++;
+  }
   
-  //go(Target)
+  if(recorrido==4)
+    state=State::STOP;
   
-  //if(getState()==FIN){
-  //  state=State::State::SEARCH;
-  //}
-  
-  //--------------------------------------------------------
   
 }
 
@@ -141,7 +111,7 @@ void SpecificWorker::search()
    differentialrobot_proxy->setSpeedBase(0, 0);
    DatosCamara::MyTag A;
    tag B;
-  
+      std::cout << "<--Buscando . . . -->"<< std::endl;   
    if(marcas.contains(recorrido)){
       //Obtenemos la marca
        A= marcas.get(recorrido);
@@ -149,7 +119,7 @@ void SpecificWorker::search()
        Memoria.vec = inner->transform("world",QVec::vec3(A.dist_x,0,A.dist_z),"rgbd");
        Memoria.activo=true;
        std::cout << "<--Busqueda finalizada-->"<< std::endl;   
-       state = State::ADVANCE;//dirigir_hacia_marca();
+       state = State::ADVANCE;//Controller();
     }else{
       //Comprobamos que la marca este en memoria, si es asi nos dirigimos hacia ella sino nos ponemos a buscar
        if(Memoria.activo){ 
@@ -159,7 +129,7 @@ void SpecificWorker::search()
            B.tz=realidad.z();
            B.id=recorrido;
            marcas.add(B);
-           state = State::ADVANCE;//dirigir_hacia_marca(); 
+           state = State::ADVANCE;//Controller(); 
         }else{
 	        differentialrobot_proxy->setSpeedBase(0,0.7707);
         }
@@ -200,10 +170,8 @@ void SpecificWorker::avanzar_sin_rumbo()
            differentialrobot_proxy->setSpeedBase(0, sentido_giro*3);
            
         }
-       //  usleep(25000); 
     }else{
        differentialrobot_proxy->setSpeedBase(500, 0); 
-       //usleep(25000);
     }
     
     state = State::SEARCH;
@@ -213,30 +181,30 @@ void SpecificWorker::avanzar_sin_rumbo()
 void SpecificWorker::evitar_obstaculos()
 {
   
-   float rot = 0.7707;  //
-   float dist;
-   float angle;
-   static float sentido_giro;
-   QVec realidad = inner->transform("rgbd",Memoria.vec,"world");
-   float distancia_M=sqrt(pow(realidad.x(),2) + pow(realidad.z(),2));
-   RoboCompLaser::TLaserData ldatacopy=ldata;
-   
-   
-   
-   std::sort( ldatacopy.begin() , ldatacopy.end()  , [](RoboCompLaser::TData a, RoboCompLaser::TData b ){ return     a.dist < b.dist; }) ;
-   dist=ldatacopy.data()->dist;
-   angle=ldatacopy.data()->angle;
-    
-
-    if(dist != distancia_M )
-    {
-
-      (ldatacopy.data()+40)->angle;
-
-    }else{
-      	 rot=atan2(realidad.x(),realidad.z());
-	 differentialrobot_proxy->setSpeedBase(300,rot);
-    }
+//    float rot = 0.7707;  //
+//    float dist;
+//    float angle;
+//    static float sentido_giro;
+//    QVec realidad = inner->transform("rgbd",Memoria.vec,"world");
+//    float distancia_M=sqrt(pow(realidad.x(),2) + pow(realidad.z(),2));
+//    RoboCompLaser::TLaserData ldatacopy=ldata;
+//    
+//    
+//    
+//    std::sort( ldatacopy.begin() , ldatacopy.end()  , [](RoboCompLaser::TData a, RoboCompLaser::TData b ){ return     a.dist < b.dist; }) ;
+//    dist=ldatacopy.data()->dist;
+//    angle=ldatacopy.data()->angle;
+//     
+// 
+//     if(dist != distancia_M )
+//     {
+// 
+//       (ldatacopy.data()+40)->angle;
+// 
+//     }else{
+//       	 rot=atan2(realidad.x(),realidad.z());
+// 	 differentialrobot_proxy->setSpeedBase(300,rot);
+//     }
 }
 
 
@@ -246,10 +214,13 @@ void SpecificWorker::evitar_obstaculos()
 //////  EN EL HILO THE ICE
 ////////////////////////////////////////////////////////////
 
-void SpecificWorker::newAprilTag(const tagsList &tags){
+void SpecificWorker::newAprilTag(const tagsList &tags)
+{
    for(auto t : tags){
 	   marcas.add(t);
-    }   
+    }
+  
+}   
 
-}
+
   

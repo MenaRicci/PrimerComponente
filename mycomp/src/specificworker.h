@@ -37,27 +37,30 @@ class SpecificWorker : public GenericWorker
 	   bool setParams(RoboCompCommonBehavior::ParameterList params);
 	   void newAprilTag(const tagsList &tags);
 	   int obtener_dato(); 
-	   InnerModel *inner;   
-	   QVec realidad;
+	
 	   
      struct Smemoria{
        QVec vec;
        bool activo=false;
       };
-     Smemoria Memoria;
      
-    DatosCamara marcas;
-
    public slots:
 	   void compute(); 	
 
    private:
+     
+     InnerModel *inner;   
+     QVec realidad;
      int recorrido=0;
      enum class State { INIT, SEARCH, ADVANCE,STOP};
-       State state = State::SEARCH;
+     State state = State::SEARCH;
+     Smemoria Memoria;
+     DatosCamara marcas;
+     bool enviado=false;
+     
      void avanzar_sin_rumbo();
      void search();
-     void dirigir_hacia_marca();
+     void Controller();
      void evitar_obstaculos();
       RoboCompLaser::TLaserData ldata;
 };

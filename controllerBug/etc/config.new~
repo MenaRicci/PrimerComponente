@@ -1,13 +1,14 @@
+CommonBehavior.Endpoints=tcp -p 1
+
+
+# Endpoints for implemented interfaces
+Controller.Endpoints=tcp -p 11050
+
+
 # Proxies for required interfaces
-CommonBehavior.Endpoints=tcp -p 11000
 DifferentialRobotProxy = differentialrobot:tcp -h localhost -p 10004
 LaserProxy = laser:tcp -h localhost -p 10003
-ControllerProxy = controller:tcp -h localhost -p 10050
 
-# Endpoints for subscriptions
-AprilTagsTopic.Endpoints=tcp -p 14000
-
-TopicManager.Proxy=IceStorm/TopicManager:default -p 9999
 
 
 Ice.Warn.Connections=0

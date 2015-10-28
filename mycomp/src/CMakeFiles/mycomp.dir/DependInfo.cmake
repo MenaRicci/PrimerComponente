@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/salabeta/salabeta/menaricci/mycomp/src/AprilTags.cpp" "/home/salabeta/salabeta/menaricci/mycomp/src/CMakeFiles/mycomp.dir/AprilTags.cpp.o"
   "/home/salabeta/salabeta/menaricci/mycomp/src/CommonBehavior.cpp" "/home/salabeta/salabeta/menaricci/mycomp/src/CMakeFiles/mycomp.dir/CommonBehavior.cpp.o"
+  "/home/salabeta/salabeta/menaricci/mycomp/src/Controller.cpp" "/home/salabeta/salabeta/menaricci/mycomp/src/CMakeFiles/mycomp.dir/Controller.cpp.o"
   "/home/salabeta/salabeta/menaricci/mycomp/src/DifferentialRobot.cpp" "/home/salabeta/salabeta/menaricci/mycomp/src/CMakeFiles/mycomp.dir/DifferentialRobot.cpp.o"
   "/home/salabeta/salabeta/menaricci/mycomp/src/Laser.cpp" "/home/salabeta/salabeta/menaricci/mycomp/src/CMakeFiles/mycomp.dir/Laser.cpp.o"
   "/home/salabeta/salabeta/menaricci/mycomp/src/apriltagsI.cpp" "/home/salabeta/salabeta/menaricci/mycomp/src/CMakeFiles/mycomp.dir/apriltagsI.cpp.o"
@@ -13,6 +14,8 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/salabeta/salabeta/menaricci/mycomp/src/datoscamara.cpp" "/home/salabeta/salabeta/menaricci/mycomp/src/CMakeFiles/mycomp.dir/datoscamara.cpp.o"
   "/home/salabeta/salabeta/menaricci/mycomp/src/genericmonitor.cpp" "/home/salabeta/salabeta/menaricci/mycomp/src/CMakeFiles/mycomp.dir/genericmonitor.cpp.o"
   "/home/salabeta/salabeta/menaricci/mycomp/src/genericworker.cpp" "/home/salabeta/salabeta/menaricci/mycomp/src/CMakeFiles/mycomp.dir/genericworker.cpp.o"
+  "/home/salabeta/robocomp/classes/qlog/qlog.cpp" "/home/salabeta/salabeta/menaricci/mycomp/src/CMakeFiles/mycomp.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.o"
+  "/home/salabeta/robocomp/classes/rapplication/rapplication.cpp" "/home/salabeta/salabeta/menaricci/mycomp/src/CMakeFiles/mycomp.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o"
   "/home/salabeta/salabeta/menaricci/mycomp/src/main.cpp" "/home/salabeta/salabeta/menaricci/mycomp/src/CMakeFiles/mycomp.dir/main.cpp.o"
   "/home/salabeta/salabeta/menaricci/mycomp/src/moc_apriltagsI.cxx" "/home/salabeta/salabeta/menaricci/mycomp/src/CMakeFiles/mycomp.dir/moc_apriltagsI.cxx.o"
   "/home/salabeta/salabeta/menaricci/mycomp/src/moc_commonbehaviorI.cxx" "/home/salabeta/salabeta/menaricci/mycomp/src/CMakeFiles/mycomp.dir/moc_commonbehaviorI.cxx.o"
@@ -20,8 +23,6 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/salabeta/salabeta/menaricci/mycomp/src/moc_genericworker.cxx" "/home/salabeta/salabeta/menaricci/mycomp/src/CMakeFiles/mycomp.dir/moc_genericworker.cxx.o"
   "/home/salabeta/salabeta/menaricci/mycomp/src/moc_specificmonitor.cxx" "/home/salabeta/salabeta/menaricci/mycomp/src/CMakeFiles/mycomp.dir/moc_specificmonitor.cxx.o"
   "/home/salabeta/salabeta/menaricci/mycomp/src/moc_specificworker.cxx" "/home/salabeta/salabeta/menaricci/mycomp/src/CMakeFiles/mycomp.dir/moc_specificworker.cxx.o"
-  "/opt/robocomp/classes/qlog/qlog.cpp" "/home/salabeta/salabeta/menaricci/mycomp/src/CMakeFiles/mycomp.dir/opt/robocomp/classes/qlog/qlog.cpp.o"
-  "/opt/robocomp/classes/rapplication/rapplication.cpp" "/home/salabeta/salabeta/menaricci/mycomp/src/CMakeFiles/mycomp.dir/opt/robocomp/classes/rapplication/rapplication.cpp.o"
   "/home/salabeta/salabeta/menaricci/mycomp/src/specificmonitor.cpp" "/home/salabeta/salabeta/menaricci/mycomp/src/CMakeFiles/mycomp.dir/specificmonitor.cpp.o"
   "/home/salabeta/salabeta/menaricci/mycomp/src/specificworker.cpp" "/home/salabeta/salabeta/menaricci/mycomp/src/CMakeFiles/mycomp.dir/specificworker.cpp.o"
   )
@@ -41,6 +42,7 @@ set(CMAKE_TARGET_DEFINITIONS
 set(CMAKE_MULTIPLE_OUTPUT_PAIRS
   "/home/salabeta/salabeta/menaricci/mycomp/src/AprilTags.h" "/home/salabeta/salabeta/menaricci/mycomp/src/AprilTags.cpp"
   "/home/salabeta/salabeta/menaricci/mycomp/src/CommonBehavior.h" "/home/salabeta/salabeta/menaricci/mycomp/src/CommonBehavior.cpp"
+  "/home/salabeta/salabeta/menaricci/mycomp/src/Controller.h" "/home/salabeta/salabeta/menaricci/mycomp/src/Controller.cpp"
   "/home/salabeta/salabeta/menaricci/mycomp/src/DifferentialRobot.h" "/home/salabeta/salabeta/menaricci/mycomp/src/DifferentialRobot.cpp"
   "/home/salabeta/salabeta/menaricci/mycomp/src/Laser.h" "/home/salabeta/salabeta/menaricci/mycomp/src/Laser.cpp"
   )
@@ -62,9 +64,9 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
   "/opt/robocomp/include"
   "/classes"
   "."
-  "/opt/robocomp/classes"
-  "/opt/robocomp/libs"
-  "/opt/robocomp/interfaces"
+  "/home/salabeta/robocomp/classes"
+  "/home/salabeta/robocomp/libs"
+  "/home/salabeta/robocomp/interfaces"
   "/include"
   )
 set(CMAKE_CXX_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})

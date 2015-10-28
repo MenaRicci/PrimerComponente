@@ -72,12 +72,33 @@ void SpecificWorker::compute()
 
 float SpecificWorker::go(const TargetPose &target)
 {
-    
+  
+  std::cout << "Informacion Recibida. La X vale: " << target.x << std::endl;
+return 0.0;
 }
 
 NavState SpecificWorker::getState()
 {
-
+  NavState st;
+  switch (state)
+  {
+    case State::INIT:
+	st.state="IDLE";
+      break;
+    case State::FIN:
+      st.state="FIN";
+      break;
+    default:
+      st.state="WORKING";
+      break;
+    
+    
+  }
+  
+  
+  st.state="IDLE";
+  return st;
+  
 }
 
 void SpecificWorker::stop()

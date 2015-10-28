@@ -6,6 +6,14 @@
 
 #IncludeRegexTransform: 
 
+/home/salabeta/robocomp/classes/qlog/qlog.h
+QtCore
+-
+iostream
+-
+Logger.h
+-
+
 /home/salabeta/salabeta/menaricci/mycomp/src/specificworker.cpp
 specificworker.h
 /home/salabeta/salabeta/menaricci/mycomp/src/specificworker.h
@@ -18,14 +26,6 @@ genericworker.h
 innermodel/innermodel.h
 -
 datoscamara.h
--
-
-/opt/robocomp/classes/qlog/qlog.h
-QtCore
--
-iostream
--
-Logger.h
 -
 
 /opt/robocomp/include/innermodel/innermodel.h
@@ -4054,6 +4054,38 @@ Ice/StreamF.h
 Ice/UndefSysMacros.h
 -
 
+src/Controller.h
+Ice/ProxyF.h
+-
+Ice/ObjectF.h
+-
+Ice/Exception.h
+-
+Ice/LocalObject.h
+-
+Ice/StreamHelpers.h
+-
+Ice/Proxy.h
+-
+Ice/Object.h
+-
+Ice/Outgoing.h
+-
+Ice/OutgoingAsync.h
+-
+Ice/Incoming.h
+-
+Ice/Direct.h
+-
+IceUtil/ScopedArray.h
+-
+IceUtil/Optional.h
+-
+Ice/StreamF.h
+-
+Ice/UndefSysMacros.h
+-
+
 src/DifferentialRobot.h
 Ice/ProxyF.h
 -
@@ -4146,6 +4178,8 @@ ui_mainUI.h
 CommonBehavior.h
 -
 Laser.h
+-
+Controller.h
 -
 DifferentialRobot.h
 -
