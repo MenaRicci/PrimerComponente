@@ -45,7 +45,7 @@ bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 void SpecificWorker::compute()
 {
   try{     
-	   RoboCompLaser::TLaserData ldata = laser_proxy->getLaserData();
+	   ldata = laser_proxy->getLaserData();
 	   TBaseState tbase; differentialrobot_proxy->getBaseState(tbase);
 	   inner->updateTransformValues("base",tbase.x,0,tbase.z,0,tbase.alpha,0);
 	
@@ -74,45 +74,66 @@ void SpecificWorker::compute()
   }	 
 }
 
+
+
 void SpecificWorker::dirigir_hacia_marca()
 {
-	 float distancia_P;
-   float rot;
-   DatosCamara::MyTag B;
-
-	 if(marcas.contains(recorrido)){ 
-      //Obtenemos la marca
-	  std::cout << "<--Avance hacia marca-->"<< std::endl;
-	     B=marcas.get(recorrido); 
-	     marcas.clear();
-	    //Orienta el robot hacia la marca
-	     rot=atan2(B.dist_x,B.dist_z);
-	     differentialrobot_proxy->setSpeedBase(300,rot);
-	     //usleep(200000);
-	    //Calculamos la distancia 
-	     distancia_P=sqrt(pow(B.dist_x,2) + pow(B.dist_z,2));
-	    // std::cout << "Distancia al objetivo: " <<distancia_P<< std::endl;
-	     if(distancia_P < 800){
-	       differentialrobot_proxy->setSpeedBase(0,0);
-	       std::cout << "--------------------------------------------Encontrado------------------------------------>  "<<recorrido<< std::endl;
-	       recorrido++;
-	       Memoria.activo=false;
-	       marcas.clear();
-	      state = State::INIT;
-	       sleep(2);
-	      }
-	      avanzar_sin_rumbo();
-	      
-	  } 
-   if(recorrido==4){
-       state = State::STOP; // ESTO CREO QUE NO FUNCIONARIA ME REFIERO A LO DE STATE PORQUE ESTA EL METODO DEL APRIL ENTONCES SERIA QUITAR EL ESTADO STOP
-       differentialrobot_proxy->setSpeedBase(0,0);
-       std::cout << "<--FIN-->"<< std::endl; 
-       sleep(20);
-    }/*else{
-       marcas.clear();
-       state = State::INIT;
-    }*/
+//   /*
+//    float distancia_P;
+//    float rot;
+//    DatosCamara::MyTag B;
+// 
+// 	 if(marcas.contains(recorrido))
+// 	 { 
+//       //Obtenemos la marca
+// 	  std::cout << "<--Avance hacia marca-->"<< std::endl;
+// 	     B=marcas.get(recorrido); 
+// 	     
+// 	     
+// 	         
+// 	     
+// 	     marcas.clear();
+// 	    //Orienta el robot hacia la marca
+// 	     rot=atan2(B.dist_x,B.dist_z);
+// 	     differentialrobot_proxy->setSpeedBase(300,rot);
+// 	     //usleep(200000);
+// 	    //Calculamos la distancia 
+// 	     distancia_P=sqrt(pow(B.dist_x,2) + pow(B.dist_z,2));
+// 	    // std::cout << "Distancia al objetivo: " <<distancia_P<< std::endl;
+// 	     if(distancia_P < 800){
+// 	       differentialrobot_proxy->setSpeedBase(0,0);
+// 	       std::cout << "--------------------------------------------Encontrado------------------------------------>  "<<recorrido<< std::endl;
+// 	       recorrido++;
+// 	       Memoria.activo=false;
+// 	       marcas.clear();
+// 	      state = State::INIT;
+// 	       sleep(2);
+// 	      }
+// 	      /*
+// 	       *
+// 	       */
+// 	    } 
+//    if(recorrido==4){
+//        state = State::STOP; // ESTO CREO QUE NO FUNCIONARIA ME REFIERO A LO DE STATE PORQUE ESTA EL METODO DEL APRIL ENTONCES SERIA QUITAR EL ESTADO STOP
+//        differentialrobot_proxy->setSpeedBase(0,0);
+//        std::cout << "<--FIN-->"<< std::endl; 
+//        sleep(20);
+//     }/*else{
+//        marcas.clear();
+//        state = State::INIT;
+//     }*/
+  
+  //--------------------------------------------------------
+  //Preparar Target
+  
+  //go(Target)
+  
+  //if(getState()==FIN){
+  //  state=State::State::SEARCH;
+  //}
+  
+  //--------------------------------------------------------
+  
 }
 
 void SpecificWorker::search()
@@ -140,14 +161,14 @@ void SpecificWorker::search()
            marcas.add(B);
            state = State::ADVANCE;//dirigir_hacia_marca(); 
         }else{
-	         state = State::INIT;
+	        differentialrobot_proxy->setSpeedBase(0,0.7707);
         }
     }
 }
 
 void SpecificWorker::avanzar_sin_rumbo()
 {
-   RoboCompLaser::TLaserData ldata = laser_proxy->getLaserData();
+
    const float threshold = 400; //Distancia previa a choque
    float rot = 0.7707;  //
    const int acot = 16;
@@ -185,9 +206,39 @@ void SpecificWorker::avanzar_sin_rumbo()
        //usleep(25000);
     }
     
-    state = State::INIT;
+    state = State::SEARCH;
     
 }
+
+void SpecificWorker::evitar_obstaculos()
+{
+  
+   float rot = 0.7707;  //
+   float dist;
+   float angle;
+   static float sentido_giro;
+   QVec realidad = inner->transform("rgbd",Memoria.vec,"world");
+   float distancia_M=sqrt(pow(realidad.x(),2) + pow(realidad.z(),2));
+   RoboCompLaser::TLaserData ldatacopy=ldata;
+   
+   
+   
+   std::sort( ldatacopy.begin() , ldatacopy.end()  , [](RoboCompLaser::TData a, RoboCompLaser::TData b ){ return     a.dist < b.dist; }) ;
+   dist=ldatacopy.data()->dist;
+   angle=ldatacopy.data()->angle;
+    
+
+    if(dist != distancia_M )
+    {
+
+      (ldatacopy.data()+40)->angle;
+
+    }else{
+      	 rot=atan2(realidad.x(),realidad.z());
+	 differentialrobot_proxy->setSpeedBase(300,rot);
+    }
+}
+
 
 
  

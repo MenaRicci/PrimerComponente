@@ -54,9 +54,11 @@ class SpecificWorker : public GenericWorker
    private:
      int recorrido=0;
      enum class State { INIT, SEARCH, ADVANCE,STOP};
-       State state = State::INIT;
+       State state = State::SEARCH;
      void avanzar_sin_rumbo();
      void search();
      void dirigir_hacia_marca();
+     void evitar_obstaculos();
+      RoboCompLaser::TLaserData ldata;
 };
 #endif

@@ -1,0 +1,204 @@
+Determining if the Q_WS_WIN exist failed with the following output:
+Change Dir: /home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec3687187990/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec3687187990.dir/build.make CMakeFiles/cmTryCompileExec3687187990.dir/build
+make[1]: Entering directory '/home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec3687187990.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++    -I/usr/include/qt4    -o CMakeFiles/cmTryCompileExec3687187990.dir/CheckSymbolExists.cxx.o -c /home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+/home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function ‘int main(int, char**)’:
+/home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: error: ‘Q_WS_WIN’ was not declared in this scope
+   return ((int*)(&Q_WS_WIN))[argc];
+                   ^
+CMakeFiles/cmTryCompileExec3687187990.dir/build.make:57: recipe for target 'CMakeFiles/cmTryCompileExec3687187990.dir/CheckSymbolExists.cxx.o' failed
+make[1]: *** [CMakeFiles/cmTryCompileExec3687187990.dir/CheckSymbolExists.cxx.o] Error 1
+make[1]: Leaving directory '/home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp'
+Makefile:118: recipe for target 'cmTryCompileExec3687187990/fast' failed
+make: *** [cmTryCompileExec3687187990/fast] Error 2
+
+File /home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <QtCore/qglobal.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef Q_WS_WIN
+  return ((int*)(&Q_WS_WIN))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the Q_WS_QWS exist failed with the following output:
+Change Dir: /home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec3668298439/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec3668298439.dir/build.make CMakeFiles/cmTryCompileExec3668298439.dir/build
+make[1]: Entering directory '/home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec3668298439.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++    -I/usr/include/qt4    -o CMakeFiles/cmTryCompileExec3668298439.dir/CheckSymbolExists.cxx.o -c /home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+/home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function ‘int main(int, char**)’:
+/home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: error: ‘Q_WS_QWS’ was not declared in this scope
+   return ((int*)(&Q_WS_QWS))[argc];
+                   ^
+CMakeFiles/cmTryCompileExec3668298439.dir/build.make:57: recipe for target 'CMakeFiles/cmTryCompileExec3668298439.dir/CheckSymbolExists.cxx.o' failed
+make[1]: *** [CMakeFiles/cmTryCompileExec3668298439.dir/CheckSymbolExists.cxx.o] Error 1
+make[1]: Leaving directory '/home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp'
+Makefile:118: recipe for target 'cmTryCompileExec3668298439/fast' failed
+make: *** [cmTryCompileExec3668298439/fast] Error 2
+
+File /home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <QtCore/qglobal.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef Q_WS_QWS
+  return ((int*)(&Q_WS_QWS))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the Q_WS_MAC exist failed with the following output:
+Change Dir: /home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec762502688/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec762502688.dir/build.make CMakeFiles/cmTryCompileExec762502688.dir/build
+make[1]: Entering directory '/home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec762502688.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++    -I/usr/include/qt4    -o CMakeFiles/cmTryCompileExec762502688.dir/CheckSymbolExists.cxx.o -c /home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+/home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function ‘int main(int, char**)’:
+/home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: error: ‘Q_WS_MAC’ was not declared in this scope
+   return ((int*)(&Q_WS_MAC))[argc];
+                   ^
+CMakeFiles/cmTryCompileExec762502688.dir/build.make:57: recipe for target 'CMakeFiles/cmTryCompileExec762502688.dir/CheckSymbolExists.cxx.o' failed
+make[1]: *** [CMakeFiles/cmTryCompileExec762502688.dir/CheckSymbolExists.cxx.o] Error 1
+make[1]: Leaving directory '/home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp'
+Makefile:118: recipe for target 'cmTryCompileExec762502688/fast' failed
+make: *** [cmTryCompileExec762502688/fast] Error 2
+
+File /home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <QtCore/qglobal.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef Q_WS_MAC
+  return ((int*)(&Q_WS_MAC))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the Q_WS_WIN exist failed with the following output:
+Change Dir: /home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1198144072/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec1198144072.dir/build.make CMakeFiles/cmTryCompileExec1198144072.dir/build
+make[1]: Entering directory '/home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec1198144072.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++    -I/usr/include/qt4    -o CMakeFiles/cmTryCompileExec1198144072.dir/CheckSymbolExists.cxx.o -c /home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+/home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function ‘int main(int, char**)’:
+/home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: error: ‘Q_WS_WIN’ was not declared in this scope
+   return ((int*)(&Q_WS_WIN))[argc];
+                   ^
+CMakeFiles/cmTryCompileExec1198144072.dir/build.make:57: recipe for target 'CMakeFiles/cmTryCompileExec1198144072.dir/CheckSymbolExists.cxx.o' failed
+make[1]: *** [CMakeFiles/cmTryCompileExec1198144072.dir/CheckSymbolExists.cxx.o] Error 1
+make[1]: Leaving directory '/home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp'
+Makefile:118: recipe for target 'cmTryCompileExec1198144072/fast' failed
+make: *** [cmTryCompileExec1198144072/fast] Error 2
+
+File /home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <QtCore/qglobal.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef Q_WS_WIN
+  return ((int*)(&Q_WS_WIN))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the Q_WS_QWS exist failed with the following output:
+Change Dir: /home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec342710037/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec342710037.dir/build.make CMakeFiles/cmTryCompileExec342710037.dir/build
+make[1]: Entering directory '/home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec342710037.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++    -I/usr/include/qt4    -o CMakeFiles/cmTryCompileExec342710037.dir/CheckSymbolExists.cxx.o -c /home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+/home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function ‘int main(int, char**)’:
+/home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: error: ‘Q_WS_QWS’ was not declared in this scope
+   return ((int*)(&Q_WS_QWS))[argc];
+                   ^
+CMakeFiles/cmTryCompileExec342710037.dir/build.make:57: recipe for target 'CMakeFiles/cmTryCompileExec342710037.dir/CheckSymbolExists.cxx.o' failed
+make[1]: *** [CMakeFiles/cmTryCompileExec342710037.dir/CheckSymbolExists.cxx.o] Error 1
+make[1]: Leaving directory '/home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp'
+Makefile:118: recipe for target 'cmTryCompileExec342710037/fast' failed
+make: *** [cmTryCompileExec342710037/fast] Error 2
+
+File /home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <QtCore/qglobal.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef Q_WS_QWS
+  return ((int*)(&Q_WS_QWS))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the Q_WS_MAC exist failed with the following output:
+Change Dir: /home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec124997690/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec124997690.dir/build.make CMakeFiles/cmTryCompileExec124997690.dir/build
+make[1]: Entering directory '/home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec124997690.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++    -I/usr/include/qt4    -o CMakeFiles/cmTryCompileExec124997690.dir/CheckSymbolExists.cxx.o -c /home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+/home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function ‘int main(int, char**)’:
+/home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: error: ‘Q_WS_MAC’ was not declared in this scope
+   return ((int*)(&Q_WS_MAC))[argc];
+                   ^
+CMakeFiles/cmTryCompileExec124997690.dir/build.make:57: recipe for target 'CMakeFiles/cmTryCompileExec124997690.dir/CheckSymbolExists.cxx.o' failed
+make[1]: *** [CMakeFiles/cmTryCompileExec124997690.dir/CheckSymbolExists.cxx.o] Error 1
+make[1]: Leaving directory '/home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp'
+Makefile:118: recipe for target 'cmTryCompileExec124997690/fast' failed
+make: *** [cmTryCompileExec124997690/fast] Error 2
+
+File /home/salabeta/salabeta/menaricci/controllerBug/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <QtCore/qglobal.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef Q_WS_MAC
+  return ((int*)(&Q_WS_MAC))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
