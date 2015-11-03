@@ -88,13 +88,17 @@ void SpecificWorker::Controller()
   enviado=true;
   std::cout << "Enviando" << std::endl;
   DatosCamara::MyTag B= marcas.get(recorrido);
+  QVec realidad = inner->transform("world",QVec::vec3(B.dist_x,0,B.dist_z),"rgbd");
+  
  TargetPose TP;
- TP.x=B.dist_x;
- TP.z=B.dist_z;
+ TP.x=realidad.x();
+ TP.z=realidad.z();
+
  controller_proxy->go(TP);
 }
   
   if(st.state == "FIN"){
+    std::cout<<"FIN de la prueba"<<std::endl;
    state=State::SEARCH;
    enviado=false;
    recorrido++;

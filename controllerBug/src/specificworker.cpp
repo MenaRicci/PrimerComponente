@@ -33,6 +33,16 @@ SpecificWorker::~SpecificWorker()
 {
 	
 }
+float SpecificWorker::calcularDistancia()
+{
+  
+  QVec realidad = inner->transform("rgbd",QVec::vec3(tag.x,0,tag.z),"world");
+  float distancia=sqrt(pow(realidad.x(),2) + pow(realidad.z(),2));
+  std::cout<<"La distancia es: "<< distancia <<std::endl;
+  return distancia;
+  
+  
+}
 
 bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 {
@@ -59,6 +69,68 @@ void SpecificWorker::compute()
 	}
 	
 	
+  switch (state)
+  {
+    
+       case State::IDLE:
+      
+      break;
+      
+    case State::INIT:
+      
+	//Reset Parametros
+      
+	//Pasar A control
+      state=State::CONTROL;
+      break;
+ 
+    case State::CONTROL:
+      if(calcularDistancia()<=10000)
+	state=State::FIN;
+      else
+      {
+	state=State::VISTA;
+      }
+      break;
+    case State::VISTA:
+     // if(isView()){
+      //Avanzar hacia ojectivo
+	
+	state=State::ADVANCE;
+	
+      //}
+    //  else{
+
+	state=State::SUBOBJETIVO;
+    //  }
+      
+      break;
+      
+    case State::SUBOBJETIVO:
+//     if(isSubocj())
+//      {
+// 	if(fin_objective()){
+// 	state=State::VISTA;
+// 	  
+// 	}
+//       Avanzar hacia subojectivo
+// 	
+// 	state=State::ADVANCE;
+//      }
+//      else
+//      {
+//       Crear Objetivo
+// 	
+//      }
+    break;
+    case State::FIN:
+      std::cout<<"Fin de la prueba de maquina de estados"<<std::endl;
+      
+      break;
+//     
+  }
+	
+	
 	
 }
 
@@ -74,6 +146,13 @@ float SpecificWorker::go(const TargetPose &target)
 {
   
   std::cout << "Informacion Recibida. La X vale: " << target.x << std::endl;
+  tag.x=target.x;
+  tag.z=target.z;
+
+  
+  state=State::INIT;
+  
+  
 return 0.0;
 }
 
@@ -91,12 +170,7 @@ NavState SpecificWorker::getState()
     default:
       st.state="WORKING";
       break;
-    
-    
   }
-  
-  
-  st.state="IDLE";
   return st;
   
 }

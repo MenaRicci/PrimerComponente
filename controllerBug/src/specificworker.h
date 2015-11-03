@@ -43,6 +43,7 @@ public:
 	float go(const TargetPose &target);
 	NavState getState();
 	void stop();
+	float calcularDistancia();
 	RoboCompLaser::TLaserData ldata;
 
 public slots:
@@ -50,8 +51,8 @@ public slots:
 
 private:
   
-  enum class State { INIT, VISTA, ADVANCE,SUBOBJETIVO,FIN};
-  State state = State::INIT;
+  enum class State { INIT, VISTA, ADVANCE,SUBOBJETIVO,FIN,CONTROL,IDLE};
+  State state = State::IDLE;
 
   struct CurrenTarget
   {
