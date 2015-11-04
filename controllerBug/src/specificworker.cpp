@@ -33,10 +33,10 @@ SpecificWorker::~SpecificWorker()
 {
 	
 }
-float SpecificWorker::calcularDistancia()
+float SpecificWorker::calcularDistancia(float x,float z)
 {
   
-  QVec realidad = inner->transform("rgbd",QVec::vec3(tag.x,0,tag.z),"world");
+  QVec realidad = inner->transform("rgbd",QVec::vec3(x,0,z),"world");
   float distancia=sqrt(pow(realidad.x(),2) + pow(realidad.z(),2));
   std::cout<<"La distancia es: "<< distancia <<std::endl;
   return distancia;
@@ -44,12 +44,48 @@ float SpecificWorker::calcularDistancia()
   
 }
 
+bool SpecificWorker::isView()
+{
+  
+  std::sort( ldata.begin() , ldata.end()  , [](RoboCompLaser::TData a, RoboCompLaser::TData b ){ return     a.dist < b.dist; }) ;
+   float dist=ldata.data()->dist;
+   std::cout<<"Estoy en view " <<std::endl;
+   if(dist == calcularDistancia(tag.x,tag.z)) //Si estamos pegados...
+     return true; 
+   else
+     return false;
+  
+}
+
+bool SpecificWorker::isObjective()
+{
+return subtag.isActive;
+}
+
+bool SpecificWorker::fin_objective()
+{
+ //Conocer las coordenadas del robot y compararlas con el tag
+  TBaseState tbase; differentialrobot_proxy->getBaseState(tbase);
+	   
+   if(calcularDistancia(subtag.x,subtag.z) == calcularDistancia(tbase.x,tbase.z))
+	return true;    //Hemos llegado al SUBOBJETIVO
+   else 
+      return false;
+    
+}
+void SpecificWorker::crearObjective()
+{
+
+  
+  
+}
+
+
+
+
 bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 {
 
-
-
-	
 	timer.start(Period);
 
 	return true;
@@ -85,7 +121,7 @@ void SpecificWorker::compute()
       break;
  
     case State::CONTROL:
-      if(calcularDistancia()<=10000)
+      if(calcularDistancia(tag.x,tag.z)<=300)
 	state=State::FIN;
       else
       {
@@ -93,49 +129,70 @@ void SpecificWorker::compute()
       }
       break;
     case State::VISTA:
-     // if(isView()){
+     if(isView()){
       //Avanzar hacia ojectivo
-	
 	state=State::ADVANCE;
-	
-      //}
-    //  else{
-
-	state=State::SUBOBJETIVO;
-    //  }
-      
+      }
+      else
+      {
+	state=State::SUBOBJETIVO;//
+      }
       break;
       
     case State::SUBOBJETIVO:
-//     if(isSubocj())
-//      {
-// 	if(fin_objective()){
-// 	state=State::VISTA;
-// 	  
-// 	}
-//       Avanzar hacia subojectivo
-// 	
-// 	state=State::ADVANCE;
-//      }
-//      else
-//      {
-//       Crear Objetivo
-// 	
-//      }
+      
+    if(isObjective())
+      {
+	if(fin_objective()) //Conseguir 
+	{
+	  //reset del SUBOBJETIVO
+	  state=State::VISTA;
+ 	}
+ 	else
+	{
+	  state=State::ADVANCE;
+	}
+      }
+      else  
+      {
+//       Crear Objetivo --> ROTAR
+	 state=State::ADVANCE;
+      }
     break;
+    case State::ADVANCE:
+      std::cout<<"Estoy en advance " <<std::endl;
+      if(isView())
+      {
+      subtag.isActive=false;
+      }
+      if(isObjective()){
+	if(fin_objective()) //Conseguir 
+	  {
+	    state=State::VISTA;
+	  }
+	  //Avanzar hacia el SUBOBJETIVO
+	  differentialrobot_proxy->setSpeedBase(300,0);
+	}
+	else
+	{
+	    if(calcularDistancia(tag.x,tag.z)<=300)
+	      state=State::FIN;
+	    else{
+	     differentialrobot_proxy->setSpeedBase(300,0);
+	    }
+	}
+      
+      
+      break;
+    
     case State::FIN:
       std::cout<<"Fin de la prueba de maquina de estados"<<std::endl;
       
-      break;
-//     
-  }
-	
-	
-	
+      break;	
 }
 
 
-
+}
 
 
 ////////////////////////////

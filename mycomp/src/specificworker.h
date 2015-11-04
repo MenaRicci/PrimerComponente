@@ -51,7 +51,7 @@ class SpecificWorker : public GenericWorker
      
      InnerModel *inner;   
      QVec realidad;
-     int recorrido=0;
+     int recorrido=3;
      enum class State { INIT, SEARCH, ADVANCE,STOP};
      State state = State::SEARCH;
      Smemoria Memoria;

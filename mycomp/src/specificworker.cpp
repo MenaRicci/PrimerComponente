@@ -93,7 +93,7 @@ void SpecificWorker::Controller()
  TargetPose TP;
  TP.x=realidad.x();
  TP.z=realidad.z();
-
+  marcas.clear();
  controller_proxy->go(TP);
 }
   
@@ -114,7 +114,7 @@ void SpecificWorker::search()
 {
    differentialrobot_proxy->setSpeedBase(0, 0);
    DatosCamara::MyTag A;
-   tag B;
+ //  tag B;
       std::cout << "<--Buscando . . . -->"<< std::endl;   
    if(marcas.contains(recorrido)){
       //Obtenemos la marca
@@ -124,26 +124,26 @@ void SpecificWorker::search()
        Memoria.activo=true;
        std::cout << "<--Busqueda finalizada-->"<< std::endl;   
        state = State::ADVANCE;//Controller();
-    }else{
-      //Comprobamos que la marca este en memoria, si es asi nos dirigimos hacia ella sino nos ponemos a buscar
-       if(Memoria.activo){ 
-           QVec realidad = inner->transform("rgbd",Memoria.vec,"world");
-          //Una vez tenemos los datos reales, tenemos que hacer operaciones para orientar el robot hacia el objetivo
-           B.tx=realidad.x();
-           B.tz=realidad.z();
-           B.id=recorrido;
-           marcas.add(B);
-           state = State::ADVANCE;//Controller(); 
-        }else{
+//     }else{
+//       //Comprobamos que la marca este en memoria, si es asi nos dirigimos hacia ella sino nos ponemos a buscar
+//        if(Memoria.activo){ 
+//            QVec realidad = inner->transform("rgbd",Memoria.vec,"world");
+//           //Una vez tenemos los datos reales, tenemos que hacer operaciones para orientar el robot hacia el objetivo
+//            B.tx=realidad.x();
+//            B.tz=realidad.z();
+//            B.id=recorrido;
+//            marcas.add(B);
+//            state = State::ADVANCE;//Controller(); 
+   }else{
 	        differentialrobot_proxy->setSpeedBase(0,0.7707);
         }
-    }
+    
 }
 
 void SpecificWorker::avanzar_sin_rumbo()
 {
 
-   const float threshold = 400; //Distancia previa a choque
+   const float threshold = 400; //Distancia previa a choquein
    float rot = 0.7707;  //
    const int acot = 16;
    float dist;

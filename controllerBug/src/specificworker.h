@@ -43,7 +43,7 @@ public:
 	float go(const TargetPose &target);
 	NavState getState();
 	void stop();
-	float calcularDistancia();
+	float calcularDistancia(float x,float z);
 	RoboCompLaser::TLaserData ldata;
 
 public slots:
@@ -63,6 +63,13 @@ private:
   
   CurrenTarget tag;
   CurrenTarget subtag;
+  
+  
+  bool isView();
+  bool isObjective();
+  bool fin_objective();
+  void crearObjective();
+  
 	
 };
 
