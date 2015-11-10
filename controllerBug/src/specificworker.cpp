@@ -37,8 +37,10 @@ float SpecificWorker::calcularDistancia(float x,float z)
 {
   
   QVec realidad = inner->transform("rgbd",QVec::vec3(x,0,z),"world");
-  float distancia=sqrt(pow(realidad.x(),2) + pow(realidad.z(),2));
-  std::cout<<"La distancia es: "<< distancia <<std::endl;
+  float distancia=realidad.norm2();
+  
+  //sqrt(pow(realidad.x(),2) + pow(realidad.z(),2));
+  //std::cout<<"La distancia es: "<< distancia <<std::endl;
   return distancia;
   
   
@@ -50,6 +52,8 @@ bool SpecificWorker::isView()
   std::sort( ldata.begin() , ldata.end()  , [](RoboCompLaser::TData a, RoboCompLaser::TData b ){ return     a.dist < b.dist; }) ;
    float dist=ldata.data()->dist;
    std::cout<<"Estoy en view " <<std::endl;
+   std::cout<<"La distancia de dist: "<< dist <<std::endl;
+   std::cout<<"La distancia del tag : "<< calcularDistancia(tag.x,tag.z) <<std::endl;
    if(dist == calcularDistancia(tag.x,tag.z)) //Si estamos pegados...
      return true; 
    else
@@ -75,8 +79,40 @@ bool SpecificWorker::fin_objective()
 }
 void SpecificWorker::crearObjective()
 {
-
+  std::cout<<"Estoy en crearObjective " <<std::endl;
+  uint i,j,x;
+ 
+  for(i=ldata.size()/2; i>0; i--)
+	{
+		if( (ldata[i].dist - ldata[i-1].dist) < -400 )
+		{
+			uint k=i-2;
+			while( (k >= 0) and (fabs( ldata[k].dist*sin(ldata[k].angle - ldata[i-1].angle)) < 400 ))
+			{ k--; }
+			x=k;
+			break;
+		}
+	}
+	for(j=ldata.size()/2; j<ldata.size()-1; j++)
+	{
+		if( (ldata[j].dist - ldata[j+1].dist) < -400 )
+		{
+			uint k=j+2;
+			while( (k < ldata.size()) and (fabs( ldata[k].dist*sin(ldata[k].angle - ldata[j+1].angle)) < 400 ))
+			{ k++; }
+			x=k;
+			break;
+		}
+	}
   
+  
+  QVec subTarget_Final=inner->transform("world", QVec::vec3(ldata[x].dist *sin(ldata[x].angle)-2000,0, ldata[x].dist *cos(ldata[x].angle)), "laser");
+  subtag.x=subTarget_Final.x();
+  subtag.z=subTarget_Final.z();
+  subtag.isActive=true;
+    
+  std::cout<<"Distancia X subtag " << subtag.x <<std::endl;
+  std::cout<<"Distancia Z subtag " << subtag.z <<std::endl;
   
 }
 
@@ -91,6 +127,48 @@ bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 	return true;
 }
 
+void SpecificWorker::avanzar_subtag()
+{
+   
+    QVec sub_data = inner->transform("laser", QVec::vec3(subtag.x,0,subtag.z), "world");
+    float alpha =atan2(sub_data.x(), sub_data.z());
+    float rot= 0.4*alpha;
+    float dist = sub_data.norm2();
+   
+   
+    if(dist<100)
+    {
+        subtag.isActive=false;
+
+        differentialrobot_proxy->setSpeedBase(0,0);
+      sleep(1);
+      
+    }else
+    {
+      if( fabs(rot) > 0.2) dist = 0;
+      if(dist>300)dist=300;
+      differentialrobot_proxy->setSpeedBase(dist,rot);
+    }
+  
+   
+}
+
+void SpecificWorker::avanzar_tag()
+{
+   
+    QVec sub_data = inner->transform("rgbd", QVec::vec3(subtag.x,0,subtag.z), "world");
+    float alpha =atan2(sub_data.x(), sub_data.z());
+    float rot= 0.3*alpha;
+    float dist = 0.3*sub_data.norm2();
+   
+      if( fabs(rot) > 0.2) dist = 0;
+      if(dist>300)dist=300;
+      differentialrobot_proxy->setSpeedBase(dist,rot);
+    
+  
+}
+
+
 void SpecificWorker::compute()
 {
 	try
@@ -98,6 +176,7 @@ void SpecificWorker::compute()
 	   ldata = laser_proxy->getLaserData();
 	   TBaseState tbase; differentialrobot_proxy->getBaseState(tbase);
 	   inner->updateTransformValues("base",tbase.x,0,tbase.z,0,tbase.alpha,0);
+	   
 	}
 	catch(const Ice::Exception &e)
 	{
@@ -156,6 +235,7 @@ void SpecificWorker::compute()
       else  
       {
 //       Crear Objetivo --> ROTAR
+	 crearObjective();
 	 state=State::ADVANCE;
       }
     break;
@@ -169,16 +249,19 @@ void SpecificWorker::compute()
 	if(fin_objective()) //Conseguir 
 	  {
 	    state=State::VISTA;
+	    subtag.isActive=false;
 	  }
 	  //Avanzar hacia el SUBOBJETIVO
-	  differentialrobot_proxy->setSpeedBase(300,0);
+	  
+	  avanzar_subtag();
 	}
 	else
 	{
 	    if(calcularDistancia(tag.x,tag.z)<=300)
 	      state=State::FIN;
 	    else{
-	     differentialrobot_proxy->setSpeedBase(300,0);
+
+	      avanzar_tag();
 	    }
 	}
       
@@ -205,8 +288,6 @@ float SpecificWorker::go(const TargetPose &target)
   std::cout << "Informacion Recibida. La X vale: " << target.x << std::endl;
   tag.x=target.x;
   tag.z=target.z;
-
-  
   state=State::INIT;
   
   
@@ -222,6 +303,7 @@ NavState SpecificWorker::getState()
 	st.state="IDLE";
       break;
     case State::FIN:
+      state=State::IDLE;
       st.state="FIN";
       break;
     default:

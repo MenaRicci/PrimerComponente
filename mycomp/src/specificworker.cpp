@@ -94,8 +94,9 @@ void SpecificWorker::Controller()
  TP.x=realidad.x();
  TP.z=realidad.z();
   marcas.clear();
- controller_proxy->go(TP);
+  controller_proxy->go(TP);
 }
+
   
   if(st.state == "FIN"){
     std::cout<<"FIN de la prueba"<<std::endl;

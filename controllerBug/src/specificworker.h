@@ -70,6 +70,8 @@ private:
   bool fin_objective();
   void crearObjective();
   
+  void avanzar_subtag();
+  void avanzar_tag();
 	
 };
 
