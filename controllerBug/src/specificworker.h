@@ -51,7 +51,7 @@ public slots:
 
 private:
   
-  enum class State { INIT, VISTA, ADVANCE,SUBOBJETIVO,FIN,CONTROL,IDLE};
+  enum class State { INIT, VISTA,MARCA,SUBOBJETIVO,FIN,IDLE};
   State state = State::IDLE;
 
   struct CurrenTarget
@@ -69,7 +69,7 @@ private:
   bool isObjective();
   bool fin_objective();
   void crearObjective();
-  
+  float calcularAngulo(float x,float z);
   void avanzar_subtag();
   void avanzar_tag();
 	
