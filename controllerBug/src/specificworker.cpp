@@ -69,7 +69,7 @@ bool SpecificWorker::isView()
   {
       if(ldata[i].angle < alpha)
       {
-	if( ldata[i].dist < d)
+	if( d - ldata[i].dist >10)
 	{
 	  return false;
 	}
@@ -104,27 +104,42 @@ void SpecificWorker::crearObjective()
 {
   std::cout<<"Estoy en crearObjective " <<std::endl;
   uint i,j,x;
- 
-  for(i=ldata.size()/2; i>0; i--)
+	for(i=ldata.size()/2; i>0; i--)
 	{
-		if( (ldata[i].dist - ldata[i-1].dist) < -400 )
+		if( (ldata[i].dist - ldata[i-1].dist) < -500 )
 		{
+		  if(i==1)
+		  {
+		    x=0;
+		    break;
+		  }
+		  else
+		  {
 			uint k=i-2;
-			while( (k >= 0) and (fabs( ldata[k].dist*sin(ldata[k].angle - ldata[i-1].angle)) < 400 ))
+			while( (k >= 0) and (fabs( ldata[k].dist*sin(ldata[k].angle - ldata[i-1].angle)) < 500 ))
 			{ k--; }
 			x=k;
 			break;
+		  }
 		}
 	}
 	for(j=ldata.size()/2; j<ldata.size()-1; j++)
 	{
-		if( (ldata[j].dist - ldata[j+1].dist) < -400 )
+		if( (ldata[j].dist - ldata[j+1].dist) < -500 )
 		{
+		    if(j==(ldata.size()-2))
+		    {
+		      x=j;
+		      break;
+		    }
+		    else{
 			uint k=j+2;
-			while( (k < ldata.size()) and (fabs( ldata[k].dist*sin(ldata[k].angle - ldata[j+1].angle)) < 400 ))
+			while( (k < ldata.size()) and (fabs( ldata[k].dist*sin(ldata[k].angle - ldata[j+1].angle)) < 500 ))
 			{ k++; }
 			x=k;
 			break;
+		    }
+		  
 		}
 	}
   
@@ -137,6 +152,46 @@ void SpecificWorker::crearObjective()
 }
 
 
+void SpecificWorker::crearObjectiveP()
+{
+
+  uint i, j;
+  QVec t;
+  float dt;
+  
+
+  t = inner->transform("rgbd", QVec::vec3(tag.x,0,tag.z), "world");
+
+  
+  float d = t.norm2();
+  float alpha =atan2(t.x(), t.z() );   
+    
+  for(i = 5; i<ldata.size()-5; i++)
+  {
+      if(ldata[i].angle < alpha)
+      {
+	if(d>ldata[i].dist)
+	{
+	  dt=ldata[i].dist;
+	 break;
+	}
+      } 
+  }
+  
+  for(j = i;j<ldata.size()-5;j++)
+  {
+    
+      if(ldata[j].dist> (dt+(dt*0.2)) and ldata[j].angle < 0)
+      {
+	QVec sub=inner->transform("world", QVec::vec3(ldata[j].dist *sin(ldata[j].angle)-2000,0, ldata[j].dist *cos(ldata[j].angle)), "laser");
+	subtag.x=sub.x();
+	subtag.z=sub.z();
+	subtag.isActive=true;
+	break;
+      }
+  }
+  
+}
 
 
 bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
@@ -153,23 +208,25 @@ void SpecificWorker::avanzar_subtag()
     QVec sub_data = inner->transform("laser", QVec::vec3(subtag.x,0,subtag.z), "world");
     float alpha =atan2(sub_data.x(), sub_data.z());
     float rot= 0.4*alpha;
-    float dist = sub_data.norm2();
+    float dist = 0.3*sub_data.norm2();
    std::cout<<"La rotacion es: "<< rot <<std::endl;
+   std::cout<<"La distancia es: "<< dist <<std::endl;
    
-//     if(dist<300)
-//     {
-//         subtag.isActive=false;
-//         differentialrobot_proxy->setSpeedBase(0,0);
-//       
-//     }else
-//     {
-      if( fabs(rot) > 0.2)
+   
+    if(dist<300)
+    {
+        subtag.isActive=false;
+        differentialrobot_proxy->setSpeedBase(0,0);
+      
+    }else
+    {
+      if( fabs(rot) > 0.1)
       {
 	dist = 0;
       }
-      if(dist>300){dist=300;rot=0;}
+      if(dist>300){dist=150;}
       differentialrobot_proxy->setSpeedBase(dist,rot);
-//     }
+     }
   
    
 }
@@ -177,14 +234,14 @@ void SpecificWorker::avanzar_subtag()
 void SpecificWorker::avanzar_tag()
 {
    
-    QVec sub_data = inner->transform("rgbd", QVec::vec3(subtag.x,0,subtag.z), "world");
+    QVec sub_data = inner->transform("rgbd", QVec::vec3(tag.x,0,tag.z), "world");
     float alpha =atan2(sub_data.x(), sub_data.z());
-    float rot= 0.3*alpha;
+    float rot= 0.4*alpha;
     float dist = 0.3*sub_data.norm2();
    
-      if( fabs(rot) > 0.8) dist = 0;else rot=0;
-      //if(dist>300)dist=300;
-      differentialrobot_proxy->setSpeedBase(0,0);
+      if( fabs(rot) > 0.1) dist = 0;//;else rot=0;
+      if(dist>300)dist=150;
+      differentialrobot_proxy->setSpeedBase(dist,rot);
     
   
 }
@@ -244,7 +301,7 @@ void SpecificWorker::compute()
       else
       {
 	std::cout<<"----CREANDO SUB-MARCA----"<<std::endl;
-	crearObjective();
+	crearObjectiveP();
       }
          std::cout<<"---------------"<<std::endl;
       break;
@@ -252,11 +309,12 @@ void SpecificWorker::compute()
     case State::MARCA:
       std::cout<<"----EXISTE MARCA----"<<std::endl;
       differentialrobot_proxy->setSpeedBase(0,0);
-      if(calcularDistancia(tag.x,tag.z)<=400)
+      if(calcularDistancia(tag.x,tag.z)<=500)
 	state=State::FIN;
       else
       {
 	avanzar_tag();
+	state=State::VISTA;
       }
       std::cout<<"---------------"<<std::endl;
       break;

@@ -66,6 +66,7 @@ private:
   
   
   bool isView();
+  void crearObjectiveP();
   bool isObjective();
   bool fin_objective();
   void crearObjective();
