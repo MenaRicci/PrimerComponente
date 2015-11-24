@@ -77,10 +77,10 @@ src/AprilTags.cpp: /opt/robocomp/interfaces/AprilTags.ice
 
 src/AprilTags.h: src/AprilTags.cpp
 
-src/Controller.cpp: /home/salabeta/robocomp/interfaces/Controller.ice
+src/Controller.cpp: /opt/robocomp/interfaces/Controller.ice
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/salabeta/menaricci/mycomp/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Controller.cpp and Controller.h from Controller.ice"
-	cd /home/salabeta/salabeta/menaricci/mycomp/src && slice2cpp -I/home/salabeta/robocomp//interfaces/ -I/opt/robocomp/interfaces -I. /home/salabeta/robocomp//interfaces//Controller.ice --output-dir .
+	cd /home/salabeta/salabeta/menaricci/mycomp/src && slice2cpp -I/home/salabeta/robocomp//interfaces/ -I/opt/robocomp/interfaces -I. /opt/robocomp/interfaces/Controller.ice --output-dir .
 
 src/Controller.h: src/Controller.cpp
 

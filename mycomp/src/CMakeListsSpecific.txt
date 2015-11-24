@@ -15,6 +15,7 @@ SET ( HEADERS
 )
 
 INCLUDE($ENV{ROBOCOMP}/cmake/modules/ipp.cmake)
+SET (SPECIFIC_LIBS -lemon) 
 
 ADD_DEFINITIONS( -std=c++11 )
 

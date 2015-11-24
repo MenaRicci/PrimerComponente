@@ -27,6 +27,22 @@
 #include <genericworker.h>
 #include <innermodel/innermodel.h>
 #include <datoscamara.h>
+#include <lemon/list_graph.h>
+#include <lemon/dijkstra.h>
+#include <lemon/maps.h>
+#include <iostream>
+using namespace lemon;
+
+
+
+typedef lemon::ListGraph Graph;
+  typedef Graph::EdgeIt EdgeIt;
+  typedef Graph::Edge Edge;
+  typedef Graph::NodeIt NodeIt;
+  typedef Graph::Node Node;
+  typedef Graph::EdgeMap<int> LengthMap;
+  using lemon::INVALID;
+
 
 class SpecificWorker : public GenericWorker
 {
@@ -53,12 +69,14 @@ class SpecificWorker : public GenericWorker
      QVec realidad;
      int recorrido=0;
      enum class State { INIT, SEARCH, ADVANCE,STOP};
-     State state = State::SEARCH;
+     State state = State::INIT;
      Smemoria Memoria;
      DatosCamara marcas;
      bool enviado=false;
+     Graph graph;
      
-     void avanzar_sin_rumbo();
+     
+     void CrearCamino();
      void search();
      void Controller();
      void evitar_obstaculos();

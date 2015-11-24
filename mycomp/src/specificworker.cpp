@@ -17,6 +17,7 @@
  *    along with RoboComp.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include "specificworker.h"
+
 #include <qt4/QtCore/qlist.h>
 
 /**
@@ -52,8 +53,9 @@ void SpecificWorker::compute()
      switch(state){
 
        case State::INIT:
-	  std::cout << "<--------------Buscando---------->"<< std::endl;  
-	        avanzar_sin_rumbo();
+	  std::cout << "<--------------Creando Camino---------->"<< std::endl;  
+	  CrearCamino();
+	  qFatal("FIN");
 	      break;
 
         case State::SEARCH:
@@ -141,76 +143,66 @@ void SpecificWorker::search()
     
 }
 
-void SpecificWorker::avanzar_sin_rumbo()
+
+void SpecificWorker::CrearCamino()
 {
 
-   const float threshold = 400; //Distancia previa a choquein
-   float rot = 0.7707;  //
-   const int acot = 16;
-   float dist;
-   float angle;
-   static float sentido_giro;
-   int  numero = rand() % 42;
-   
+      
   
-   if(marcas.contains(recorrido)){
-       std::sort( ldata.begin() , ldata.end()  , [](RoboCompLaser::TData a, RoboCompLaser::TData b ){ return     a.dist < b.dist; }) ;
-       dist=ldata.data()->dist;
-       angle=ldata.data()->angle;
-    }else{
-       std::sort( ldata.begin()+ acot , ldata.end() - acot  , [](RoboCompLaser::TData a, RoboCompLaser::TData b ){ return     a.dist < b.dist; }) ;
-       dist=(ldata.data() + acot)->dist;
-       angle=(ldata.data() + acot)->angle;
-    }
+    Graph g;
+  
+  Node s=g.addNode();
+  Node v2=g.addNode();
+  Node v3=g.addNode();
+  Node v4=g.addNode();
+  Node v5=g.addNode();
+  Node t=g.addNode();
 
-    if(dist < threshold ){
-       if(angle >= 0 ){
-         sentido_giro=-rot;
-        }else {
-           sentido_giro=rot;
-        }
-        differentialrobot_proxy->setSpeedBase(0, sentido_giro);
+  Edge s_v2=g.addEdge(s, v2);
+  Edge s_v3=g.addEdge(s, v3);
+  Edge v2_v4=g.addEdge(v2, v4);
+  Edge v2_v5=g.addEdge(v2, v5);
+  Edge v3_v5=g.addEdge(v3, v5);
+  Edge v4_t=g.addEdge(v4, t);
+  Edge v5_t=g.addEdge(v5, t);
+  
+  LengthMap length(g);
 
-       if(numero %5==0){
-           differentialrobot_proxy->setSpeedBase(0, sentido_giro*3);
-           
-        }
-    }else{
-       differentialrobot_proxy->setSpeedBase(500, 0); 
-    }
-    
-    state = State::SEARCH;
-    
+  length[s_v2]=10;
+  length[s_v3]=10;
+  length[v2_v4]=5;
+  length[v2_v5]=8;
+  length[v3_v5]=5;
+  length[v4_t]=8;
+  length[v5_t]=8;
+
+  std::cout << "Hello World!" << std::endl;
+  std::cout <<  std::endl;
+  std::cout << "This is library LEMON here! We have a graph!" << std::endl;
+  std::cout <<  std::endl;
+
+  std::cout << "Nodes:";
+  for (NodeIt i(g); i!=INVALID; ++i)
+    std::cout << " " << g.id(i);
+  std::cout << std::endl;
+
+  std::cout << "Edges:";
+  for (EdgeIt i(g); i!=INVALID; ++i)
+    std::cout << " (" << g.id(g.source(i)) << "," << g.id(g.target(i)) << ")";
+  std::cout << std::endl;
+  std::cout <<  std::endl;
+
+  std::cout << "There is a map on the edges (length)!" << std::endl;
+  std::cout <<  std::endl;
+  for (EdgeIt i(g); i!=INVALID; ++i)
+    std::cout << "length(" << g.id(g.source(i)) << ","
+              << g.id(g.target(i)) << ")="<<length[i]<<std::endl;
+
+  std::cout << std::endl;
+
 }
 
-void SpecificWorker::evitar_obstaculos()
-{
-  
-//    float rot = 0.7707;  //
-//    float dist;
-//    float angle;
-//    static float sentido_giro;
-//    QVec realidad = inner->transform("rgbd",Memoria.vec,"world");
-//    float distancia_M=sqrt(pow(realidad.x(),2) + pow(realidad.z(),2));
-//    RoboCompLaser::TLaserData ldatacopy=ldata;
-//    
-//    
-//    
-//    std::sort( ldatacopy.begin() , ldatacopy.end()  , [](RoboCompLaser::TData a, RoboCompLaser::TData b ){ return     a.dist < b.dist; }) ;
-//    dist=ldatacopy.data()->dist;
-//    angle=ldatacopy.data()->angle;
-//     
-// 
-//     if(dist != distancia_M )
-//     {
-// 
-//       (ldatacopy.data()+40)->angle;
-// 
-//     }else{
-//       	 rot=atan2(realidad.x(),realidad.z());
-// 	 differentialrobot_proxy->setSpeedBase(300,rot);
-//     }
-}
+
 
 
 

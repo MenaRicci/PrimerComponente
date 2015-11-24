@@ -744,5 +744,8 @@ inclusive=0
 pattern=/src/main.cpp.s
 targets=1
 
+[MakeBuilder]
+Number Of Jobs=4
+
 [Project]
 VersionControlSupport=kdevgit
