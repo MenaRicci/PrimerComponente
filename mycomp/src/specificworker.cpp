@@ -147,8 +147,6 @@ void SpecificWorker::search()
 void SpecificWorker::CrearCamino()
 {
 
-      
-  
     Graph g;
   
   Node s=g.addNode();
@@ -159,13 +157,14 @@ void SpecificWorker::CrearCamino()
   Node t=g.addNode();
 
   Edge s_v2=g.addEdge(s, v2);
+ // Edge v2_s=g.addEdge(v2,s);
   Edge s_v3=g.addEdge(s, v3);
   Edge v2_v4=g.addEdge(v2, v4);
   Edge v2_v5=g.addEdge(v2, v5);
   Edge v3_v5=g.addEdge(v3, v5);
   Edge v4_t=g.addEdge(v4, t);
   Edge v5_t=g.addEdge(v5, t);
-  
+    
   LengthMap length(g);
 
   length[s_v2]=10;
@@ -188,18 +187,43 @@ void SpecificWorker::CrearCamino()
 
   std::cout << "Edges:";
   for (EdgeIt i(g); i!=INVALID; ++i)
-    std::cout << " (" << g.id(g.source(i)) << "," << g.id(g.target(i)) << ")";
+    std::cout << " (" << g.id(g.u(i)) << "," << g.id(g.v(i)) << ")";
   std::cout << std::endl;
   std::cout <<  std::endl;
 
   std::cout << "There is a map on the edges (length)!" << std::endl;
   std::cout <<  std::endl;
   for (EdgeIt i(g); i!=INVALID; ++i)
-    std::cout << "length(" << g.id(g.source(i)) << ","
-              << g.id(g.target(i)) << ")="<<length[i]<<std::endl;
+    std::cout << "length(" << g.id(g.u(i)) << ","
+              << g.id(g.v(i)) << ")="<<length[i]<<std::endl;
 
   std::cout << std::endl;
 
+  
+std::cout << "Dijkstra algorithm demo..." << std::endl;
+
+    Dijkstra<Graph, LengthMap> dijkstra_test(g,length);
+    
+    dijkstra_test.run(v3);
+    
+    std::cout << "The distance of node t from node s: "
+              << dijkstra_test.dist(v4) << std::endl;
+
+    std::cout << "The shortest path from s to t goes through the following "
+              << "nodes (the first one is t, the last one is s): "
+              << std::endl;
+
+    for (Node v=v4;v != v3; v=dijkstra_test.predNode(v)) {
+      std::cout << g.id(v) << "<-";
+    }
+    
+    std::cout << g.id(v3) << std::endl;  
+
+
+//  ListDigraph::NodeMap<int> map(g);
+    
+  
+  
 }
 
 
