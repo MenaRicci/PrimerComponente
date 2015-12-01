@@ -27,7 +27,7 @@
 #include <genericworker.h>
 #include <innermodel/innermodel.h>
 #include <datoscamara.h>
-
+#include <qmat/qmat.h>
 
 #include <lemon/list_graph.h>
 
@@ -73,11 +73,11 @@ class SpecificWorker : public GenericWorker
 
    private:
      
-     InnerModel *inner;   
+     InnerModel *inner, *April, virtual_camara, virtual_robot;   
      QVec realidad;
      int recorrido=0;
      enum class State { INIT, SEARCH, ADVANCE,STOP};
-     State state = State::INIT;
+     State state = State::SEARCH;
      Smemoria Memoria;
      DatosCamara marcas;
      bool enviado=false;

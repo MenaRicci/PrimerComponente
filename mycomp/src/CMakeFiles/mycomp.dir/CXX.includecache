@@ -27,6 +27,8 @@ innermodel/innermodel.h
 -
 datoscamara.h
 -
+qmat/qmat.h
+-
 lemon/list_graph.h
 -
 lemon/dijkstra.h

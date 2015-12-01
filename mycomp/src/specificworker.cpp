@@ -26,6 +26,9 @@
 SpecificWorker::SpecificWorker(MapPrx& mprx) : GenericWorker(mprx)
 {
   inner= new InnerModel("/home/salabeta/robocomp/files/innermodel/simpleworld.xml");
+  
+  
+  
 }
 
 /**
@@ -87,16 +90,63 @@ void SpecificWorker::Controller()
   st=controller_proxy->getState();
 
  if(!enviado){
-  enviado=true;
-  std::cout << "Enviando" << std::endl;
-  DatosCamara::MyTag B= marcas.get(recorrido);
-  QVec realidad = inner->transform("world",QVec::vec3(B.dist_x,0,B.dist_z),"rgbd");
+ enviado=true;
+ std::cout << "Enviando" << std::endl;
+ TBaseState tbase; differentialrobot_proxy->getBaseState(tbase);
+ DatosCamara::MyTag B= marcas.get(recorrido);
+
+ 
+ QVec realidad = inner->transform("world",QVec::vec3(B.dist_x,0,B.dist_z),"rgbd"); 
+
+ std::cout << "<--Posicion de la marca en APRIL-->"<< std::endl;   
+
+ std::cout << "<--X:-->"<<B.dist_x<< std::endl;
   
- TargetPose TP;
- TP.x=realidad.x();
- TP.z=realidad.z();
+ std::cout << "<--Z:-->"<<B.dist_z<< std::endl;
+ 
+ 
+ std::cout << "<--Posicion de la marca en el mundo -->"<< std::endl;   
+
+ std::cout << "<--X:-->"<<realidad.x()<< std::endl;
+  
+ std::cout << "<--Z:-->"<<realidad.z()<< std::endl;
+ 
+ 
+ QVec ficcion = inner->transform("rgbd",QVec::vec3(B.dist_x,0,B.dist_z),"world");
+
+  // QVec prueba1 = inner->transform("rgbd",QVec::vec3(tbase.x,0,tbase.z),"world"); /*Posicion de la camra segun el robot; Valores Estaticos X--> 0 Z --> 180*/
+ 
+ 
+ 
+ std::cout << "<--Posicion del robot en el mundo-->"<< std::endl;   
+
+ std::cout << "<--X:-->"<<tbase.x<< std::endl;
+  
+ std::cout << "<--Z:-->"<<tbase.z<< std::endl;
+  
+ 
+ std::cout << "<--¿Valores desconocidos? -->"<< std::endl;   
+
+ std::cout << "<--X:-->"<<ficcion.x()<< std::endl;
+  
+ std::cout << "<--Z:-->"<<ficcion.z()<< std::endl;
+ 
+ 
+ 
+ 
+ std::cout << "<////\\\\"<< std::endl;
+
+ 
+ 
   marcas.clear();
-  controller_proxy->go(TP);
+  st.state = "FIN";
+
+  // TargetPose TP;
+  // TP.x=realidad.x();
+  // TP.z=realidad.z();
+
+  
+  // controller_proxy->go(TP);
 }
 
   
@@ -118,7 +168,7 @@ void SpecificWorker::search()
    differentialrobot_proxy->setSpeedBase(0, 0);
    DatosCamara::MyTag A;
  //  tag B;
-      std::cout << "<--Buscando . . . -->"<< std::endl;   
+    //  std::cout << "<--Buscando . . . -->"<< std::endl;   
    if(marcas.contains(recorrido)){
       //Obtenemos la marca
        A= marcas.get(recorrido);
@@ -126,17 +176,7 @@ void SpecificWorker::search()
        Memoria.vec = inner->transform("world",QVec::vec3(A.dist_x,0,A.dist_z),"rgbd");
        Memoria.activo=true;
        std::cout << "<--Busqueda finalizada-->"<< std::endl;   
-       state = State::ADVANCE;//Controller();
-//     }else{
-//       //Comprobamos que la marca este en memoria, si es asi nos dirigimos hacia ella sino nos ponemos a buscar
-//        if(Memoria.activo){ 
-//            QVec realidad = inner->transform("rgbd",Memoria.vec,"world");
-//           //Una vez tenemos los datos reales, tenemos que hacer operaciones para orientar el robot hacia el objetivo
-//            B.tx=realidad.x();
-//            B.tz=realidad.z();
-//            B.id=recorrido;
-//            marcas.add(B);
-//            state = State::ADVANCE;//Controller(); 
+       state = State::ADVANCE; 
    }else{
 	        differentialrobot_proxy->setSpeedBase(0,0.7707);
         }
