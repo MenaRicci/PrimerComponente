@@ -27,8 +27,7 @@ SpecificWorker::SpecificWorker(MapPrx& mprx) : GenericWorker(mprx)
 {
   inner= new InnerModel("/home/salabeta/robocomp/files/innermodel/simpleworld.xml");
   
-  
-  
+
 }
 
 /**
@@ -39,6 +38,68 @@ SpecificWorker::~SpecificWorker()
 
 	  
 }
+
+
+void SpecificWorker::Transformaciones()
+{
+
+RTMat RoboCama,CamaApril, Inv_RoboCama, Inv_CamaApril;
+InnerModelTransform* April =inner->newTransform ("April_id", "static", inner->getNode("rgbd"), 0, 0, 0, 0, 0, 0,0);
+
+
+CamaApril=inner->getTransformationMatrix("April_id","rgbd");
+RoboCama=inner->getTransformationMatrix("rgbd", "base");
+ 
+ 
+ 
+  Inv_CamaApril=CamaApril.invert();
+  InnerModelTransform *CamaraVirtual,*BaseVirtual;
+  Inv_RoboCama=RoboCama.invert();
+
+ QVec datos_M = Inv_CamaApril.getTr();
+ QVec datos_R = Inv_RoboCama.getTr(); 
+ 
+ 
+ switch(recorrido)
+ {
+   case 0:
+     CamaraVirtual =inner->newTransform ("Virtual_id", "static", inner->getNode("target00"), datos_M.x(),datos_M.y() ,datos_M.z(),
+					 Inv_CamaApril.getRxValue(),Inv_CamaApril.getRyValue(),Inv_CamaApril.getRzValue(), 0);
+     break;
+   case 1:
+     CamaraVirtual =inner->newTransform ("Virtual_id", "static", inner->getNode("target01"), datos_M.x(),datos_M.y() ,datos_M.z(),
+					 Inv_CamaApril.getRxValue(),Inv_CamaApril.getRyValue(),Inv_CamaApril.getRzValue(), 0);
+     break;
+   case 2:
+      CamaraVirtual =inner->newTransform ("Virtual_id", "static", inner->getNode("target02"), datos_M.x(),datos_M.y() ,datos_M.z(),
+					 Inv_CamaApril.getRxValue(),Inv_CamaApril.getRyValue(),Inv_CamaApril.getRzValue(), 0);
+     break;
+   case 3:
+      CamaraVirtual =inner->newTransform ("Virtual_id", "static", inner->getNode("target03"), datos_M.x(),datos_M.y() ,datos_M.z(),
+					 Inv_CamaApril.getRxValue(),Inv_CamaApril.getRyValue(),Inv_CamaApril.getRzValue(), 0);
+     break;
+}
+
+BaseVirtual = inner->newTransform ("base_id", "static", inner->getNode("Virtual_id"), datos_M.x(),datos_M.y() ,datos_M.z(),
+					 Inv_CamaApril.getRxValue(),Inv_CamaApril.getRyValue(),Inv_CamaApril.getRzValue(), 0);
+
+
+InnerModelTransform* Robot =inner->newTransform ("Robot_id", "static", inner->getNode("rgbd"), datos_R.x(),datos_R.y() ,datos_R.z(),
+					 Inv_RoboCama.getRxValue(),Inv_RoboCama.getRyValue(),Inv_RoboCama.getRzValue(), 0);
+
+
+
+
+QVec valores = inner->transform("world",QVec::zeros(6),"Robot_id");
+ inner->updateTransformValues("base",valores.x(),valores.y(),valores.z(),valores.rx(),valores.ry(),valores.rz());
+
+ inner->removeNode("Robot_id");
+ inner->removeNode("Virtual_id");
+  
+ inner->removeNode("April_id");
+
+}
+
 
 bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 {	
@@ -51,22 +112,27 @@ void SpecificWorker::compute()
   try{     
 	   ldata = laser_proxy->getLaserData();
 	   TBaseState tbase; differentialrobot_proxy->getBaseState(tbase);
-	   inner->updateTransformValues("base",tbase.x,0,tbase.z,0,tbase.alpha,0);
-	
+	  inner->updateTransformValues("base",tbase.x,0,tbase.z,0,tbase.alpha,0);
+  
+	   
+	//Transformaciones();
+	 
+	 
      switch(state){
 
        case State::INIT:
 	  std::cout << "<--------------Creando Camino---------->"<< std::endl;  
 	  CrearCamino();
-	  qFatal("FIN");
 	      break;
 
         case State::SEARCH:
+	 
 	         search();
 	      break;
 
 	case State::ADVANCE:
-		Controller();
+	 
+	  Controller();
 		
 		//controller_proxy->go();
 	      break;
@@ -141,12 +207,12 @@ void SpecificWorker::Controller()
   marcas.clear();
   st.state = "FIN";
 
-  // TargetPose TP;
-  // TP.x=realidad.x();
-  // TP.z=realidad.z();
+   TargetPose TP;
+   TP.x=realidad.x();
+   TP.z=realidad.z();
 
   
-  // controller_proxy->go(TP);
+   controller_proxy->go(TP);
 }
 
   
@@ -165,6 +231,9 @@ void SpecificWorker::Controller()
 
 void SpecificWorker::search()
 {
+  
+
+  
    differentialrobot_proxy->setSpeedBase(0, 0);
    DatosCamara::MyTag A;
  //  tag B;
@@ -267,10 +336,6 @@ std::cout << "Dijkstra algorithm demo..." << std::endl;
 }
 
 
-
-
-
- 
 ////////////////////////////////////////////////////////////77
 //////  EN EL HILO THE ICE
 ////////////////////////////////////////////////////////////

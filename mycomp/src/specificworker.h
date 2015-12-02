@@ -72,8 +72,11 @@ class SpecificWorker : public GenericWorker
 	   void compute(); 	
 
    private:
+    
+     InnerModelTransform *CamaraVirtual,*BaseVirtual,*April, *Robot ;
      
-     InnerModel *inner, *April, virtual_camara, virtual_robot;   
+     
+     InnerModel *inner;
      QVec realidad;
      int recorrido=0;
      enum class State { INIT, SEARCH, ADVANCE,STOP};
@@ -83,11 +86,10 @@ class SpecificWorker : public GenericWorker
      bool enviado=false;
      Graph graph;
      
-     
+     void Transformaciones();
      void CrearCamino();
      void search();
-     void Controller();
-     void evitar_obstaculos();
+     void Controller();;
       RoboCompLaser::TLaserData ldata;
 };
 #endif
