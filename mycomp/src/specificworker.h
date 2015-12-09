@@ -73,7 +73,7 @@ class SpecificWorker : public GenericWorker
 
    private:
     
-     InnerModelTransform *CamaraVirtual,*BaseVirtual,*April, *Robot ;
+    // InnerModelTransform *CamaraVirtual,*BaseVirtual,*April, *Robot ;
      
      
      InnerModel *inner;

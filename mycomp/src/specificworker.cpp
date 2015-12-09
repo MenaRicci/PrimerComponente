@@ -41,63 +41,79 @@ SpecificWorker::~SpecificWorker()
 
 
 void SpecificWorker::Transformaciones()
-{
+{	
+  
+    std::cout << "<--------------Dentro del metodo Transformaciones---------->"<< std::endl;  
 
 RTMat RoboCama,CamaApril, Inv_RoboCama, Inv_CamaApril;
+
 InnerModelTransform* April =inner->newTransform ("April_id", "static", inner->getNode("rgbd"), 0, 0, 0, 0, 0, 0,0);
 
+    std::cout << "<--------------Inner April Creado---------->"<< std::endl;  
+
+QVec v_1 = inner->transform("rgbd",QVec::zeros(6), "April_id");
 
 CamaApril=inner->getTransformationMatrix("April_id","rgbd");
-RoboCama=inner->getTransformationMatrix("rgbd", "base");
- 
- 
- 
-  Inv_CamaApril=CamaApril.invert();
-  InnerModelTransform *CamaraVirtual,*BaseVirtual;
-  Inv_RoboCama=RoboCama.invert();
 
- QVec datos_M = Inv_CamaApril.getTr();
- QVec datos_R = Inv_RoboCama.getTr(); 
+    std::cout << "<--------------Matriz April/Camara creada---------->"<< std::endl; 
+
+RoboCama=inner->getTransformationMatrix("rgbd", "base");
+
+    std::cout << "<--------------Ambas Matrices Creadas---------->"<< std::endl; 
+ 
+
+InnerModelTransform *CamaraVirtual,*BaseVirtual;
+
+Inv_RoboCama=RoboCama.invert();
+    
+  std::cout << "<--------------Vector CamaApril invertida---------->"<< std::endl; 
+QVec datos_R = Inv_RoboCama.getTr(); 
+
+
+  std::cout << "<--------------Vector RoboCama invertida---------->"<< std::endl; 
  
  
  switch(recorrido)
  {
    case 0:
-     CamaraVirtual =inner->newTransform ("Virtual_id", "static", inner->getNode("target00"), datos_M.x(),datos_M.y() ,datos_M.z(),
+    /* CamaraVirtual =inner->newTransform ("Virtual_id", "static", inner->getNode("target00"), datos_M.x(),datos_M.y() ,datos_M.z(),
 					 Inv_CamaApril.getRxValue(),Inv_CamaApril.getRyValue(),Inv_CamaApril.getRzValue(), 0);
+     */
+    CamaraVirtual =inner->newTransform ("Virtual_id", "static", inner->getNode("target00"), v_1.x(),v_1.y() ,v_1.z(),v_1.rx(),v_1.ry(),v_1.rz(), 0);
+     std::cout << "<--------------Inner CamaraVirtual actualizado 0---------->"<< std::endl;
      break;
    case 1:
-     CamaraVirtual =inner->newTransform ("Virtual_id", "static", inner->getNode("target01"), datos_M.x(),datos_M.y() ,datos_M.z(),
-					 Inv_CamaApril.getRxValue(),Inv_CamaApril.getRyValue(),Inv_CamaApril.getRzValue(), 0);
+ CamaraVirtual =inner->newTransform ("Virtual_id", "static", inner->getNode("target01"), v_1.x(),v_1.y() ,v_1.z(),v_1.rx(),v_1.ry(),v_1.rz(), 0);
      break;
+     
    case 2:
-      CamaraVirtual =inner->newTransform ("Virtual_id", "static", inner->getNode("target02"), datos_M.x(),datos_M.y() ,datos_M.z(),
-					 Inv_CamaApril.getRxValue(),Inv_CamaApril.getRyValue(),Inv_CamaApril.getRzValue(), 0);
+ CamaraVirtual =inner->newTransform ("Virtual_id", "static", inner->getNode("target02"), v_1.x(),v_1.y() ,v_1.z(),v_1.rx(),v_1.ry(),v_1.rz(), 0);
      break;
+     
    case 3:
-      CamaraVirtual =inner->newTransform ("Virtual_id", "static", inner->getNode("target03"), datos_M.x(),datos_M.y() ,datos_M.z(),
-					 Inv_CamaApril.getRxValue(),Inv_CamaApril.getRyValue(),Inv_CamaApril.getRzValue(), 0);
+ CamaraVirtual =inner->newTransform ("Virtual_id", "static", inner->getNode("target03"), v_1.x(),v_1.y() ,v_1.z(),v_1.rx(),v_1.ry(),v_1.rz(), 0);
      break;
 }
+std::cout << "<--------------Inner CamaraVirtual Creado---------->"<< std::endl; 
 
-BaseVirtual = inner->newTransform ("base_id", "static", inner->getNode("Virtual_id"), datos_M.x(),datos_M.y() ,datos_M.z(),
-					 Inv_CamaApril.getRxValue(),Inv_CamaApril.getRyValue(),Inv_CamaApril.getRzValue(), 0);
-
-
-InnerModelTransform* Robot =inner->newTransform ("Robot_id", "static", inner->getNode("rgbd"), datos_R.x(),datos_R.y() ,datos_R.z(),
+ InnerModelTransform* Robot =inner->newTransform ("Robot_id", "static", inner->getNode("Virtual_id"), datos_R.x(),datos_R.y() ,datos_R.z(),
 					 Inv_RoboCama.getRxValue(),Inv_RoboCama.getRyValue(),Inv_RoboCama.getRzValue(), 0);
 
 
+  std::cout << "<--------------Inner Robot Creado---------->"<< std::endl; 
 
-
-QVec valores = inner->transform("world",QVec::zeros(6),"Robot_id");
- inner->updateTransformValues("base",valores.x(),valores.y(),valores.z(),valores.rx(),valores.ry(),valores.rz());
+  QVec valores = inner->transform("world",QVec::zeros(6),"Robot_id");
+  
+  inner->updateTransformValues("base",valores.x(),valores.y(),valores.z(),valores.rx(),valores.ry(),valores.rz());
 
  inner->removeNode("Robot_id");
  inner->removeNode("Virtual_id");
-  
  inner->removeNode("April_id");
-
+ 
+std::cout << "<--------------FIN---------->"<< std::endl; 
+std::cout << "<>"<< std::endl; 
+std::cout << "<>"<< std::endl; 
+std::cout << "<>"<< std::endl; 
 }
 
 
@@ -144,6 +160,7 @@ void SpecificWorker::compute()
       }
   }catch(const Ice::Exception &ex){
      std::cout << ex << std::endl;
+     
   }	 
 }
 
@@ -155,61 +172,24 @@ void SpecificWorker::Controller()
   NavState st;
   st=controller_proxy->getState();
 
+  std::cout << "<--------------En controller---------->"<< std::endl; 
+  
  if(!enviado){
  enviado=true;
  std::cout << "Enviando" << std::endl;
  TBaseState tbase; differentialrobot_proxy->getBaseState(tbase);
+ 
+ 
  DatosCamara::MyTag B= marcas.get(recorrido);
 
  
  QVec realidad = inner->transform("world",QVec::vec3(B.dist_x,0,B.dist_z),"rgbd"); 
-
- std::cout << "<--Posicion de la marca en APRIL-->"<< std::endl;   
-
- std::cout << "<--X:-->"<<B.dist_x<< std::endl;
-  
- std::cout << "<--Z:-->"<<B.dist_z<< std::endl;
- 
- 
- std::cout << "<--Posicion de la marca en el mundo -->"<< std::endl;   
-
- std::cout << "<--X:-->"<<realidad.x()<< std::endl;
-  
- std::cout << "<--Z:-->"<<realidad.z()<< std::endl;
- 
- 
- QVec ficcion = inner->transform("rgbd",QVec::vec3(B.dist_x,0,B.dist_z),"world");
-
-  // QVec prueba1 = inner->transform("rgbd",QVec::vec3(tbase.x,0,tbase.z),"world"); /*Posicion de la camra segun el robot; Valores Estaticos X--> 0 Z --> 180*/
- 
- 
- 
- std::cout << "<--Posicion del robot en el mundo-->"<< std::endl;   
-
- std::cout << "<--X:-->"<<tbase.x<< std::endl;
-  
- std::cout << "<--Z:-->"<<tbase.z<< std::endl;
-  
- 
- std::cout << "<--¿Valores desconocidos? -->"<< std::endl;   
-
- std::cout << "<--X:-->"<<ficcion.x()<< std::endl;
-  
- std::cout << "<--Z:-->"<<ficcion.z()<< std::endl;
- 
- 
- 
- 
- std::cout << "<////\\\\"<< std::endl;
-
- 
  
   marcas.clear();
-  st.state = "FIN";
 
    TargetPose TP;
-   TP.x=realidad.x();
-   TP.z=realidad.z();
+   TP.x=Memoria.vec.x();
+   TP.z=Memoria.vec.z();
 
   
    controller_proxy->go(TP);
