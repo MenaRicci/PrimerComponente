@@ -36,25 +36,45 @@ SpecificWorker::SpecificWorker(MapPrx& mprx) : GenericWorker(mprx)
 SpecificWorker::~SpecificWorker()
 {
 
-	  
 }
+QVec SpecificWorker::getVectorAprilTag(){
 
+    DatosCamara::MyTag A;
+    QVec Vec;
+   if(marcas.contains(recorrido)){
+    A=marcas.get(recorrido);
+    switch(A.id)
+    {
+      case 0:
+	Vec =inner->transform("rgbd",QVec::zeros(6),"target00");
+	break;
+	      case 1:
+	Vec =inner->transform("rgbd",QVec::zeros(6),"target01");
+	break;
+	      case 2:
+	Vec =inner->transform("rgbd",QVec::zeros(6),"target02");
+	break;
+	      case 3:
+	Vec =inner->transform("rgbd",QVec::zeros(6),"target03");
+	break;
+    }
+    
+   }   
+   return Vec;
+}
 
 void SpecificWorker::Transformaciones()
 {	
   
-  //InnerModelTransform* April =
+  QVec Vector_TargetCama=getVectorAprilTag();
+  
   
 RTMat RoboCama,CamaApril, Inv_RoboCama, Inv_CamaApril, WorldRobo;
 
-QVec Vector_TargetCama =inner->transform("rgbd",QVec::zeros(6),"target00");
 
 inner->newTransform ("April_id", "static", inner->getNode("rgbd"), Vector_TargetCama.x(), Vector_TargetCama.y(), Vector_TargetCama.z(), Vector_TargetCama.rx(), Vector_TargetCama.ry(),Vector_TargetCama.rz(),0); //Creamos April Virtual
 
 QVec v_1 = inner->transform("April_id",QVec::zeros(6),"rgbd" ); // Conseguimos Matriz Inversa AprilCama 
-
-//RoboCama=inner->getTransformationMatrix("rgbd", "base"); //Obtenemos Matriz Robot Camara
-
 
 
 
@@ -89,24 +109,13 @@ QVec v_2 = inner->transform("rgbd",QVec::zeros(6),"base" );
 inner->newTransform ("Robot_id", "static", inner->getNode("Virtual_id"), v_2.x(),v_2.y() ,v_2.z(), v_2.rx(),v_2.ry(),v_2.rz(), 0);
 
 
-   QVec valores = inner->transform("world",QVec::zeros(6),"Robot_id"); //Transforma los valores del robot virtual al mundo
+QVec valores = inner->transform("world",QVec::zeros(6),"Robot_id"); //Transforma los valores del robot virtual al mundo
   
-   TBaseState tbase; differentialrobot_proxy->getBaseState(tbase); // Posicion del robot original
-	      
-   std::cout << "Robot X:   "<< valores.x() << std::endl; 
-    
-   std::cout << "Robot Z:   "<< valores.z() << std::endl; 
-
-   std::cout << "<>"<< std::endl; 
-   
-   std::cout << "Base X:   "<< tbase.x << std::endl; 
-    
-   std::cout << "Base Z:   "<< tbase.z << std::endl; 
-	 
-  std::cout << "<>"<< std::endl; 
   
- // inner->updateTransformValues("base",valores.x(),valores.y(),valores.z(),valores.rx(),valores.ry(),valores.rz()); //Acutlizacion del robot 
+  inner->updateTransformValues("base",valores.x(),valores.y(),valores.z(),valores.rx(),valores.ry(),valores.rz()); //Acutlizacion del robot 
  
+  
+  
  inner->removeNode("Robot_id");
  inner->removeNode("Virtual_id");
  inner->removeNode("April_id");
@@ -126,11 +135,19 @@ void SpecificWorker::compute()
 	   TBaseState tbase; differentialrobot_proxy->getBaseState(tbase);
 	  inner->updateTransformValues("base",tbase.x,0,tbase.z,0,tbase.alpha,0);
   
+	  
+  
      switch(state){
 
        case State::INIT:
 	  //std::cout << "<--------------Creando Camino---------->"<< std::endl;  
-	Transformaciones();
+	
+	
+	  Transformaciones();
+	  std::cout << "<Posicion X> "<<tbase.x<< std::endl;  
+	   std::cout << "<Posicion Z> "<<tbase.z<< std::endl; 
+	
+	
 	      break;
 
         case State::SEARCH:

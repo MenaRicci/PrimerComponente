@@ -87,6 +87,7 @@ class SpecificWorker : public GenericWorker
      Graph graph;
      
      void Transformaciones();
+     QVec getVectorAprilTag();
      void CrearCamino();
      void search();
      void Controller();;
