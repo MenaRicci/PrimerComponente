@@ -43,77 +43,73 @@ SpecificWorker::~SpecificWorker()
 void SpecificWorker::Transformaciones()
 {	
   
-    std::cout << "<--------------Dentro del metodo Transformaciones---------->"<< std::endl;  
+  //InnerModelTransform* April =
+  
+RTMat RoboCama,CamaApril, Inv_RoboCama, Inv_CamaApril, WorldRobo;
 
-RTMat RoboCama,CamaApril, Inv_RoboCama, Inv_CamaApril;
+QVec Vector_TargetCama =inner->transform("rgbd",QVec::zeros(6),"target00");
 
-InnerModelTransform* April =inner->newTransform ("April_id", "static", inner->getNode("rgbd"), 0, 0, 0, 0, 0, 0,0);
+inner->newTransform ("April_id", "static", inner->getNode("rgbd"), Vector_TargetCama.x(), Vector_TargetCama.y(), Vector_TargetCama.z(), Vector_TargetCama.rx(), Vector_TargetCama.ry(),Vector_TargetCama.rz(),0); //Creamos April Virtual
 
-    std::cout << "<--------------Inner April Creado---------->"<< std::endl;  
+QVec v_1 = inner->transform("April_id",QVec::zeros(6),"rgbd" ); // Conseguimos Matriz Inversa AprilCama 
 
-QVec v_1 = inner->transform("rgbd",QVec::zeros(6), "April_id");
-
-CamaApril=inner->getTransformationMatrix("April_id","rgbd");
-
-    std::cout << "<--------------Matriz April/Camara creada---------->"<< std::endl; 
-
-RoboCama=inner->getTransformationMatrix("rgbd", "base");
-
-    std::cout << "<--------------Ambas Matrices Creadas---------->"<< std::endl; 
- 
-
-InnerModelTransform *CamaraVirtual,*BaseVirtual;
-
-Inv_RoboCama=RoboCama.invert();
-    
-  std::cout << "<--------------Vector CamaApril invertida---------->"<< std::endl; 
-QVec datos_R = Inv_RoboCama.getTr(); 
+//RoboCama=inner->getTransformationMatrix("rgbd", "base"); //Obtenemos Matriz Robot Camara
 
 
-  std::cout << "<--------------Vector RoboCama invertida---------->"<< std::endl; 
- 
- 
+
+
  switch(recorrido)
  {
    case 0:
     /* CamaraVirtual =inner->newTransform ("Virtual_id", "static", inner->getNode("target00"), datos_M.x(),datos_M.y() ,datos_M.z(),
 					 Inv_CamaApril.getRxValue(),Inv_CamaApril.getRyValue(),Inv_CamaApril.getRzValue(), 0);
      */
-    CamaraVirtual =inner->newTransform ("Virtual_id", "static", inner->getNode("target00"), v_1.x(),v_1.y() ,v_1.z(),v_1.rx(),v_1.ry(),v_1.rz(), 0);
-     std::cout << "<--------------Inner CamaraVirtual actualizado 0---------->"<< std::endl;
+   inner->newTransform ("Virtual_id", "static", inner->getNode("target00"), v_1.x(),v_1.y() ,v_1.z(),v_1.rx(),v_1.ry(),v_1.rz(), 0);
      break;
    case 1:
- CamaraVirtual =inner->newTransform ("Virtual_id", "static", inner->getNode("target01"), v_1.x(),v_1.y() ,v_1.z(),v_1.rx(),v_1.ry(),v_1.rz(), 0);
+ inner->newTransform ("Virtual_id", "static", inner->getNode("target01"), v_1.x(),v_1.y() ,v_1.z(),v_1.rx(),v_1.ry(),v_1.rz(), 0);
      break;
      
    case 2:
- CamaraVirtual =inner->newTransform ("Virtual_id", "static", inner->getNode("target02"), v_1.x(),v_1.y() ,v_1.z(),v_1.rx(),v_1.ry(),v_1.rz(), 0);
+ inner->newTransform ("Virtual_id", "static", inner->getNode("target02"), v_1.x(),v_1.y() ,v_1.z(),v_1.rx(),v_1.ry(),v_1.rz(), 0);
      break;
      
    case 3:
- CamaraVirtual =inner->newTransform ("Virtual_id", "static", inner->getNode("target03"), v_1.x(),v_1.y() ,v_1.z(),v_1.rx(),v_1.ry(),v_1.rz(), 0);
+ inner->newTransform ("Virtual_id", "static", inner->getNode("target03"), v_1.x(),v_1.y() ,v_1.z(),v_1.rx(),v_1.ry(),v_1.rz(), 0);
      break;
 }
-std::cout << "<--------------Inner CamaraVirtual Creado---------->"<< std::endl; 
+//std::cout << "<--------------Inner CamaraVirtual Creado---------->"<< std::endl; 
 
- InnerModelTransform* Robot =inner->newTransform ("Robot_id", "static", inner->getNode("Virtual_id"), datos_R.x(),datos_R.y() ,datos_R.z(),
-					 Inv_RoboCama.getRxValue(),Inv_RoboCama.getRyValue(),Inv_RoboCama.getRzValue(), 0);
+QVec v_2 = inner->transform("rgbd",QVec::zeros(6),"base" ); 
+
+/* InnerModelTransform* Robot =inner->newTransform ("Robot_id", "static", inner->getNode("Virtual_id"), datos_R.x(),datos_R.y() ,datos_R.z(),
+					 Inv_RoboCama.getRxValue(),Inv_RoboCama.getRyValue(),Inv_RoboCama.getRzValue(), 0); //Robot Virtual Cuelga de Camara Virtual */
 
 
-  std::cout << "<--------------Inner Robot Creado---------->"<< std::endl; 
+inner->newTransform ("Robot_id", "static", inner->getNode("Virtual_id"), v_2.x(),v_2.y() ,v_2.z(), v_2.rx(),v_2.ry(),v_2.rz(), 0);
 
-  QVec valores = inner->transform("world",QVec::zeros(6),"Robot_id");
+
+   QVec valores = inner->transform("world",QVec::zeros(6),"Robot_id"); //Transforma los valores del robot virtual al mundo
   
-  inner->updateTransformValues("base",valores.x(),valores.y(),valores.z(),valores.rx(),valores.ry(),valores.rz());
+   TBaseState tbase; differentialrobot_proxy->getBaseState(tbase); // Posicion del robot original
+	      
+   std::cout << "Robot X:   "<< valores.x() << std::endl; 
+    
+   std::cout << "Robot Z:   "<< valores.z() << std::endl; 
 
+   std::cout << "<>"<< std::endl; 
+   
+   std::cout << "Base X:   "<< tbase.x << std::endl; 
+    
+   std::cout << "Base Z:   "<< tbase.z << std::endl; 
+	 
+  std::cout << "<>"<< std::endl; 
+  
+ // inner->updateTransformValues("base",valores.x(),valores.y(),valores.z(),valores.rx(),valores.ry(),valores.rz()); //Acutlizacion del robot 
+ 
  inner->removeNode("Robot_id");
  inner->removeNode("Virtual_id");
  inner->removeNode("April_id");
- 
-std::cout << "<--------------FIN---------->"<< std::endl; 
-std::cout << "<>"<< std::endl; 
-std::cout << "<>"<< std::endl; 
-std::cout << "<>"<< std::endl; 
 }
 
 
@@ -130,15 +126,11 @@ void SpecificWorker::compute()
 	   TBaseState tbase; differentialrobot_proxy->getBaseState(tbase);
 	  inner->updateTransformValues("base",tbase.x,0,tbase.z,0,tbase.alpha,0);
   
-	   
-	//Transformaciones();
-	 
-	 
      switch(state){
 
        case State::INIT:
-	  std::cout << "<--------------Creando Camino---------->"<< std::endl;  
-	  CrearCamino();
+	  //std::cout << "<--------------Creando Camino---------->"<< std::endl;  
+	Transformaciones();
 	      break;
 
         case State::SEARCH:
@@ -211,8 +203,6 @@ void SpecificWorker::Controller()
 
 void SpecificWorker::search()
 {
-  
-
   
    differentialrobot_proxy->setSpeedBase(0, 0);
    DatosCamara::MyTag A;
@@ -307,10 +297,6 @@ std::cout << "Dijkstra algorithm demo..." << std::endl;
     }
     
     std::cout << g.id(v3) << std::endl;  
-
-
-//  ListDigraph::NodeMap<int> map(g);
-    
   
   
 }

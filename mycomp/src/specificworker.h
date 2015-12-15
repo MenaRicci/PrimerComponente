@@ -80,7 +80,7 @@ class SpecificWorker : public GenericWorker
      QVec realidad;
      int recorrido=0;
      enum class State { INIT, SEARCH, ADVANCE,STOP};
-     State state = State::SEARCH;
+     State state = State::INIT;
      Smemoria Memoria;
      DatosCamara marcas;
      bool enviado=false;
