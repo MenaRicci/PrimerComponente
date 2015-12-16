@@ -29,10 +29,15 @@
 #include <datoscamara.h>
 #include <qmat/qmat.h>
 
+#include <osgviewer/osgview.h>
+#include <innermodel/innermodelviewer.h>
+#include <innermodel/innermodeldraw.h>
+
 #include <lemon/list_graph.h>
 
 #include <lemon/dijkstra.h>
 #include <lemon/maps.h>
+
 
 #include <iostream>
 
@@ -59,7 +64,6 @@ class SpecificWorker : public GenericWorker
 	   ~SpecificWorker();
 	   bool setParams(RoboCompCommonBehavior::ParameterList params);
 	   void newAprilTag(const tagsList &tags);
-	   int obtener_dato(); 
 	
 	   
      struct Smemoria{
@@ -74,8 +78,8 @@ class SpecificWorker : public GenericWorker
    private:
     
     // InnerModelTransform *CamaraVirtual,*BaseVirtual,*April, *Robot ;
-     
-     
+     OsgView *osgView;
+     InnerModelViewer *innerViewer;
      InnerModel *inner;
      QVec realidad;
      int recorrido=0;
@@ -84,7 +88,6 @@ class SpecificWorker : public GenericWorker
      Smemoria Memoria;
      DatosCamara marcas;
      bool enviado=false;
-     Graph graph;
      
      void Transformaciones();
      QVec getVectorAprilTag();

@@ -27,12 +27,36 @@ SpecificWorker::SpecificWorker(MapPrx& mprx) : GenericWorker(mprx)
 {
   inner= new InnerModel("/home/salabeta/robocomp/files/innermodel/simpleworld.xml");
   
+ osgView = new OsgView( frame );
+ osgGA::TrackballManipulator *tb = new osgGA::TrackballManipulator;
+ osg::Vec3d eye(osg::Vec3(4000.,4000.,-1000.));
+ osg::Vec3d center(osg::Vec3(0.,0.,-0.));
+ osg::Vec3d up(osg::Vec3(0.,-1.,0.));
+ tb->setHomePosition(eye, center, up, true);
+ osg::Matrixf m;
+ tb->setByMatrix(osg::Matrixf::lookAt(eye,center,up));
+ tb->setByMatrix(m);
+ osgView->setCameraManipulator(tb);
+ innerViewer = new InnerModelViewer(inner, "root", osgView->getRootGroup(), true);
+ 
+ 
+TBaseState tbase; differentialrobot_proxy->getBaseState(tbase);
 
+ QVec datos_base=QVec::vec3(tbase.x,100,tbase.z);
+ 
+ //qDebug()<< __FUNCTION__<< "Subtarget created at " << datos_base << "with robot at" << inner->transform("world","base");
+  
+  
+ InnerModelDraw::addPlane_ignoreExisting(innerViewer, "robotico", "world", datos_base, QVec::vec3(1,0,0), "#ff0000", QVec::vec3(400,100,400));
+ 
+ show();
 }
 
 /**
 * \brief Default destructor
 */
+
+
 SpecificWorker::~SpecificWorker()
 {
 
@@ -112,10 +136,14 @@ inner->newTransform ("Robot_id", "static", inner->getNode("Virtual_id"), v_2.x()
 QVec valores = inner->transform("world",QVec::zeros(6),"Robot_id"); //Transforma los valores del robot virtual al mundo
   
   
-  inner->updateTransformValues("base",valores.x(),valores.y(),valores.z(),valores.rx(),valores.ry(),valores.rz()); //Acutlizacion del robot 
+inner->updateTransformValues("base",valores.x(),valores.y(),valores.z(),valores.rx(),valores.ry(),valores.rz()); //Acutlizacion del robot 
  
-  
-  
+TBaseState tbase; differentialrobot_proxy->getBaseState(tbase);
+
+ QVec datos_base=QVec::vec3(tbase.correctedX,100,tbase.correctedZ);
+ 
+ InnerModelDraw::addPlane_ignoreExisting(innerViewer, "robotico", "world", datos_base, QVec::vec3(0,1,0), "#FFAA12", QVec::vec3(400,400,100));
+
  inner->removeNode("Robot_id");
  inner->removeNode("Virtual_id");
  inner->removeNode("April_id");
@@ -130,12 +158,19 @@ bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 
 void SpecificWorker::compute()
 {
-  try{     
-	   ldata = laser_proxy->getLaserData();
-	   TBaseState tbase; differentialrobot_proxy->getBaseState(tbase);
-	  inner->updateTransformValues("base",tbase.x,0,tbase.z,0,tbase.alpha,0);
+  try{  
+	
+	innerViewer->update();
+	osgView->autoResize();
+	osgView->frame();
+	
+
+	ldata = laser_proxy->getLaserData();
+	TBaseState tbase; differentialrobot_proxy->getBaseState(tbase);
+	inner->updateTransformValues("base",tbase.x,0,tbase.z,0,tbase.alpha,0);
   
-	  
+	 //  QVec datos_base=QVec::vec3(tbase.x,100,tbase.z);
+	// InnerModelDraw::addPlane_ignoreExisting(innerViewer, "robotico", "world", datos_base, QVec::vec3(1,0,0), "#ff0000", QVec::vec3(400,100,400));
   
      switch(state){
 
@@ -144,8 +179,7 @@ void SpecificWorker::compute()
 	
 	
 	  Transformaciones();
-	  std::cout << "<Posicion X> "<<tbase.x<< std::endl;  
-	   std::cout << "<Posicion Z> "<<tbase.z<< std::endl; 
+	
 	
 	
 	      break;
@@ -153,6 +187,10 @@ void SpecificWorker::compute()
         case State::SEARCH:
 	 
 	         search();
+		 /*Cuando Encuentre una marca, el robot se va a autoajustar para que se mueva de manera correcta*/
+		 
+		 
+	//	 differentialrobot_proxy->setOdometerPose(tbase.correctedX,tbase.correctedZ,tbase.correctedAlpha);
 	      break;
 
 	case State::ADVANCE:
@@ -168,6 +206,9 @@ void SpecificWorker::compute()
 	      break;
       }
   }catch(const Ice::Exception &ex){
+    
+       
+	
      std::cout << ex << std::endl;
      
   }	 
@@ -231,7 +272,9 @@ void SpecificWorker::search()
       //Acutalizar Marca en memoria de inner
        Memoria.vec = inner->transform("world",QVec::vec3(A.dist_x,0,A.dist_z),"rgbd");
        Memoria.activo=true;
-       std::cout << "<--Busqueda finalizada-->"<< std::endl;   
+       std::cout << "<--Busqueda finalizada-->"<< std::endl; 
+       
+       
        state = State::ADVANCE; 
    }else{
 	        differentialrobot_proxy->setSpeedBase(0,0.7707);

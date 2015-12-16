@@ -18,10 +18,10 @@ src/CMakeFiles/mycomp.dir/Laser.cpp.o
  src/DifferentialRobot.h
  src/Laser.h
 src/CMakeFiles/mycomp.dir/apriltagsI.cpp.o
- /home/salabeta/robocomp/classes/qlog/qlog.h
  /home/salabeta/salabeta/menaricci/mycomp/src/apriltagsI.cpp
  /home/salabeta/salabeta/menaricci/mycomp/src/apriltagsI.h
  /home/salabeta/salabeta/menaricci/mycomp/src/genericworker.h
+ /opt/robocomp/classes/qlog/qlog.h
  /usr/include/qt4/Qt3Support/q3cstring.h
  /usr/include/qt4/Qt3Support/q3valuelist.h
  /usr/include/qt4/QtCore/QDate
@@ -204,6 +204,7 @@ src/CMakeFiles/mycomp.dir/apriltagsI.cpp.o
  /usr/include/qt4/QtGui/QCommonStyle
  /usr/include/qt4/QtGui/QFileDialog
  /usr/include/qt4/QtGui/QFont
+ /usr/include/qt4/QtGui/QFrame
  /usr/include/qt4/QtGui/QHeaderView
  /usr/include/qt4/QtGui/QLayout
  /usr/include/qt4/QtGui/QMatrix4x4
@@ -455,11 +456,11 @@ src/CMakeFiles/mycomp.dir/apriltagsI.cpp.o
  src/config.h
  src/ui_mainUI.h
 src/CMakeFiles/mycomp.dir/commonbehaviorI.cpp.o
- /home/salabeta/robocomp/classes/qlog/qlog.h
  /home/salabeta/salabeta/menaricci/mycomp/src/commonbehaviorI.cpp
  /home/salabeta/salabeta/menaricci/mycomp/src/commonbehaviorI.h
  /home/salabeta/salabeta/menaricci/mycomp/src/genericmonitor.h
  /home/salabeta/salabeta/menaricci/mycomp/src/genericworker.h
+ /opt/robocomp/classes/qlog/qlog.h
  /usr/include/qt4/Qt3Support/q3cstring.h
  /usr/include/qt4/Qt3Support/q3valuelist.h
  /usr/include/qt4/QtCore/QDate
@@ -642,6 +643,7 @@ src/CMakeFiles/mycomp.dir/commonbehaviorI.cpp.o
  /usr/include/qt4/QtGui/QCommonStyle
  /usr/include/qt4/QtGui/QFileDialog
  /usr/include/qt4/QtGui/QFont
+ /usr/include/qt4/QtGui/QFrame
  /usr/include/qt4/QtGui/QHeaderView
  /usr/include/qt4/QtGui/QLayout
  /usr/include/qt4/QtGui/QMatrix4x4
@@ -893,9 +895,9 @@ src/CMakeFiles/mycomp.dir/commonbehaviorI.cpp.o
  src/config.h
  src/ui_mainUI.h
 src/CMakeFiles/mycomp.dir/datoscamara.cpp.o
- /home/salabeta/robocomp/classes/qlog/qlog.h
  /home/salabeta/salabeta/menaricci/mycomp/src/datoscamara.cpp
  /home/salabeta/salabeta/menaricci/mycomp/src/datoscamara.h
+ /opt/robocomp/classes/qlog/qlog.h
  /opt/robocomp/include/innermodel/innermodel.h
  /opt/robocomp/include/qmat/QMatAll
  /opt/robocomp/include/qmat/qcamera.h
@@ -1093,6 +1095,7 @@ src/CMakeFiles/mycomp.dir/datoscamara.cpp.o
  /usr/include/qt4/QtGui/QCommonStyle
  /usr/include/qt4/QtGui/QFileDialog
  /usr/include/qt4/QtGui/QFont
+ /usr/include/qt4/QtGui/QFrame
  /usr/include/qt4/QtGui/QHeaderView
  /usr/include/qt4/QtGui/QLayout
  /usr/include/qt4/QtGui/QMatrix4x4
@@ -1345,11 +1348,11 @@ src/CMakeFiles/mycomp.dir/datoscamara.cpp.o
  src/genericworker.h
  src/ui_mainUI.h
 src/CMakeFiles/mycomp.dir/genericmonitor.cpp.o
- /home/salabeta/robocomp/classes/qlog/qlog.h
  /home/salabeta/salabeta/menaricci/mycomp/src/config.h
  /home/salabeta/salabeta/menaricci/mycomp/src/genericmonitor.cpp
  /home/salabeta/salabeta/menaricci/mycomp/src/genericmonitor.h
  /home/salabeta/salabeta/menaricci/mycomp/src/genericworker.h
+ /opt/robocomp/classes/qlog/qlog.h
  /usr/include/qt4/Qt3Support/q3cstring.h
  /usr/include/qt4/Qt3Support/q3valuelist.h
  /usr/include/qt4/QtCore/QDate
@@ -1532,6 +1535,7 @@ src/CMakeFiles/mycomp.dir/genericmonitor.cpp.o
  /usr/include/qt4/QtGui/QCommonStyle
  /usr/include/qt4/QtGui/QFileDialog
  /usr/include/qt4/QtGui/QFont
+ /usr/include/qt4/QtGui/QFrame
  /usr/include/qt4/QtGui/QHeaderView
  /usr/include/qt4/QtGui/QLayout
  /usr/include/qt4/QtGui/QMatrix4x4
@@ -1782,10 +1786,10 @@ src/CMakeFiles/mycomp.dir/genericmonitor.cpp.o
  src/Laser.h
  src/ui_mainUI.h
 src/CMakeFiles/mycomp.dir/genericworker.cpp.o
- /home/salabeta/robocomp/classes/qlog/qlog.h
  /home/salabeta/salabeta/menaricci/mycomp/src/config.h
  /home/salabeta/salabeta/menaricci/mycomp/src/genericworker.cpp
  /home/salabeta/salabeta/menaricci/mycomp/src/genericworker.h
+ /opt/robocomp/classes/qlog/qlog.h
  /usr/include/qt4/Qt3Support/q3cstring.h
  /usr/include/qt4/Qt3Support/q3valuelist.h
  /usr/include/qt4/QtCore/QDate
@@ -1968,6 +1972,7 @@ src/CMakeFiles/mycomp.dir/genericworker.cpp.o
  /usr/include/qt4/QtGui/QCommonStyle
  /usr/include/qt4/QtGui/QFileDialog
  /usr/include/qt4/QtGui/QFont
+ /usr/include/qt4/QtGui/QFrame
  /usr/include/qt4/QtGui/QHeaderView
  /usr/include/qt4/QtGui/QLayout
  /usr/include/qt4/QtGui/QMatrix4x4
@@ -2217,359 +2222,7 @@ src/CMakeFiles/mycomp.dir/genericworker.cpp.o
  src/DifferentialRobot.h
  src/Laser.h
  src/ui_mainUI.h
-src/CMakeFiles/mycomp.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.o
- /home/salabeta/robocomp/classes/qlog/qlog.cpp
- /home/salabeta/robocomp/classes/qlog/qlog.h
- /usr/include/qt4/Qt3Support/q3cstring.h
- /usr/include/qt4/Qt3Support/q3valuelist.h
- /usr/include/qt4/QtCore/QDate
- /usr/include/qt4/QtCore/QPoint
- /usr/include/qt4/QtCore/QPointF
- /usr/include/qt4/QtCore/QtCore
- /usr/include/qt4/QtCore/qabstractanimation.h
- /usr/include/qt4/QtCore/qabstracteventdispatcher.h
- /usr/include/qt4/QtCore/qabstractfileengine.h
- /usr/include/qt4/QtCore/qabstractitemmodel.h
- /usr/include/qt4/QtCore/qabstractstate.h
- /usr/include/qt4/QtCore/qabstracttransition.h
- /usr/include/qt4/QtCore/qalgorithms.h
- /usr/include/qt4/QtCore/qanimationgroup.h
- /usr/include/qt4/QtCore/qatomic.h
- /usr/include/qt4/QtCore/qatomic_aarch64.h
- /usr/include/qt4/QtCore/qatomic_alpha.h
- /usr/include/qt4/QtCore/qatomic_arch.h
- /usr/include/qt4/QtCore/qatomic_arm.h
- /usr/include/qt4/QtCore/qatomic_armv5.h
- /usr/include/qt4/QtCore/qatomic_armv6.h
- /usr/include/qt4/QtCore/qatomic_armv7.h
- /usr/include/qt4/QtCore/qatomic_avr32.h
- /usr/include/qt4/QtCore/qatomic_bfin.h
- /usr/include/qt4/QtCore/qatomic_bootstrap.h
- /usr/include/qt4/QtCore/qatomic_generic.h
- /usr/include/qt4/QtCore/qatomic_i386.h
- /usr/include/qt4/QtCore/qatomic_ia64.h
- /usr/include/qt4/QtCore/qatomic_integrity.h
- /usr/include/qt4/QtCore/qatomic_m68k.h
- /usr/include/qt4/QtCore/qatomic_macosx.h
- /usr/include/qt4/QtCore/qatomic_mips.h
- /usr/include/qt4/QtCore/qatomic_parisc.h
- /usr/include/qt4/QtCore/qatomic_powerpc.h
- /usr/include/qt4/QtCore/qatomic_s390.h
- /usr/include/qt4/QtCore/qatomic_sh.h
- /usr/include/qt4/QtCore/qatomic_sh4a.h
- /usr/include/qt4/QtCore/qatomic_sparc.h
- /usr/include/qt4/QtCore/qatomic_symbian.h
- /usr/include/qt4/QtCore/qatomic_vxworks.h
- /usr/include/qt4/QtCore/qatomic_windows.h
- /usr/include/qt4/QtCore/qatomic_windowsce.h
- /usr/include/qt4/QtCore/qatomic_x86_64.h
- /usr/include/qt4/QtCore/qbasicatomic.h
- /usr/include/qt4/QtCore/qbasictimer.h
- /usr/include/qt4/QtCore/qbitarray.h
- /usr/include/qt4/QtCore/qbuffer.h
- /usr/include/qt4/QtCore/qbytearray.h
- /usr/include/qt4/QtCore/qbytearraymatcher.h
- /usr/include/qt4/QtCore/qcache.h
- /usr/include/qt4/QtCore/qchar.h
- /usr/include/qt4/QtCore/qconfig.h
- /usr/include/qt4/QtCore/qcontainerfwd.h
- /usr/include/qt4/QtCore/qcontiguouscache.h
- /usr/include/qt4/QtCore/qcoreapplication.h
- /usr/include/qt4/QtCore/qcoreevent.h
- /usr/include/qt4/QtCore/qcryptographichash.h
- /usr/include/qt4/QtCore/qdatastream.h
- /usr/include/qt4/QtCore/qdatetime.h
- /usr/include/qt4/QtCore/qdebug.h
- /usr/include/qt4/QtCore/qdir.h
- /usr/include/qt4/QtCore/qdiriterator.h
- /usr/include/qt4/QtCore/qeasingcurve.h
- /usr/include/qt4/QtCore/qelapsedtimer.h
- /usr/include/qt4/QtCore/qendian.h
- /usr/include/qt4/QtCore/qeventloop.h
- /usr/include/qt4/QtCore/qeventtransition.h
- /usr/include/qt4/QtCore/qfactoryinterface.h
- /usr/include/qt4/QtCore/qfeatures.h
- /usr/include/qt4/QtCore/qfile.h
- /usr/include/qt4/QtCore/qfileinfo.h
- /usr/include/qt4/QtCore/qfilesystemwatcher.h
- /usr/include/qt4/QtCore/qfinalstate.h
- /usr/include/qt4/QtCore/qfsfileengine.h
- /usr/include/qt4/QtCore/qfuture.h
- /usr/include/qt4/QtCore/qfutureinterface.h
- /usr/include/qt4/QtCore/qfuturesynchronizer.h
- /usr/include/qt4/QtCore/qfuturewatcher.h
- /usr/include/qt4/QtCore/qglobal.h
- /usr/include/qt4/QtCore/qhash.h
- /usr/include/qt4/QtCore/qhistorystate.h
- /usr/include/qt4/QtCore/qiodevice.h
- /usr/include/qt4/QtCore/qiterator.h
- /usr/include/qt4/QtCore/qlibrary.h
- /usr/include/qt4/QtCore/qlibraryinfo.h
- /usr/include/qt4/QtCore/qline.h
- /usr/include/qt4/QtCore/qlinkedlist.h
- /usr/include/qt4/QtCore/qlist.h
- /usr/include/qt4/QtCore/qlocale.h
- /usr/include/qt4/QtCore/qmap.h
- /usr/include/qt4/QtCore/qmargins.h
- /usr/include/qt4/QtCore/qmath.h
- /usr/include/qt4/QtCore/qmetaobject.h
- /usr/include/qt4/QtCore/qmetatype.h
- /usr/include/qt4/QtCore/qmimedata.h
- /usr/include/qt4/QtCore/qmutex.h
- /usr/include/qt4/QtCore/qnamespace.h
- /usr/include/qt4/QtCore/qnumeric.h
- /usr/include/qt4/QtCore/qobject.h
- /usr/include/qt4/QtCore/qobjectcleanuphandler.h
- /usr/include/qt4/QtCore/qobjectdefs.h
- /usr/include/qt4/QtCore/qpair.h
- /usr/include/qt4/QtCore/qparallelanimationgroup.h
- /usr/include/qt4/QtCore/qpauseanimation.h
- /usr/include/qt4/QtCore/qplugin.h
- /usr/include/qt4/QtCore/qpluginloader.h
- /usr/include/qt4/QtCore/qpoint.h
- /usr/include/qt4/QtCore/qpointer.h
- /usr/include/qt4/QtCore/qprocess.h
- /usr/include/qt4/QtCore/qpropertyanimation.h
- /usr/include/qt4/QtCore/qqueue.h
- /usr/include/qt4/QtCore/qreadwritelock.h
- /usr/include/qt4/QtCore/qrect.h
- /usr/include/qt4/QtCore/qregexp.h
- /usr/include/qt4/QtCore/qresource.h
- /usr/include/qt4/QtCore/qrunnable.h
- /usr/include/qt4/QtCore/qscopedpointer.h
- /usr/include/qt4/QtCore/qscopedvaluerollback.h
- /usr/include/qt4/QtCore/qsemaphore.h
- /usr/include/qt4/QtCore/qsequentialanimationgroup.h
- /usr/include/qt4/QtCore/qset.h
- /usr/include/qt4/QtCore/qsettings.h
- /usr/include/qt4/QtCore/qshareddata.h
- /usr/include/qt4/QtCore/qsharedmemory.h
- /usr/include/qt4/QtCore/qsharedpointer.h
- /usr/include/qt4/QtCore/qsharedpointer_impl.h
- /usr/include/qt4/QtCore/qsignalmapper.h
- /usr/include/qt4/QtCore/qsignaltransition.h
- /usr/include/qt4/QtCore/qsize.h
- /usr/include/qt4/QtCore/qsocketnotifier.h
- /usr/include/qt4/QtCore/qstack.h
- /usr/include/qt4/QtCore/qstate.h
- /usr/include/qt4/QtCore/qstatemachine.h
- /usr/include/qt4/QtCore/qstring.h
- /usr/include/qt4/QtCore/qstringbuilder.h
- /usr/include/qt4/QtCore/qstringlist.h
- /usr/include/qt4/QtCore/qstringmatcher.h
- /usr/include/qt4/QtCore/qsystemsemaphore.h
- /usr/include/qt4/QtCore/qtconcurrentcompilertest.h
- /usr/include/qt4/QtCore/qtconcurrentexception.h
- /usr/include/qt4/QtCore/qtconcurrentfilter.h
- /usr/include/qt4/QtCore/qtconcurrentfilterkernel.h
- /usr/include/qt4/QtCore/qtconcurrentfunctionwrappers.h
- /usr/include/qt4/QtCore/qtconcurrentiteratekernel.h
- /usr/include/qt4/QtCore/qtconcurrentmap.h
- /usr/include/qt4/QtCore/qtconcurrentmapkernel.h
- /usr/include/qt4/QtCore/qtconcurrentmedian.h
- /usr/include/qt4/QtCore/qtconcurrentreducekernel.h
- /usr/include/qt4/QtCore/qtconcurrentresultstore.h
- /usr/include/qt4/QtCore/qtconcurrentrun.h
- /usr/include/qt4/QtCore/qtconcurrentrunbase.h
- /usr/include/qt4/QtCore/qtconcurrentstoredfunctioncall.h
- /usr/include/qt4/QtCore/qtconcurrentthreadengine.h
- /usr/include/qt4/QtCore/qtemporaryfile.h
- /usr/include/qt4/QtCore/qtextboundaryfinder.h
- /usr/include/qt4/QtCore/qtextcodec.h
- /usr/include/qt4/QtCore/qtextcodecplugin.h
- /usr/include/qt4/QtCore/qtextstream.h
- /usr/include/qt4/QtCore/qthread.h
- /usr/include/qt4/QtCore/qthreadpool.h
- /usr/include/qt4/QtCore/qthreadstorage.h
- /usr/include/qt4/QtCore/qtimeline.h
- /usr/include/qt4/QtCore/qtimer.h
- /usr/include/qt4/QtCore/qtranslator.h
- /usr/include/qt4/QtCore/qurl.h
- /usr/include/qt4/QtCore/quuid.h
- /usr/include/qt4/QtCore/qvariant.h
- /usr/include/qt4/QtCore/qvariantanimation.h
- /usr/include/qt4/QtCore/qvarlengtharray.h
- /usr/include/qt4/QtCore/qvector.h
- /usr/include/qt4/QtCore/qwaitcondition.h
- /usr/include/qt4/QtCore/qxmlstream.h
-src/CMakeFiles/mycomp.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o
- /home/salabeta/robocomp/classes/rapplication/rapplication.cpp
- /home/salabeta/robocomp/classes/rapplication/rapplication.h
- /usr/include/qt4/Qt3Support/q3cstring.h
- /usr/include/qt4/Qt3Support/q3valuelist.h
- /usr/include/qt4/QtCore/QDate
- /usr/include/qt4/QtCore/QPoint
- /usr/include/qt4/QtCore/QPointF
- /usr/include/qt4/QtCore/QtCore
- /usr/include/qt4/QtCore/qabstractanimation.h
- /usr/include/qt4/QtCore/qabstracteventdispatcher.h
- /usr/include/qt4/QtCore/qabstractfileengine.h
- /usr/include/qt4/QtCore/qabstractitemmodel.h
- /usr/include/qt4/QtCore/qabstractstate.h
- /usr/include/qt4/QtCore/qabstracttransition.h
- /usr/include/qt4/QtCore/qalgorithms.h
- /usr/include/qt4/QtCore/qanimationgroup.h
- /usr/include/qt4/QtCore/qatomic.h
- /usr/include/qt4/QtCore/qatomic_aarch64.h
- /usr/include/qt4/QtCore/qatomic_alpha.h
- /usr/include/qt4/QtCore/qatomic_arch.h
- /usr/include/qt4/QtCore/qatomic_arm.h
- /usr/include/qt4/QtCore/qatomic_armv5.h
- /usr/include/qt4/QtCore/qatomic_armv6.h
- /usr/include/qt4/QtCore/qatomic_armv7.h
- /usr/include/qt4/QtCore/qatomic_avr32.h
- /usr/include/qt4/QtCore/qatomic_bfin.h
- /usr/include/qt4/QtCore/qatomic_bootstrap.h
- /usr/include/qt4/QtCore/qatomic_generic.h
- /usr/include/qt4/QtCore/qatomic_i386.h
- /usr/include/qt4/QtCore/qatomic_ia64.h
- /usr/include/qt4/QtCore/qatomic_integrity.h
- /usr/include/qt4/QtCore/qatomic_m68k.h
- /usr/include/qt4/QtCore/qatomic_macosx.h
- /usr/include/qt4/QtCore/qatomic_mips.h
- /usr/include/qt4/QtCore/qatomic_parisc.h
- /usr/include/qt4/QtCore/qatomic_powerpc.h
- /usr/include/qt4/QtCore/qatomic_s390.h
- /usr/include/qt4/QtCore/qatomic_sh.h
- /usr/include/qt4/QtCore/qatomic_sh4a.h
- /usr/include/qt4/QtCore/qatomic_sparc.h
- /usr/include/qt4/QtCore/qatomic_symbian.h
- /usr/include/qt4/QtCore/qatomic_vxworks.h
- /usr/include/qt4/QtCore/qatomic_windows.h
- /usr/include/qt4/QtCore/qatomic_windowsce.h
- /usr/include/qt4/QtCore/qatomic_x86_64.h
- /usr/include/qt4/QtCore/qbasicatomic.h
- /usr/include/qt4/QtCore/qbasictimer.h
- /usr/include/qt4/QtCore/qbitarray.h
- /usr/include/qt4/QtCore/qbuffer.h
- /usr/include/qt4/QtCore/qbytearray.h
- /usr/include/qt4/QtCore/qbytearraymatcher.h
- /usr/include/qt4/QtCore/qcache.h
- /usr/include/qt4/QtCore/qchar.h
- /usr/include/qt4/QtCore/qconfig.h
- /usr/include/qt4/QtCore/qcontainerfwd.h
- /usr/include/qt4/QtCore/qcontiguouscache.h
- /usr/include/qt4/QtCore/qcoreapplication.h
- /usr/include/qt4/QtCore/qcoreevent.h
- /usr/include/qt4/QtCore/qcryptographichash.h
- /usr/include/qt4/QtCore/qdatastream.h
- /usr/include/qt4/QtCore/qdatetime.h
- /usr/include/qt4/QtCore/qdebug.h
- /usr/include/qt4/QtCore/qdir.h
- /usr/include/qt4/QtCore/qdiriterator.h
- /usr/include/qt4/QtCore/qeasingcurve.h
- /usr/include/qt4/QtCore/qelapsedtimer.h
- /usr/include/qt4/QtCore/qendian.h
- /usr/include/qt4/QtCore/qeventloop.h
- /usr/include/qt4/QtCore/qeventtransition.h
- /usr/include/qt4/QtCore/qfactoryinterface.h
- /usr/include/qt4/QtCore/qfeatures.h
- /usr/include/qt4/QtCore/qfile.h
- /usr/include/qt4/QtCore/qfileinfo.h
- /usr/include/qt4/QtCore/qfilesystemwatcher.h
- /usr/include/qt4/QtCore/qfinalstate.h
- /usr/include/qt4/QtCore/qfsfileengine.h
- /usr/include/qt4/QtCore/qfuture.h
- /usr/include/qt4/QtCore/qfutureinterface.h
- /usr/include/qt4/QtCore/qfuturesynchronizer.h
- /usr/include/qt4/QtCore/qfuturewatcher.h
- /usr/include/qt4/QtCore/qglobal.h
- /usr/include/qt4/QtCore/qhash.h
- /usr/include/qt4/QtCore/qhistorystate.h
- /usr/include/qt4/QtCore/qiodevice.h
- /usr/include/qt4/QtCore/qiterator.h
- /usr/include/qt4/QtCore/qlibrary.h
- /usr/include/qt4/QtCore/qlibraryinfo.h
- /usr/include/qt4/QtCore/qline.h
- /usr/include/qt4/QtCore/qlinkedlist.h
- /usr/include/qt4/QtCore/qlist.h
- /usr/include/qt4/QtCore/qlocale.h
- /usr/include/qt4/QtCore/qmap.h
- /usr/include/qt4/QtCore/qmargins.h
- /usr/include/qt4/QtCore/qmath.h
- /usr/include/qt4/QtCore/qmetaobject.h
- /usr/include/qt4/QtCore/qmetatype.h
- /usr/include/qt4/QtCore/qmimedata.h
- /usr/include/qt4/QtCore/qmutex.h
- /usr/include/qt4/QtCore/qnamespace.h
- /usr/include/qt4/QtCore/qnumeric.h
- /usr/include/qt4/QtCore/qobject.h
- /usr/include/qt4/QtCore/qobjectcleanuphandler.h
- /usr/include/qt4/QtCore/qobjectdefs.h
- /usr/include/qt4/QtCore/qpair.h
- /usr/include/qt4/QtCore/qparallelanimationgroup.h
- /usr/include/qt4/QtCore/qpauseanimation.h
- /usr/include/qt4/QtCore/qplugin.h
- /usr/include/qt4/QtCore/qpluginloader.h
- /usr/include/qt4/QtCore/qpoint.h
- /usr/include/qt4/QtCore/qpointer.h
- /usr/include/qt4/QtCore/qprocess.h
- /usr/include/qt4/QtCore/qpropertyanimation.h
- /usr/include/qt4/QtCore/qqueue.h
- /usr/include/qt4/QtCore/qreadwritelock.h
- /usr/include/qt4/QtCore/qrect.h
- /usr/include/qt4/QtCore/qregexp.h
- /usr/include/qt4/QtCore/qresource.h
- /usr/include/qt4/QtCore/qrunnable.h
- /usr/include/qt4/QtCore/qscopedpointer.h
- /usr/include/qt4/QtCore/qscopedvaluerollback.h
- /usr/include/qt4/QtCore/qsemaphore.h
- /usr/include/qt4/QtCore/qsequentialanimationgroup.h
- /usr/include/qt4/QtCore/qset.h
- /usr/include/qt4/QtCore/qsettings.h
- /usr/include/qt4/QtCore/qshareddata.h
- /usr/include/qt4/QtCore/qsharedmemory.h
- /usr/include/qt4/QtCore/qsharedpointer.h
- /usr/include/qt4/QtCore/qsharedpointer_impl.h
- /usr/include/qt4/QtCore/qsignalmapper.h
- /usr/include/qt4/QtCore/qsignaltransition.h
- /usr/include/qt4/QtCore/qsize.h
- /usr/include/qt4/QtCore/qsocketnotifier.h
- /usr/include/qt4/QtCore/qstack.h
- /usr/include/qt4/QtCore/qstate.h
- /usr/include/qt4/QtCore/qstatemachine.h
- /usr/include/qt4/QtCore/qstring.h
- /usr/include/qt4/QtCore/qstringbuilder.h
- /usr/include/qt4/QtCore/qstringlist.h
- /usr/include/qt4/QtCore/qstringmatcher.h
- /usr/include/qt4/QtCore/qsystemsemaphore.h
- /usr/include/qt4/QtCore/qtconcurrentcompilertest.h
- /usr/include/qt4/QtCore/qtconcurrentexception.h
- /usr/include/qt4/QtCore/qtconcurrentfilter.h
- /usr/include/qt4/QtCore/qtconcurrentfilterkernel.h
- /usr/include/qt4/QtCore/qtconcurrentfunctionwrappers.h
- /usr/include/qt4/QtCore/qtconcurrentiteratekernel.h
- /usr/include/qt4/QtCore/qtconcurrentmap.h
- /usr/include/qt4/QtCore/qtconcurrentmapkernel.h
- /usr/include/qt4/QtCore/qtconcurrentmedian.h
- /usr/include/qt4/QtCore/qtconcurrentreducekernel.h
- /usr/include/qt4/QtCore/qtconcurrentresultstore.h
- /usr/include/qt4/QtCore/qtconcurrentrun.h
- /usr/include/qt4/QtCore/qtconcurrentrunbase.h
- /usr/include/qt4/QtCore/qtconcurrentstoredfunctioncall.h
- /usr/include/qt4/QtCore/qtconcurrentthreadengine.h
- /usr/include/qt4/QtCore/qtemporaryfile.h
- /usr/include/qt4/QtCore/qtextboundaryfinder.h
- /usr/include/qt4/QtCore/qtextcodec.h
- /usr/include/qt4/QtCore/qtextcodecplugin.h
- /usr/include/qt4/QtCore/qtextstream.h
- /usr/include/qt4/QtCore/qthread.h
- /usr/include/qt4/QtCore/qthreadpool.h
- /usr/include/qt4/QtCore/qthreadstorage.h
- /usr/include/qt4/QtCore/qtimeline.h
- /usr/include/qt4/QtCore/qtimer.h
- /usr/include/qt4/QtCore/qtranslator.h
- /usr/include/qt4/QtCore/qurl.h
- /usr/include/qt4/QtCore/quuid.h
- /usr/include/qt4/QtCore/qvariant.h
- /usr/include/qt4/QtCore/qvariantanimation.h
- /usr/include/qt4/QtCore/qvarlengtharray.h
- /usr/include/qt4/QtCore/qvector.h
- /usr/include/qt4/QtCore/qwaitcondition.h
- /usr/include/qt4/QtCore/qxmlstream.h
 src/CMakeFiles/mycomp.dir/main.cpp.o
- /home/salabeta/robocomp/classes/qlog/qlog.h
- /home/salabeta/robocomp/classes/rapplication/rapplication.h
  /home/salabeta/salabeta/menaricci/mycomp/src/commonbehaviorI.h
  /home/salabeta/salabeta/menaricci/mycomp/src/config.h
  /home/salabeta/salabeta/menaricci/mycomp/src/genericmonitor.h
@@ -2577,7 +2230,14 @@ src/CMakeFiles/mycomp.dir/main.cpp.o
  /home/salabeta/salabeta/menaricci/mycomp/src/main.cpp
  /home/salabeta/salabeta/menaricci/mycomp/src/specificmonitor.h
  /home/salabeta/salabeta/menaricci/mycomp/src/specificworker.h
+ /opt/robocomp/classes/qlog/qlog.h
+ /opt/robocomp/classes/rapplication/rapplication.h
  /opt/robocomp/include/innermodel/innermodel.h
+ /opt/robocomp/include/innermodel/innermodeldraw.h
+ /opt/robocomp/include/innermodel/innermodelviewer.h
+ /opt/robocomp/include/osgviewer/adapterwidget.h
+ /opt/robocomp/include/osgviewer/osgview.h
+ /opt/robocomp/include/osgviewer/viewerqt.h
  /opt/robocomp/include/qmat/QMatAll
  /opt/robocomp/include/qmat/qcamera.h
  /opt/robocomp/include/qmat/qessential.h
@@ -2599,6 +2259,8 @@ src/CMakeFiles/mycomp.dir/main.cpp.o
  /usr/include/qt4/QtCore/QObject
  /usr/include/qt4/QtCore/QPoint
  /usr/include/qt4/QtCore/QPointF
+ /usr/include/qt4/QtCore/QString
+ /usr/include/qt4/QtCore/QTimer
  /usr/include/qt4/QtCore/QVariant
  /usr/include/qt4/QtCore/QtCore
  /usr/include/qt4/QtCore/qabstractanimation.h
@@ -2733,6 +2395,7 @@ src/CMakeFiles/mycomp.dir/main.cpp.o
  /usr/include/qt4/QtCore/qstringlist.h
  /usr/include/qt4/QtCore/qstringmatcher.h
  /usr/include/qt4/QtCore/qsystemsemaphore.h
+ /usr/include/qt4/QtCore/qt_windows.h
  /usr/include/qt4/QtCore/qtconcurrentcompilertest.h
  /usr/include/qt4/QtCore/qtconcurrentexception.h
  /usr/include/qt4/QtCore/qtconcurrentfilter.h
@@ -2774,11 +2437,14 @@ src/CMakeFiles/mycomp.dir/main.cpp.o
  /usr/include/qt4/QtGui/QCommonStyle
  /usr/include/qt4/QtGui/QFileDialog
  /usr/include/qt4/QtGui/QFont
+ /usr/include/qt4/QtGui/QFrame
  /usr/include/qt4/QtGui/QHeaderView
+ /usr/include/qt4/QtGui/QKeyEvent
  /usr/include/qt4/QtGui/QLayout
  /usr/include/qt4/QtGui/QMatrix4x4
  /usr/include/qt4/QtGui/QPalette
  /usr/include/qt4/QtGui/QPlatformWindow
+ /usr/include/qt4/QtGui/QPlatformWindowFormat
  /usr/include/qt4/QtGui/QPrinter
  /usr/include/qt4/QtGui/QTransform
  /usr/include/qt4/QtGui/QVector3D
@@ -3017,6 +2683,9 @@ src/CMakeFiles/mycomp.dir/main.cpp.o
  /usr/include/qt4/QtGui/qwmatrix.h
  /usr/include/qt4/QtGui/qworkspace.h
  /usr/include/qt4/QtGui/qwsembedwidget.h
+ /usr/include/qt4/QtOpenGL/QGLWidget
+ /usr/include/qt4/QtOpenGL/qgl.h
+ /usr/include/qt4/QtOpenGL/qglcolormap.h
  src/AprilTags.h
  src/CommonBehavior.h
  src/Controller.h
@@ -3026,10 +2695,10 @@ src/CMakeFiles/mycomp.dir/main.cpp.o
  src/datoscamara.h
  src/ui_mainUI.h
 src/CMakeFiles/mycomp.dir/moc_apriltagsI.cxx.o
- /home/salabeta/robocomp/classes/qlog/qlog.h
  /home/salabeta/salabeta/menaricci/mycomp/src/apriltagsI.h
  /home/salabeta/salabeta/menaricci/mycomp/src/genericworker.h
  /home/salabeta/salabeta/menaricci/mycomp/src/moc_apriltagsI.cxx
+ /opt/robocomp/classes/qlog/qlog.h
  /usr/include/qt4/Qt3Support/q3cstring.h
  /usr/include/qt4/Qt3Support/q3valuelist.h
  /usr/include/qt4/QtCore/QDate
@@ -3212,6 +2881,7 @@ src/CMakeFiles/mycomp.dir/moc_apriltagsI.cxx.o
  /usr/include/qt4/QtGui/QCommonStyle
  /usr/include/qt4/QtGui/QFileDialog
  /usr/include/qt4/QtGui/QFont
+ /usr/include/qt4/QtGui/QFrame
  /usr/include/qt4/QtGui/QHeaderView
  /usr/include/qt4/QtGui/QLayout
  /usr/include/qt4/QtGui/QMatrix4x4
@@ -3463,11 +3133,11 @@ src/CMakeFiles/mycomp.dir/moc_apriltagsI.cxx.o
  src/config.h
  src/ui_mainUI.h
 src/CMakeFiles/mycomp.dir/moc_commonbehaviorI.cxx.o
- /home/salabeta/robocomp/classes/qlog/qlog.h
  /home/salabeta/salabeta/menaricci/mycomp/src/commonbehaviorI.h
  /home/salabeta/salabeta/menaricci/mycomp/src/genericmonitor.h
  /home/salabeta/salabeta/menaricci/mycomp/src/genericworker.h
  /home/salabeta/salabeta/menaricci/mycomp/src/moc_commonbehaviorI.cxx
+ /opt/robocomp/classes/qlog/qlog.h
  /usr/include/qt4/Qt3Support/q3cstring.h
  /usr/include/qt4/Qt3Support/q3valuelist.h
  /usr/include/qt4/QtCore/QDate
@@ -3650,6 +3320,7 @@ src/CMakeFiles/mycomp.dir/moc_commonbehaviorI.cxx.o
  /usr/include/qt4/QtGui/QCommonStyle
  /usr/include/qt4/QtGui/QFileDialog
  /usr/include/qt4/QtGui/QFont
+ /usr/include/qt4/QtGui/QFrame
  /usr/include/qt4/QtGui/QHeaderView
  /usr/include/qt4/QtGui/QLayout
  /usr/include/qt4/QtGui/QMatrix4x4
@@ -3901,11 +3572,11 @@ src/CMakeFiles/mycomp.dir/moc_commonbehaviorI.cxx.o
  src/config.h
  src/ui_mainUI.h
 src/CMakeFiles/mycomp.dir/moc_genericmonitor.cxx.o
- /home/salabeta/robocomp/classes/qlog/qlog.h
  /home/salabeta/salabeta/menaricci/mycomp/src/config.h
  /home/salabeta/salabeta/menaricci/mycomp/src/genericmonitor.h
  /home/salabeta/salabeta/menaricci/mycomp/src/genericworker.h
  /home/salabeta/salabeta/menaricci/mycomp/src/moc_genericmonitor.cxx
+ /opt/robocomp/classes/qlog/qlog.h
  /usr/include/qt4/Qt3Support/q3cstring.h
  /usr/include/qt4/Qt3Support/q3valuelist.h
  /usr/include/qt4/QtCore/QDate
@@ -4088,6 +3759,7 @@ src/CMakeFiles/mycomp.dir/moc_genericmonitor.cxx.o
  /usr/include/qt4/QtGui/QCommonStyle
  /usr/include/qt4/QtGui/QFileDialog
  /usr/include/qt4/QtGui/QFont
+ /usr/include/qt4/QtGui/QFrame
  /usr/include/qt4/QtGui/QHeaderView
  /usr/include/qt4/QtGui/QLayout
  /usr/include/qt4/QtGui/QMatrix4x4
@@ -4338,10 +4010,10 @@ src/CMakeFiles/mycomp.dir/moc_genericmonitor.cxx.o
  src/Laser.h
  src/ui_mainUI.h
 src/CMakeFiles/mycomp.dir/moc_genericworker.cxx.o
- /home/salabeta/robocomp/classes/qlog/qlog.h
  /home/salabeta/salabeta/menaricci/mycomp/src/config.h
  /home/salabeta/salabeta/menaricci/mycomp/src/genericworker.h
  /home/salabeta/salabeta/menaricci/mycomp/src/moc_genericworker.cxx
+ /opt/robocomp/classes/qlog/qlog.h
  /usr/include/qt4/Qt3Support/q3cstring.h
  /usr/include/qt4/Qt3Support/q3valuelist.h
  /usr/include/qt4/QtCore/QDate
@@ -4524,6 +4196,7 @@ src/CMakeFiles/mycomp.dir/moc_genericworker.cxx.o
  /usr/include/qt4/QtGui/QCommonStyle
  /usr/include/qt4/QtGui/QFileDialog
  /usr/include/qt4/QtGui/QFont
+ /usr/include/qt4/QtGui/QFrame
  /usr/include/qt4/QtGui/QHeaderView
  /usr/include/qt4/QtGui/QLayout
  /usr/include/qt4/QtGui/QMatrix4x4
@@ -4774,12 +4447,12 @@ src/CMakeFiles/mycomp.dir/moc_genericworker.cxx.o
  src/Laser.h
  src/ui_mainUI.h
 src/CMakeFiles/mycomp.dir/moc_specificmonitor.cxx.o
- /home/salabeta/robocomp/classes/qlog/qlog.h
  /home/salabeta/salabeta/menaricci/mycomp/src/config.h
  /home/salabeta/salabeta/menaricci/mycomp/src/genericmonitor.h
  /home/salabeta/salabeta/menaricci/mycomp/src/genericworker.h
  /home/salabeta/salabeta/menaricci/mycomp/src/moc_specificmonitor.cxx
  /home/salabeta/salabeta/menaricci/mycomp/src/specificmonitor.h
+ /opt/robocomp/classes/qlog/qlog.h
  /usr/include/qt4/Qt3Support/q3cstring.h
  /usr/include/qt4/Qt3Support/q3valuelist.h
  /usr/include/qt4/QtCore/QDate
@@ -4962,6 +4635,7 @@ src/CMakeFiles/mycomp.dir/moc_specificmonitor.cxx.o
  /usr/include/qt4/QtGui/QCommonStyle
  /usr/include/qt4/QtGui/QFileDialog
  /usr/include/qt4/QtGui/QFont
+ /usr/include/qt4/QtGui/QFrame
  /usr/include/qt4/QtGui/QHeaderView
  /usr/include/qt4/QtGui/QLayout
  /usr/include/qt4/QtGui/QMatrix4x4
@@ -5212,10 +4886,15 @@ src/CMakeFiles/mycomp.dir/moc_specificmonitor.cxx.o
  src/Laser.h
  src/ui_mainUI.h
 src/CMakeFiles/mycomp.dir/moc_specificworker.cxx.o
- /home/salabeta/robocomp/classes/qlog/qlog.h
  /home/salabeta/salabeta/menaricci/mycomp/src/moc_specificworker.cxx
  /home/salabeta/salabeta/menaricci/mycomp/src/specificworker.h
+ /opt/robocomp/classes/qlog/qlog.h
  /opt/robocomp/include/innermodel/innermodel.h
+ /opt/robocomp/include/innermodel/innermodeldraw.h
+ /opt/robocomp/include/innermodel/innermodelviewer.h
+ /opt/robocomp/include/osgviewer/adapterwidget.h
+ /opt/robocomp/include/osgviewer/osgview.h
+ /opt/robocomp/include/osgviewer/viewerqt.h
  /opt/robocomp/include/qmat/QMatAll
  /opt/robocomp/include/qmat/qcamera.h
  /opt/robocomp/include/qmat/qessential.h
@@ -5237,6 +4916,8 @@ src/CMakeFiles/mycomp.dir/moc_specificworker.cxx.o
  /usr/include/qt4/QtCore/QObject
  /usr/include/qt4/QtCore/QPoint
  /usr/include/qt4/QtCore/QPointF
+ /usr/include/qt4/QtCore/QString
+ /usr/include/qt4/QtCore/QTimer
  /usr/include/qt4/QtCore/QVariant
  /usr/include/qt4/QtCore/QtCore
  /usr/include/qt4/QtCore/qabstractanimation.h
@@ -5371,6 +5052,7 @@ src/CMakeFiles/mycomp.dir/moc_specificworker.cxx.o
  /usr/include/qt4/QtCore/qstringlist.h
  /usr/include/qt4/QtCore/qstringmatcher.h
  /usr/include/qt4/QtCore/qsystemsemaphore.h
+ /usr/include/qt4/QtCore/qt_windows.h
  /usr/include/qt4/QtCore/qtconcurrentcompilertest.h
  /usr/include/qt4/QtCore/qtconcurrentexception.h
  /usr/include/qt4/QtCore/qtconcurrentfilter.h
@@ -5412,11 +5094,14 @@ src/CMakeFiles/mycomp.dir/moc_specificworker.cxx.o
  /usr/include/qt4/QtGui/QCommonStyle
  /usr/include/qt4/QtGui/QFileDialog
  /usr/include/qt4/QtGui/QFont
+ /usr/include/qt4/QtGui/QFrame
  /usr/include/qt4/QtGui/QHeaderView
+ /usr/include/qt4/QtGui/QKeyEvent
  /usr/include/qt4/QtGui/QLayout
  /usr/include/qt4/QtGui/QMatrix4x4
  /usr/include/qt4/QtGui/QPalette
  /usr/include/qt4/QtGui/QPlatformWindow
+ /usr/include/qt4/QtGui/QPlatformWindowFormat
  /usr/include/qt4/QtGui/QPrinter
  /usr/include/qt4/QtGui/QTransform
  /usr/include/qt4/QtGui/QVector3D
@@ -5655,6 +5340,9 @@ src/CMakeFiles/mycomp.dir/moc_specificworker.cxx.o
  /usr/include/qt4/QtGui/qwmatrix.h
  /usr/include/qt4/QtGui/qworkspace.h
  /usr/include/qt4/QtGui/qwsembedwidget.h
+ /usr/include/qt4/QtOpenGL/QGLWidget
+ /usr/include/qt4/QtOpenGL/qgl.h
+ /usr/include/qt4/QtOpenGL/qglcolormap.h
  src/AprilTags.h
  src/CommonBehavior.h
  src/Controller.h
@@ -5664,13 +5352,363 @@ src/CMakeFiles/mycomp.dir/moc_specificworker.cxx.o
  src/datoscamara.h
  src/genericworker.h
  src/ui_mainUI.h
+src/CMakeFiles/mycomp.dir/opt/robocomp/classes/qlog/qlog.cpp.o
+ /opt/robocomp/classes/qlog/qlog.cpp
+ /opt/robocomp/classes/qlog/qlog.h
+ /usr/include/qt4/Qt3Support/q3cstring.h
+ /usr/include/qt4/Qt3Support/q3valuelist.h
+ /usr/include/qt4/QtCore/QDate
+ /usr/include/qt4/QtCore/QPoint
+ /usr/include/qt4/QtCore/QPointF
+ /usr/include/qt4/QtCore/QtCore
+ /usr/include/qt4/QtCore/qabstractanimation.h
+ /usr/include/qt4/QtCore/qabstracteventdispatcher.h
+ /usr/include/qt4/QtCore/qabstractfileengine.h
+ /usr/include/qt4/QtCore/qabstractitemmodel.h
+ /usr/include/qt4/QtCore/qabstractstate.h
+ /usr/include/qt4/QtCore/qabstracttransition.h
+ /usr/include/qt4/QtCore/qalgorithms.h
+ /usr/include/qt4/QtCore/qanimationgroup.h
+ /usr/include/qt4/QtCore/qatomic.h
+ /usr/include/qt4/QtCore/qatomic_aarch64.h
+ /usr/include/qt4/QtCore/qatomic_alpha.h
+ /usr/include/qt4/QtCore/qatomic_arch.h
+ /usr/include/qt4/QtCore/qatomic_arm.h
+ /usr/include/qt4/QtCore/qatomic_armv5.h
+ /usr/include/qt4/QtCore/qatomic_armv6.h
+ /usr/include/qt4/QtCore/qatomic_armv7.h
+ /usr/include/qt4/QtCore/qatomic_avr32.h
+ /usr/include/qt4/QtCore/qatomic_bfin.h
+ /usr/include/qt4/QtCore/qatomic_bootstrap.h
+ /usr/include/qt4/QtCore/qatomic_generic.h
+ /usr/include/qt4/QtCore/qatomic_i386.h
+ /usr/include/qt4/QtCore/qatomic_ia64.h
+ /usr/include/qt4/QtCore/qatomic_integrity.h
+ /usr/include/qt4/QtCore/qatomic_m68k.h
+ /usr/include/qt4/QtCore/qatomic_macosx.h
+ /usr/include/qt4/QtCore/qatomic_mips.h
+ /usr/include/qt4/QtCore/qatomic_parisc.h
+ /usr/include/qt4/QtCore/qatomic_powerpc.h
+ /usr/include/qt4/QtCore/qatomic_s390.h
+ /usr/include/qt4/QtCore/qatomic_sh.h
+ /usr/include/qt4/QtCore/qatomic_sh4a.h
+ /usr/include/qt4/QtCore/qatomic_sparc.h
+ /usr/include/qt4/QtCore/qatomic_symbian.h
+ /usr/include/qt4/QtCore/qatomic_vxworks.h
+ /usr/include/qt4/QtCore/qatomic_windows.h
+ /usr/include/qt4/QtCore/qatomic_windowsce.h
+ /usr/include/qt4/QtCore/qatomic_x86_64.h
+ /usr/include/qt4/QtCore/qbasicatomic.h
+ /usr/include/qt4/QtCore/qbasictimer.h
+ /usr/include/qt4/QtCore/qbitarray.h
+ /usr/include/qt4/QtCore/qbuffer.h
+ /usr/include/qt4/QtCore/qbytearray.h
+ /usr/include/qt4/QtCore/qbytearraymatcher.h
+ /usr/include/qt4/QtCore/qcache.h
+ /usr/include/qt4/QtCore/qchar.h
+ /usr/include/qt4/QtCore/qconfig.h
+ /usr/include/qt4/QtCore/qcontainerfwd.h
+ /usr/include/qt4/QtCore/qcontiguouscache.h
+ /usr/include/qt4/QtCore/qcoreapplication.h
+ /usr/include/qt4/QtCore/qcoreevent.h
+ /usr/include/qt4/QtCore/qcryptographichash.h
+ /usr/include/qt4/QtCore/qdatastream.h
+ /usr/include/qt4/QtCore/qdatetime.h
+ /usr/include/qt4/QtCore/qdebug.h
+ /usr/include/qt4/QtCore/qdir.h
+ /usr/include/qt4/QtCore/qdiriterator.h
+ /usr/include/qt4/QtCore/qeasingcurve.h
+ /usr/include/qt4/QtCore/qelapsedtimer.h
+ /usr/include/qt4/QtCore/qendian.h
+ /usr/include/qt4/QtCore/qeventloop.h
+ /usr/include/qt4/QtCore/qeventtransition.h
+ /usr/include/qt4/QtCore/qfactoryinterface.h
+ /usr/include/qt4/QtCore/qfeatures.h
+ /usr/include/qt4/QtCore/qfile.h
+ /usr/include/qt4/QtCore/qfileinfo.h
+ /usr/include/qt4/QtCore/qfilesystemwatcher.h
+ /usr/include/qt4/QtCore/qfinalstate.h
+ /usr/include/qt4/QtCore/qfsfileengine.h
+ /usr/include/qt4/QtCore/qfuture.h
+ /usr/include/qt4/QtCore/qfutureinterface.h
+ /usr/include/qt4/QtCore/qfuturesynchronizer.h
+ /usr/include/qt4/QtCore/qfuturewatcher.h
+ /usr/include/qt4/QtCore/qglobal.h
+ /usr/include/qt4/QtCore/qhash.h
+ /usr/include/qt4/QtCore/qhistorystate.h
+ /usr/include/qt4/QtCore/qiodevice.h
+ /usr/include/qt4/QtCore/qiterator.h
+ /usr/include/qt4/QtCore/qlibrary.h
+ /usr/include/qt4/QtCore/qlibraryinfo.h
+ /usr/include/qt4/QtCore/qline.h
+ /usr/include/qt4/QtCore/qlinkedlist.h
+ /usr/include/qt4/QtCore/qlist.h
+ /usr/include/qt4/QtCore/qlocale.h
+ /usr/include/qt4/QtCore/qmap.h
+ /usr/include/qt4/QtCore/qmargins.h
+ /usr/include/qt4/QtCore/qmath.h
+ /usr/include/qt4/QtCore/qmetaobject.h
+ /usr/include/qt4/QtCore/qmetatype.h
+ /usr/include/qt4/QtCore/qmimedata.h
+ /usr/include/qt4/QtCore/qmutex.h
+ /usr/include/qt4/QtCore/qnamespace.h
+ /usr/include/qt4/QtCore/qnumeric.h
+ /usr/include/qt4/QtCore/qobject.h
+ /usr/include/qt4/QtCore/qobjectcleanuphandler.h
+ /usr/include/qt4/QtCore/qobjectdefs.h
+ /usr/include/qt4/QtCore/qpair.h
+ /usr/include/qt4/QtCore/qparallelanimationgroup.h
+ /usr/include/qt4/QtCore/qpauseanimation.h
+ /usr/include/qt4/QtCore/qplugin.h
+ /usr/include/qt4/QtCore/qpluginloader.h
+ /usr/include/qt4/QtCore/qpoint.h
+ /usr/include/qt4/QtCore/qpointer.h
+ /usr/include/qt4/QtCore/qprocess.h
+ /usr/include/qt4/QtCore/qpropertyanimation.h
+ /usr/include/qt4/QtCore/qqueue.h
+ /usr/include/qt4/QtCore/qreadwritelock.h
+ /usr/include/qt4/QtCore/qrect.h
+ /usr/include/qt4/QtCore/qregexp.h
+ /usr/include/qt4/QtCore/qresource.h
+ /usr/include/qt4/QtCore/qrunnable.h
+ /usr/include/qt4/QtCore/qscopedpointer.h
+ /usr/include/qt4/QtCore/qscopedvaluerollback.h
+ /usr/include/qt4/QtCore/qsemaphore.h
+ /usr/include/qt4/QtCore/qsequentialanimationgroup.h
+ /usr/include/qt4/QtCore/qset.h
+ /usr/include/qt4/QtCore/qsettings.h
+ /usr/include/qt4/QtCore/qshareddata.h
+ /usr/include/qt4/QtCore/qsharedmemory.h
+ /usr/include/qt4/QtCore/qsharedpointer.h
+ /usr/include/qt4/QtCore/qsharedpointer_impl.h
+ /usr/include/qt4/QtCore/qsignalmapper.h
+ /usr/include/qt4/QtCore/qsignaltransition.h
+ /usr/include/qt4/QtCore/qsize.h
+ /usr/include/qt4/QtCore/qsocketnotifier.h
+ /usr/include/qt4/QtCore/qstack.h
+ /usr/include/qt4/QtCore/qstate.h
+ /usr/include/qt4/QtCore/qstatemachine.h
+ /usr/include/qt4/QtCore/qstring.h
+ /usr/include/qt4/QtCore/qstringbuilder.h
+ /usr/include/qt4/QtCore/qstringlist.h
+ /usr/include/qt4/QtCore/qstringmatcher.h
+ /usr/include/qt4/QtCore/qsystemsemaphore.h
+ /usr/include/qt4/QtCore/qtconcurrentcompilertest.h
+ /usr/include/qt4/QtCore/qtconcurrentexception.h
+ /usr/include/qt4/QtCore/qtconcurrentfilter.h
+ /usr/include/qt4/QtCore/qtconcurrentfilterkernel.h
+ /usr/include/qt4/QtCore/qtconcurrentfunctionwrappers.h
+ /usr/include/qt4/QtCore/qtconcurrentiteratekernel.h
+ /usr/include/qt4/QtCore/qtconcurrentmap.h
+ /usr/include/qt4/QtCore/qtconcurrentmapkernel.h
+ /usr/include/qt4/QtCore/qtconcurrentmedian.h
+ /usr/include/qt4/QtCore/qtconcurrentreducekernel.h
+ /usr/include/qt4/QtCore/qtconcurrentresultstore.h
+ /usr/include/qt4/QtCore/qtconcurrentrun.h
+ /usr/include/qt4/QtCore/qtconcurrentrunbase.h
+ /usr/include/qt4/QtCore/qtconcurrentstoredfunctioncall.h
+ /usr/include/qt4/QtCore/qtconcurrentthreadengine.h
+ /usr/include/qt4/QtCore/qtemporaryfile.h
+ /usr/include/qt4/QtCore/qtextboundaryfinder.h
+ /usr/include/qt4/QtCore/qtextcodec.h
+ /usr/include/qt4/QtCore/qtextcodecplugin.h
+ /usr/include/qt4/QtCore/qtextstream.h
+ /usr/include/qt4/QtCore/qthread.h
+ /usr/include/qt4/QtCore/qthreadpool.h
+ /usr/include/qt4/QtCore/qthreadstorage.h
+ /usr/include/qt4/QtCore/qtimeline.h
+ /usr/include/qt4/QtCore/qtimer.h
+ /usr/include/qt4/QtCore/qtranslator.h
+ /usr/include/qt4/QtCore/qurl.h
+ /usr/include/qt4/QtCore/quuid.h
+ /usr/include/qt4/QtCore/qvariant.h
+ /usr/include/qt4/QtCore/qvariantanimation.h
+ /usr/include/qt4/QtCore/qvarlengtharray.h
+ /usr/include/qt4/QtCore/qvector.h
+ /usr/include/qt4/QtCore/qwaitcondition.h
+ /usr/include/qt4/QtCore/qxmlstream.h
+src/CMakeFiles/mycomp.dir/opt/robocomp/classes/rapplication/rapplication.cpp.o
+ /opt/robocomp/classes/rapplication/rapplication.cpp
+ /opt/robocomp/classes/rapplication/rapplication.h
+ /usr/include/qt4/Qt3Support/q3cstring.h
+ /usr/include/qt4/Qt3Support/q3valuelist.h
+ /usr/include/qt4/QtCore/QDate
+ /usr/include/qt4/QtCore/QPoint
+ /usr/include/qt4/QtCore/QPointF
+ /usr/include/qt4/QtCore/QtCore
+ /usr/include/qt4/QtCore/qabstractanimation.h
+ /usr/include/qt4/QtCore/qabstracteventdispatcher.h
+ /usr/include/qt4/QtCore/qabstractfileengine.h
+ /usr/include/qt4/QtCore/qabstractitemmodel.h
+ /usr/include/qt4/QtCore/qabstractstate.h
+ /usr/include/qt4/QtCore/qabstracttransition.h
+ /usr/include/qt4/QtCore/qalgorithms.h
+ /usr/include/qt4/QtCore/qanimationgroup.h
+ /usr/include/qt4/QtCore/qatomic.h
+ /usr/include/qt4/QtCore/qatomic_aarch64.h
+ /usr/include/qt4/QtCore/qatomic_alpha.h
+ /usr/include/qt4/QtCore/qatomic_arch.h
+ /usr/include/qt4/QtCore/qatomic_arm.h
+ /usr/include/qt4/QtCore/qatomic_armv5.h
+ /usr/include/qt4/QtCore/qatomic_armv6.h
+ /usr/include/qt4/QtCore/qatomic_armv7.h
+ /usr/include/qt4/QtCore/qatomic_avr32.h
+ /usr/include/qt4/QtCore/qatomic_bfin.h
+ /usr/include/qt4/QtCore/qatomic_bootstrap.h
+ /usr/include/qt4/QtCore/qatomic_generic.h
+ /usr/include/qt4/QtCore/qatomic_i386.h
+ /usr/include/qt4/QtCore/qatomic_ia64.h
+ /usr/include/qt4/QtCore/qatomic_integrity.h
+ /usr/include/qt4/QtCore/qatomic_m68k.h
+ /usr/include/qt4/QtCore/qatomic_macosx.h
+ /usr/include/qt4/QtCore/qatomic_mips.h
+ /usr/include/qt4/QtCore/qatomic_parisc.h
+ /usr/include/qt4/QtCore/qatomic_powerpc.h
+ /usr/include/qt4/QtCore/qatomic_s390.h
+ /usr/include/qt4/QtCore/qatomic_sh.h
+ /usr/include/qt4/QtCore/qatomic_sh4a.h
+ /usr/include/qt4/QtCore/qatomic_sparc.h
+ /usr/include/qt4/QtCore/qatomic_symbian.h
+ /usr/include/qt4/QtCore/qatomic_vxworks.h
+ /usr/include/qt4/QtCore/qatomic_windows.h
+ /usr/include/qt4/QtCore/qatomic_windowsce.h
+ /usr/include/qt4/QtCore/qatomic_x86_64.h
+ /usr/include/qt4/QtCore/qbasicatomic.h
+ /usr/include/qt4/QtCore/qbasictimer.h
+ /usr/include/qt4/QtCore/qbitarray.h
+ /usr/include/qt4/QtCore/qbuffer.h
+ /usr/include/qt4/QtCore/qbytearray.h
+ /usr/include/qt4/QtCore/qbytearraymatcher.h
+ /usr/include/qt4/QtCore/qcache.h
+ /usr/include/qt4/QtCore/qchar.h
+ /usr/include/qt4/QtCore/qconfig.h
+ /usr/include/qt4/QtCore/qcontainerfwd.h
+ /usr/include/qt4/QtCore/qcontiguouscache.h
+ /usr/include/qt4/QtCore/qcoreapplication.h
+ /usr/include/qt4/QtCore/qcoreevent.h
+ /usr/include/qt4/QtCore/qcryptographichash.h
+ /usr/include/qt4/QtCore/qdatastream.h
+ /usr/include/qt4/QtCore/qdatetime.h
+ /usr/include/qt4/QtCore/qdebug.h
+ /usr/include/qt4/QtCore/qdir.h
+ /usr/include/qt4/QtCore/qdiriterator.h
+ /usr/include/qt4/QtCore/qeasingcurve.h
+ /usr/include/qt4/QtCore/qelapsedtimer.h
+ /usr/include/qt4/QtCore/qendian.h
+ /usr/include/qt4/QtCore/qeventloop.h
+ /usr/include/qt4/QtCore/qeventtransition.h
+ /usr/include/qt4/QtCore/qfactoryinterface.h
+ /usr/include/qt4/QtCore/qfeatures.h
+ /usr/include/qt4/QtCore/qfile.h
+ /usr/include/qt4/QtCore/qfileinfo.h
+ /usr/include/qt4/QtCore/qfilesystemwatcher.h
+ /usr/include/qt4/QtCore/qfinalstate.h
+ /usr/include/qt4/QtCore/qfsfileengine.h
+ /usr/include/qt4/QtCore/qfuture.h
+ /usr/include/qt4/QtCore/qfutureinterface.h
+ /usr/include/qt4/QtCore/qfuturesynchronizer.h
+ /usr/include/qt4/QtCore/qfuturewatcher.h
+ /usr/include/qt4/QtCore/qglobal.h
+ /usr/include/qt4/QtCore/qhash.h
+ /usr/include/qt4/QtCore/qhistorystate.h
+ /usr/include/qt4/QtCore/qiodevice.h
+ /usr/include/qt4/QtCore/qiterator.h
+ /usr/include/qt4/QtCore/qlibrary.h
+ /usr/include/qt4/QtCore/qlibraryinfo.h
+ /usr/include/qt4/QtCore/qline.h
+ /usr/include/qt4/QtCore/qlinkedlist.h
+ /usr/include/qt4/QtCore/qlist.h
+ /usr/include/qt4/QtCore/qlocale.h
+ /usr/include/qt4/QtCore/qmap.h
+ /usr/include/qt4/QtCore/qmargins.h
+ /usr/include/qt4/QtCore/qmath.h
+ /usr/include/qt4/QtCore/qmetaobject.h
+ /usr/include/qt4/QtCore/qmetatype.h
+ /usr/include/qt4/QtCore/qmimedata.h
+ /usr/include/qt4/QtCore/qmutex.h
+ /usr/include/qt4/QtCore/qnamespace.h
+ /usr/include/qt4/QtCore/qnumeric.h
+ /usr/include/qt4/QtCore/qobject.h
+ /usr/include/qt4/QtCore/qobjectcleanuphandler.h
+ /usr/include/qt4/QtCore/qobjectdefs.h
+ /usr/include/qt4/QtCore/qpair.h
+ /usr/include/qt4/QtCore/qparallelanimationgroup.h
+ /usr/include/qt4/QtCore/qpauseanimation.h
+ /usr/include/qt4/QtCore/qplugin.h
+ /usr/include/qt4/QtCore/qpluginloader.h
+ /usr/include/qt4/QtCore/qpoint.h
+ /usr/include/qt4/QtCore/qpointer.h
+ /usr/include/qt4/QtCore/qprocess.h
+ /usr/include/qt4/QtCore/qpropertyanimation.h
+ /usr/include/qt4/QtCore/qqueue.h
+ /usr/include/qt4/QtCore/qreadwritelock.h
+ /usr/include/qt4/QtCore/qrect.h
+ /usr/include/qt4/QtCore/qregexp.h
+ /usr/include/qt4/QtCore/qresource.h
+ /usr/include/qt4/QtCore/qrunnable.h
+ /usr/include/qt4/QtCore/qscopedpointer.h
+ /usr/include/qt4/QtCore/qscopedvaluerollback.h
+ /usr/include/qt4/QtCore/qsemaphore.h
+ /usr/include/qt4/QtCore/qsequentialanimationgroup.h
+ /usr/include/qt4/QtCore/qset.h
+ /usr/include/qt4/QtCore/qsettings.h
+ /usr/include/qt4/QtCore/qshareddata.h
+ /usr/include/qt4/QtCore/qsharedmemory.h
+ /usr/include/qt4/QtCore/qsharedpointer.h
+ /usr/include/qt4/QtCore/qsharedpointer_impl.h
+ /usr/include/qt4/QtCore/qsignalmapper.h
+ /usr/include/qt4/QtCore/qsignaltransition.h
+ /usr/include/qt4/QtCore/qsize.h
+ /usr/include/qt4/QtCore/qsocketnotifier.h
+ /usr/include/qt4/QtCore/qstack.h
+ /usr/include/qt4/QtCore/qstate.h
+ /usr/include/qt4/QtCore/qstatemachine.h
+ /usr/include/qt4/QtCore/qstring.h
+ /usr/include/qt4/QtCore/qstringbuilder.h
+ /usr/include/qt4/QtCore/qstringlist.h
+ /usr/include/qt4/QtCore/qstringmatcher.h
+ /usr/include/qt4/QtCore/qsystemsemaphore.h
+ /usr/include/qt4/QtCore/qtconcurrentcompilertest.h
+ /usr/include/qt4/QtCore/qtconcurrentexception.h
+ /usr/include/qt4/QtCore/qtconcurrentfilter.h
+ /usr/include/qt4/QtCore/qtconcurrentfilterkernel.h
+ /usr/include/qt4/QtCore/qtconcurrentfunctionwrappers.h
+ /usr/include/qt4/QtCore/qtconcurrentiteratekernel.h
+ /usr/include/qt4/QtCore/qtconcurrentmap.h
+ /usr/include/qt4/QtCore/qtconcurrentmapkernel.h
+ /usr/include/qt4/QtCore/qtconcurrentmedian.h
+ /usr/include/qt4/QtCore/qtconcurrentreducekernel.h
+ /usr/include/qt4/QtCore/qtconcurrentresultstore.h
+ /usr/include/qt4/QtCore/qtconcurrentrun.h
+ /usr/include/qt4/QtCore/qtconcurrentrunbase.h
+ /usr/include/qt4/QtCore/qtconcurrentstoredfunctioncall.h
+ /usr/include/qt4/QtCore/qtconcurrentthreadengine.h
+ /usr/include/qt4/QtCore/qtemporaryfile.h
+ /usr/include/qt4/QtCore/qtextboundaryfinder.h
+ /usr/include/qt4/QtCore/qtextcodec.h
+ /usr/include/qt4/QtCore/qtextcodecplugin.h
+ /usr/include/qt4/QtCore/qtextstream.h
+ /usr/include/qt4/QtCore/qthread.h
+ /usr/include/qt4/QtCore/qthreadpool.h
+ /usr/include/qt4/QtCore/qthreadstorage.h
+ /usr/include/qt4/QtCore/qtimeline.h
+ /usr/include/qt4/QtCore/qtimer.h
+ /usr/include/qt4/QtCore/qtranslator.h
+ /usr/include/qt4/QtCore/qurl.h
+ /usr/include/qt4/QtCore/quuid.h
+ /usr/include/qt4/QtCore/qvariant.h
+ /usr/include/qt4/QtCore/qvariantanimation.h
+ /usr/include/qt4/QtCore/qvarlengtharray.h
+ /usr/include/qt4/QtCore/qvector.h
+ /usr/include/qt4/QtCore/qwaitcondition.h
+ /usr/include/qt4/QtCore/qxmlstream.h
 src/CMakeFiles/mycomp.dir/specificmonitor.cpp.o
- /home/salabeta/robocomp/classes/qlog/qlog.h
  /home/salabeta/salabeta/menaricci/mycomp/src/config.h
  /home/salabeta/salabeta/menaricci/mycomp/src/genericmonitor.h
  /home/salabeta/salabeta/menaricci/mycomp/src/genericworker.h
  /home/salabeta/salabeta/menaricci/mycomp/src/specificmonitor.cpp
  /home/salabeta/salabeta/menaricci/mycomp/src/specificmonitor.h
+ /opt/robocomp/classes/qlog/qlog.h
  /usr/include/qt4/Qt3Support/q3cstring.h
  /usr/include/qt4/Qt3Support/q3valuelist.h
  /usr/include/qt4/QtCore/QDate
@@ -5853,6 +5891,7 @@ src/CMakeFiles/mycomp.dir/specificmonitor.cpp.o
  /usr/include/qt4/QtGui/QCommonStyle
  /usr/include/qt4/QtGui/QFileDialog
  /usr/include/qt4/QtGui/QFont
+ /usr/include/qt4/QtGui/QFrame
  /usr/include/qt4/QtGui/QHeaderView
  /usr/include/qt4/QtGui/QLayout
  /usr/include/qt4/QtGui/QMatrix4x4
@@ -6103,10 +6142,15 @@ src/CMakeFiles/mycomp.dir/specificmonitor.cpp.o
  src/Laser.h
  src/ui_mainUI.h
 src/CMakeFiles/mycomp.dir/specificworker.cpp.o
- /home/salabeta/robocomp/classes/qlog/qlog.h
  /home/salabeta/salabeta/menaricci/mycomp/src/specificworker.cpp
  /home/salabeta/salabeta/menaricci/mycomp/src/specificworker.h
+ /opt/robocomp/classes/qlog/qlog.h
  /opt/robocomp/include/innermodel/innermodel.h
+ /opt/robocomp/include/innermodel/innermodeldraw.h
+ /opt/robocomp/include/innermodel/innermodelviewer.h
+ /opt/robocomp/include/osgviewer/adapterwidget.h
+ /opt/robocomp/include/osgviewer/osgview.h
+ /opt/robocomp/include/osgviewer/viewerqt.h
  /opt/robocomp/include/qmat/QMatAll
  /opt/robocomp/include/qmat/qcamera.h
  /opt/robocomp/include/qmat/qessential.h
@@ -6128,6 +6172,8 @@ src/CMakeFiles/mycomp.dir/specificworker.cpp.o
  /usr/include/qt4/QtCore/QObject
  /usr/include/qt4/QtCore/QPoint
  /usr/include/qt4/QtCore/QPointF
+ /usr/include/qt4/QtCore/QString
+ /usr/include/qt4/QtCore/QTimer
  /usr/include/qt4/QtCore/QVariant
  /usr/include/qt4/QtCore/QtCore
  /usr/include/qt4/QtCore/qabstractanimation.h
@@ -6262,6 +6308,7 @@ src/CMakeFiles/mycomp.dir/specificworker.cpp.o
  /usr/include/qt4/QtCore/qstringlist.h
  /usr/include/qt4/QtCore/qstringmatcher.h
  /usr/include/qt4/QtCore/qsystemsemaphore.h
+ /usr/include/qt4/QtCore/qt_windows.h
  /usr/include/qt4/QtCore/qtconcurrentcompilertest.h
  /usr/include/qt4/QtCore/qtconcurrentexception.h
  /usr/include/qt4/QtCore/qtconcurrentfilter.h
@@ -6303,11 +6350,14 @@ src/CMakeFiles/mycomp.dir/specificworker.cpp.o
  /usr/include/qt4/QtGui/QCommonStyle
  /usr/include/qt4/QtGui/QFileDialog
  /usr/include/qt4/QtGui/QFont
+ /usr/include/qt4/QtGui/QFrame
  /usr/include/qt4/QtGui/QHeaderView
+ /usr/include/qt4/QtGui/QKeyEvent
  /usr/include/qt4/QtGui/QLayout
  /usr/include/qt4/QtGui/QMatrix4x4
  /usr/include/qt4/QtGui/QPalette
  /usr/include/qt4/QtGui/QPlatformWindow
+ /usr/include/qt4/QtGui/QPlatformWindowFormat
  /usr/include/qt4/QtGui/QPrinter
  /usr/include/qt4/QtGui/QTransform
  /usr/include/qt4/QtGui/QVector3D
@@ -6546,6 +6596,9 @@ src/CMakeFiles/mycomp.dir/specificworker.cpp.o
  /usr/include/qt4/QtGui/qwmatrix.h
  /usr/include/qt4/QtGui/qworkspace.h
  /usr/include/qt4/QtGui/qwsembedwidget.h
+ /usr/include/qt4/QtOpenGL/QGLWidget
+ /usr/include/qt4/QtOpenGL/qgl.h
+ /usr/include/qt4/QtOpenGL/qglcolormap.h
  src/AprilTags.h
  src/CommonBehavior.h
  src/Controller.h
